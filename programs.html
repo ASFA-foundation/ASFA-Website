@@ -23,7 +23,7 @@
                 </div>
                 <span class="site-name">ASFA Foundation</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -233,10 +233,10 @@
                     <h5 class="mb-3">About ASFA</h5>
                     <p>Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg floating-animation-slow"></i></a>
+                        <a href="javascript:void(0);" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg floating-animation-slow"></i></a>
+                        <a href="javascript:void(0);" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg floating-animation-slow"></i></a>
+                        <a href="javascript:void(0);" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg floating-animation-slow"></i></a>
+                        <a href="javascript:void(0);" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg floating-animation-slow"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
@@ -262,7 +262,7 @@
                 <div class="col-lg-3 mb-4">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
-                    <form class="newsletter-form">
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
                         <div class="input-group mb-3">
                             <input type="email" class="form-control floating-animation-slow" placeholder="Your Email" required>
                             <button class="btn btn-gold" type="submit">
