@@ -11,16 +11,101 @@
     <!-- Lightbox CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.0.3">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark-blue: #003366;
+        }
+        .bg-dark-blue {
+            background-color: var(--dark-blue) !important;
+        }
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 600;
+        }
+        .text-gold {
+            color: var(--gold);
+        }
+        .gallery-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('images/gallery-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 51, 102, 0.8);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        .filter-btn.active {
+            background-color: var(--gold);
+            color: #000;
+        }
+        .section-title {
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <div class="logo-circle floating-animation-slow">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="logo-circle floating-animation-slow me-2">
                     <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
                 </div>
                 <span class="site-name">ASFA Foundation</span>
@@ -34,8 +119,7 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
                     <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold" href="donate.html">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="donate.html">Donate</a></li>
                 </ul>
             </div>
         </div>
@@ -44,12 +128,12 @@
     <!-- Page Header -->
     <header class="gallery-header py-5 text-white">
         <div class="container text-center">
-            <h1 class="display-4 mb-3 floating-animation-slow">Our Gallery</h1>
-            <p class="lead">Moments that inspire our mission</p>
+            <h1 class="display-4 mb-3">Our Gallery</h1>
+            <p class="lead">Capturing moments that define our impact</p>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                <ol class="breadcrumb justify-content-center bg-transparent">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page">Gallery</li>
                 </ol>
             </nav>
         </div>
@@ -57,148 +141,210 @@
 
     <!-- Gallery Filters -->
     <section class="py-4 bg-light">
+        <div class="container text-center">
+            <div class="btn-group flex-wrap" role="group">
+                <button type="button" class="btn btn-outline-secondary filter-btn active" data-filter="all">All</button>
+                <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="education">Education</button>
+                <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="healthcare">Healthcare</button>
+                <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="shelter">Shelter</button>
+                <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="events">Events</button>
+                <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="community">Community</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <div class="btn-group flex-wrap" role="group">
-                        <button type="button" class="btn btn-outline-dark filter-btn active" data-filter="all">All</button>
-                        <button type="button" class="btn btn-outline-dark filter-btn" data-filter="education">Education</button>
-                        <button type="button" class="btn btn-outline-dark filter-btn" data-filter="healthcare">Healthcare</button>
-                        <button type="button" class="btn btn-outline-dark filter-btn" data-filter="shelter">Shelter</button>
-                        <button type="button" class="btn btn-outline-dark filter-btn" data-filter="events">Events</button>
-                        <button type="button" class="btn btn-outline-dark filter-btn" data-filter="volunteers">Volunteers</button>
+            <div class="row gallery-container">
+                <!-- Image 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="education">
+                    <a href="images/gallery/education-1.jpg" data-lightbox="gallery" data-title="Students receiving school supplies">
+                        <img src="images/gallery/education-1-thumb.jpg" alt="Students receiving school supplies" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Education Support</h5>
+                            <p>Students receiving school supplies in Kampala</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="healthcare">
+                    <a href="images/gallery/health-1.jpg" data-lightbox="gallery" data-title="Mobile health clinic in rural village">
+                        <img src="images/gallery/health-1-thumb.jpg" alt="Mobile health clinic" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Mobile Clinic</h5>
+                            <p>Providing healthcare in rural communities</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="shelter">
+                    <a href="images/gallery/shelter-1.jpg" data-lightbox="gallery" data-title="New home construction for displaced family">
+                        <img src="images/gallery/shelter-1-thumb.jpg" alt="Home construction" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Shelter Project</h5>
+                            <p>New home for displaced family in Bududa</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="education">
+                    <a href="images/gallery/education-2.jpg" data-lightbox="gallery" data-title="Digital literacy training session">
+                        <img src="images/gallery/education-2-thumb.jpg" alt="Digital literacy training" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Digital Training</h5>
+                            <p>Students learning computer skills</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="events">
+                    <a href="images/gallery/event-1.jpg" data-lightbox="gallery" data-title="Annual fundraising gala">
+                        <img src="images/gallery/event-1-thumb.jpg" alt="Fundraising event" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Fundraising Gala</h5>
+                            <p>2023 Annual Charity Dinner</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="community">
+                    <a href="images/gallery/community-1.jpg" data-lightbox="gallery" data-title="Women's empowerment workshop">
+                        <img src="images/gallery/community-1-thumb.jpg" alt="Women's workshop" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Empowerment Workshop</h5>
+                            <p>Skills training for local women</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 7 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="healthcare">
+                    <a href="images/gallery/health-2.jpg" data-lightbox="gallery" data-title="Vaccination drive in rural village">
+                        <img src="images/gallery/health-2-thumb.jpg" alt="Vaccination program" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Vaccination Drive</h5>
+                            <p>Protecting children from preventable diseases</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 8 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="events">
+                    <a href="images/gallery/event-2.jpg" data-lightbox="gallery" data-title="Volunteer appreciation day">
+                        <img src="images/gallery/event-2-thumb.jpg" alt="Volunteer event" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Volunteer Day</h5>
+                            <p>Recognizing our dedicated volunteers</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Image 9 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="community">
+                    <a href="images/gallery/community-2.jpg" data-lightbox="gallery" data-title="Community clean-up initiative">
+                        <img src="images/gallery/community-2-thumb.jpg" alt="Community clean-up" class="img-fluid">
+                        <div class="gallery-caption">
+                            <h5>Clean-Up Campaign</h5>
+                            <p>Improving local community sanitation</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-4">
+                <button class="btn btn-gold btn-lg" id="loadMore">
+                    <i class="fas fa-plus-circle me-2"></i>Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Stories in Motion</h2>
+                <p class="lead">Watch how we're making a difference</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Foundation Impact Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Education Program" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Grid -->
-    <main class="py-5">
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark-blue text-white text-center">
         <div class="container">
-            <div class="row g-4 gallery-grid">
-                <!-- Education Images -->
-                <div class="col-lg-4 col-md-6 gallery-item education">
-                    <div class="gallery-card h-100 floating-animation">
-                        <a href="images/gallery/edu1.jpg" data-lightbox="education" data-title="Classroom Learning Session" data-alt="Students engaged in classroom activities">
-                            <img src="images/gallery/edu1-thumb.jpg" alt="Students learning" class="img-fluid rounded-top" loading="lazy">
-                        </a>
-                        <div class="gallery-caption p-3">
-                            <h5 class="mb-1">Classroom Learning</h5>
-                            <small class="text-muted">February 2023, Kampala</small>
-                            <p class="mt-2 mb-0">Students receiving digital literacy training</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Healthcare Images -->
-                <div class="col-lg-4 col-md-6 gallery-item healthcare">
-                    <div class="gallery-card h-100 floating-animation">
-                        <a href="images/gallery/health1.jpg" data-lightbox="healthcare" data-title="Mobile Medical Camp" data-alt="Doctors examining children at a medical camp">
-                            <img src="images/gallery/health1-thumb.jpg" alt="Medical camp" class="img-fluid rounded-top" loading="lazy">
-                        </a>
-                        <div class="gallery-caption p-3">
-                            <h5 class="mb-1">Medical Outreach</h5>
-                            <small class="text-muted">March 2025, Rukungiri District</small>
-                            <p class="mt-2 mb-0">Free health screenings for rural communities</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shelter Images -->
-                <div class="col-lg-4 col-md-6 gallery-item shelter">
-                    <div class="gallery-card h-100 floating-animation">
-                        <a href="images/gallery/shelter1.jpg" data-lightbox="shelter" data-title="Emergency Housing Project" data-alt="Newly built shelters for displaced families">
-                            <img src="images/gallery/shelter1-thumb.jpg" alt="Shelter project" class="img-fluid rounded-top" loading="lazy">
-                        </a>
-                        <div class="gallery-caption p-3">
-                            <h5 class="mb-1">Shelter Initiative</h5>
-                            <small class="text-muted">Feb 2025, Manafa District</small>
-                            <p class="mt-2 mb-0">Home built for flood-affected families</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Events Images -->
-                <div class="col-lg-4 col-md-6 gallery-item events">
-                    <div class="gallery-card h-100 floating-animation">
-                        <a href="images/gallery/event1.jpg" data-lightbox="events" data-title="Annual Fundraising Gala" data-alt="Attendees at ASFA's annual fundraising event">
-                            <img src="images/gallery/event1-thumb.jpg" alt="Fundraising event" class="img-fluid rounded-top" loading="lazy">
-                        </a>
-                        <div class="gallery-caption p-3">
-                            <h5 class="mb-1">Annual Gala</h5>
-                            <small class="text-muted">March 2025, Kampala</small>
-                            <p class="mt-2 mb-0">Celebrating our impact with supporters</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Volunteers Images -->
-                <div class="col-lg-4 col-md-6 gallery-item volunteers">
-                    <div class="gallery-card h-100 floating-animation">
-                        <a href="images/gallery/vol1.jpg" data-lightbox="volunteers" data-title="Community Volunteer Day" data-alt="Volunteers building a school playground">
-                            <img src="images/gallery/vol1-thumb.jpg" alt="Volunteers working" class="img-fluid rounded-top" loading="lazy">
-                        </a>
-                        <div class="gallery-caption p-3">
-                            <h5 class="mb-1">Volunteer Day</h5>
-                            <small class="text-muted">April 2025, Kiboga District</small>
-                            <p class="mt-2 mb-0">Local volunteers improving school facilities</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- More images would follow the same pattern -->
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-5">
-                <button class="btn btn-gold" id="loadMore">
-                    <i class="fas fa-plus-circle me-2"></i>Load More
-                </button>
+            <h2 class="mb-4">Want to See More of Our Work?</h2>
+            <p class="lead mb-4">Follow us on social media for daily updates</p>
+            <div class="d-flex justify-content-center flex-wrap">
+                <a href="#" class="btn btn-gold btn-lg mx-2 mb-2">
+                    <i class="fab fa-facebook-f me-2"></i>Facebook
+                </a>
+                <a href="#" class="btn btn-outline-light btn-lg mx-2 mb-2">
+                    <i class="fab fa-instagram me-2"></i>Instagram
+                </a>
+                <a href="#" class="btn btn-outline-gold btn-lg mx-2 mb-2">
+                    <i class="fab fa-youtube me-2"></i>YouTube
+                </a>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer py-5 bg-dark-blue text-white">
+    <footer class="py-5 bg-dark-blue text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
                     <h5 class="mb-3">About ASFA</h5>
-                    <p>Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg floating-animation-slow"></i></a>
+                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="text-white">Home</a></li>
-                        <li class="mb-2"><a href="about.html" class="text-white">About Us</a></li>
-                        <li class="mb-2"><a href="programs.html" class="text-white">Programs</a></li>
-                        <li class="mb-2"><a href="gallery.html" class="text-white">Gallery</a></li>
-                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+                        <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
+                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6">
                     <h5 class="mb-3">Contact Us</h5>
-                    <address>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> +256 745 993474</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                        </ul>
-                    </address>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> +256 745 993474</li>
+                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 mb-4">
+                <div class="col-lg-3">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
                     <form class="newsletter-form">
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control floating-animation-slow" placeholder="Your Email" required>
+                            <input type="email" class="form-control" placeholder="Your Email" required>
                             <button class="btn btn-gold" type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -214,41 +360,45 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Gallery filtering
-        $(document).ready(function(){
-            $('.filter-btn').click(function(){
-                $('.filter-btn').removeClass('active');
-                $(this).addClass('active');
-                
-                const filter = $(this).data('filter');
-                if(filter === 'all') {
-                    $('.gallery-item').fadeIn(300);
-                } else {
-                    $('.gallery-item').hide();
-                    $(`.gallery-item.${filter}`).fadeIn(300);
-                }
-            });
+        // Gallery filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-            // Lightbox configuration
-            lightbox.option({
-                'resizeDuration': 200,
-                'wrapAround': true,
-                'albumLabel': 'Image %1 of %2',
-                'fadeDuration': 300
-            });
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
 
-            // Load more functionality
-            $('#loadMore').click(function(){
-                // In a real implementation, this would load more images via AJAX
-                alert('This would load more gallery items in a real implementation');
+                // Filter items
+                const filter = this.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             });
+        });
+
+        // Load more functionality
+        document.getElementById('loadMore').addEventListener('click', function() {
+            // In a real implementation, this would load more items via AJAX
+            alert('More gallery items would be loaded here in a production environment');
+        });
+
+        // Initialize lightbox
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': 'Image %1 of %2'
         });
     </script>
 </body>
