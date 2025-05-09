@@ -9,16 +9,77 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.0.3">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark-blue: #003366;
+        }
+        .bg-dark-blue {
+            background-color: var(--dark-blue) !important;
+        }
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 600;
+        }
+        .text-gold {
+            color: var(--gold);
+        }
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-animation-slow {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .donate-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), url('images/donate-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .progress-bar.bg-gold {
+            background-color: var(--gold) !important;
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .payment-option {
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .payment-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <div class="logo-circle floating-animation-slow">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="logo-circle floating-animation-slow me-2">
                     <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
                 </div>
                 <span class="site-name">ASFA Foundation</span>
@@ -32,7 +93,7 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
                     <li class="nav-item"><a class="nav-link active" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -44,9 +105,9 @@
             <h1 class="display-4 mb-3 floating-animation-slow">Support Our Mission</h1>
             <p class="lead">Your generosity changes lives every day</p>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Donate</li>
+                <ol class="breadcrumb justify-content-center bg-transparent">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page">Donate</li>
                 </ol>
             </nav>
         </div>
@@ -131,7 +192,6 @@
                                                 </ol>
                                             </div>
                                         </div>
-                                       
                                     </div>
                                 </div>
 
@@ -164,7 +224,6 @@
                                                 </ol>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -292,46 +351,44 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer py-5 bg-dark-blue text-white">
+    <footer class="py-5 bg-dark-blue text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
                     <h5 class="mb-3">About ASFA</h5>
-                    <p>Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg floating-animation-slow"></i></a>
+                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="text-white">Home</a></li>
-                        <li class="mb-2"><a href="about.html" class="text-white">About Us</a></li>
-                        <li class="mb-2"><a href="programs.html" class="text-white">Programs</a></li>
-                        <li class="mb-2"><a href="donate.html" class="text-white">Donate</a></li>
-                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+                        <li class="nav-item mb-2"><a href="donate.html" class="nav-link p-0 text-white">Donate</a></li>
+                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6">
                     <h5 class="mb-3">Contact Us</h5>
-                    <address>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> +256 748 095503 (Whatsapp)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                        </ul>
-                    </address>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
+                        <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
+                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 mb-4">
+                <div class="col-lg-3">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
                     <form class="newsletter-form">
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control floating-animation-slow" placeholder="Your Email" required>
+                            <input type="email" class="form-control" placeholder="Your Email" required>
                             <button class="btn btn-gold" type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -365,7 +422,7 @@
 
         // Custom amount handling
         document.getElementById('customAmount').addEventListener('input', function() {
-                amountButtons.forEach(btn => btn.classList.remove('active'));
+            amountButtons.forEach(btn => btn.classList.remove('active'));
         });
 
         // PayPal integration
@@ -392,7 +449,6 @@
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     alert('Thank you for your donation of $' + details.purchase_units[0].amount.value + '!');
-                    // Here you could redirect to a thank you page
                 });
             }
         }).render('#paypal-button-container');
