@@ -6,17 +6,12 @@
   <meta name="description" content="ASFA Foundation - Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa">
   <title>ASFA Foundation | Empowering Communities</title>
   
-  <!-- Preload critical resources -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="images/logo.png" as="image">
-  
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=1.0.2">
+  <link rel="stylesheet" href="css/style.css?v=1.0.3">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   
@@ -41,6 +36,11 @@
       background-color: var(--gold); 
       color: #000;
       font-weight: 600;
+      border: none;
+    }
+    .btn-outline-gold {
+      border: 1px solid var(--gold);
+      color: var(--gold);
     }
     .text-gold { color: var(--gold); }
     .navbar {
@@ -49,6 +49,18 @@
     }
     .carousel-caption {
       bottom: 30%;
+      left: 5%;
+      right: auto;
+      text-align: left;
+    }
+    .carousel-caption h1 {
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    .logo-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     @media (max-width: 768px) {
       .carousel-caption {
@@ -64,7 +76,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html" aria-label="ASFA Foundation Home">
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
         <div class="logo-circle me-2">
           <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
         </div>
@@ -91,14 +103,14 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="images/hero1.jpeg" class="d-block w-100" alt="Community empowerment" loading="eager">
-        <div class="carousel-caption text-start">
+        <div class="carousel-caption">
           <h1 class="display-4 mb-3">Empowering Vulnerable Communities</h1>
           <a href="donate.html" class="btn btn-gold btn-lg">Donate Now</a>
         </div>
       </div>
       <div class="carousel-item">
         <img src="images/hero2.jpeg" class="d-block w-100" alt="Education program" loading="lazy">
-        <div class="carousel-caption text-start">
+        <div class="carousel-caption">
           <h1 class="display-4 mb-3">Transforming Lives Through Education</h1>
           <a href="programs.html" class="btn btn-gold btn-lg">Our Programs</a>
         </div>
