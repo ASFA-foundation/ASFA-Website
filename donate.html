@@ -281,15 +281,35 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <ol class="list-group list-group-numbered">
-                        <li class="list-group-item">Go to your Mobile Money menu</li>
-                        <li class="list-group-item">Select <strong>"Pay Merchant"</strong> (for MTN) or <strong>"Pay Bill"</strong> (for Airtel)</li>
-                        <li class="list-group-item">Enter the merchant code provided</li>
-                        <li class="list-group-item">Enter the amount you wish to donate</li>
-                        <li class="list-group-item">Enter <strong>YOUR NAME</strong> as reference</li>
-                        <li class="list-group-item">Complete the transaction</li>
-                    </ol>
-                  
+                    <!-- Airtel Money Instructions -->
+                    <div class="mb-4">
+                        <h6 class="text-gold mb-3"><i class="fas fa-mobile-alt me-2"></i> Airtel Money</h6>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Dial <strong>*185#</strong> and then press <strong>Yes</strong></li>
+                            <li class="list-group-item">Enter Merchant Code: <strong>4392017</strong></li>
+                            <li class="list-group-item">Enter Amount and then press <strong>Yes</strong></li>
+                            <li class="list-group-item">Reference Number: <strong>02</strong> then press <strong>Yes</strong></li>
+                            <li class="list-group-item">Confirm your PIN</li>
+                        </ol>
+                    </div>
+
+                    <!-- MTN Mobile Money Instructions -->
+                    <div>
+                        <h6 class="text-gold mb-3"><i class="fas fa-mobile-alt me-2"></i> MTN Mobile Money</h6>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Dial <strong>*165*3#</strong></li>
+                            <li class="list-group-item">Enter Merchant Code: <strong>305790</strong></li>
+                            <li class="list-group-item">Enter Amount</li>
+                            <li class="list-group-item">Enter Reference Number: <strong>02</strong></li>
+                            <li class="list-group-item">Confirm your PIN</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-envelope me-2"></i>
+                        Send receipt to <strong>donations@asfa.org</strong> for acknowledgment
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Got It!</button>
                 </div>
