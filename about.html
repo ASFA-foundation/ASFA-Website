@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ASFA Foundation - Empowering communities through education, health, and social support in Uganda." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ASFA Foundation - Empowering communities through education, health, and social support in Uganda.">
   <title>About Us | ASFA Foundation</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css?v=1.0.3">
 
-  <!-- Optional: Custom CSS (Optional for GitHub pages preview) -->
+  <!-- Critical CSS -->
   <style>
+    :root {
+      --gold: #FFD700;
+      --dark-blue: #003366;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
@@ -27,7 +34,10 @@
       color: #333;
     }
     .text-gold {
-      color: #d4af37;
+      color: var(--gold);
+    }
+    .bg-dark-blue {
+      background-color: var(--dark-blue) !important;
     }
     .floating-animation {
       animation: float 3s ease-in-out infinite;
@@ -36,15 +46,57 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
     }
+    .values-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .values-list li {
+      margin-bottom: 8px;
+    }
+    .value-prefix {
+      display: inline-block;
+      width: 20px;
+      font-weight: bold;
+    }
+    .value-separator {
+      display: inline-block;
+      width: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="bg-dark text-white text-center py-5">
+  <!-- Navbar (Consistent with index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
     <div class="container">
-      <img src="images/logo.png" alt="ASFA Logo" width="80" class="mb-3" />
-      <h1 class="display-5">Arm Stretch Foundation Africa Ltd</h1>
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-circle me-2">
+          <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
+        </div>
+        <span class="site-name">Arm Stretch Foundation Africa Ltd</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Header -->
+  <header class="bg-dark-blue text-white text-center py-5">
+    <div class="container">
+      <img src="images/logo.png" alt="ASFA Logo" width="80" class="mb-3">
+      <h1 class="display-5">About Arm Stretch Foundation Africa Ltd</h1>
       <p class="lead">Empowering communities since 2025</p>
     </div>
   </header>
@@ -53,10 +105,10 @@
   <section class="py-5">
     <div class="container text-center">
       <h2 class="section-title">Who We Are</h2>
-      <p class="mb-4">
+      <p class="mb-4 lead">
         The Arm Stretch Foundation Africa Ltd is a non-profit organization committed to supporting vulnerable children, women, and youth in Uganda through education, healthcare, empowerment, and social inclusion.
       </p>
-      <img src="images/team.jpg" class="img-fluid rounded floating-animation" alt="Our Team" loading="lazy" />
+      <img src="images/team.jpg" class="img-fluid rounded floating-animation" alt="Our Team" loading="lazy" style="max-height: 500px;">
     </div>
   </section>
 
@@ -65,58 +117,114 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-eye"></i> Vision</h3>
+          <h3 class="text-gold"><i class="fas fa-eye fa-lg mb-3"></i><br>Vision</h3>
           <p>To transform the lives of the hopeless and voiceless into strong, self-reliant individuals.</p>
         </div>
         <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-bullseye"></i> Mission</h3>
+          <h3 class="text-gold"><i class="fas fa-bullseye fa-lg mb-3"></i><br>Mission</h3>
           <p>Promoting high self-esteem built through hope, love, and care in marginalized communities.</p>
         </div>
         <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-star"></i> Values</h3>
-<div style="font-family: Arial, sans-serif; line-height: 1.5;">
-  <h3>Values</h3>
-  <ul style="list-style: none; padding-left: 0; margin: 0;">
-    <li><span style="display: inline-block; width: 20px;"><strong>P</strong></span><span style="display: inline-block; width: 10px;">-</span> Promoting hope, love, and care</li>
-    <li><span style="display: inline-block; width: 20px;"><strong>E</strong></span><span style="display: inline-block; width: 10px;">-</span> Empowering the vulnerable</li>
-    <li><span style="display: inline-block; width: 20px;"><strong>B</strong></span><span style="display: inline-block; width: 10px;">-</span> Building strong integrity and self-esteem</li>
-    <li><span style="display: inline-block; width: 20px;"><strong>A</strong></span><span style="display: inline-block; width: 10px;">-</span> Attitude instillation in vulnerable</li>
-  </ul>
-</div>
+          <h3 class="text-gold"><i class="fas fa-star fa-lg mb-3"></i><br>Values</h3>
+          <ul class="values-list">
+            <li><span class="value-prefix">P</span><span class="value-separator">-</span> Promoting hope, love, and care</li>
+            <li><span class="value-prefix">E</span><span class="value-separator">-</span> Empowering the vulnerable</li>
+            <li><span class="value-prefix">B</span><span class="value-separator">-</span> Building strong integrity and self-esteem</li>
+            <li><span class="value-prefix">A</span><span class="value-separator">-</span> Attitude instillation in vulnerable</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Objectives (Collapsed Summary) -->
+  <!-- Objectives -->
   <section class="py-5">
     <div class="container">
       <h2 class="section-title text-center">Key Focus Areas</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">✅ Education & Child Welfare</li>
-        <li class="list-group-item">✅ Women & Youth Empowerment</li>
-        <li class="list-group-item">✅ Health & Nutrition Awareness</li>
-        <li class="list-group-item">✅ Vocational Skills Development</li>
-        <li class="list-group-item">✅ Advocacy & Partnerships for Community Well-being</li>
-      </ul>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fas fa-check-circle text-gold me-3"></i>
+              <span>Education & Child Welfare</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fas fa-check-circle text-gold me-3"></i>
+              <span>Women & Youth Empowerment</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fas fa-check-circle text-gold me-3"></i>
+              <span>Health & Nutrition Awareness</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fas fa-check-circle text-gold me-3"></i>
+              <span>Vocational Skills Development</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fas fa-check-circle text-gold me-3"></i>
+              <span>Advocacy & Partnerships for Community Well-being</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Call to Action -->
-  <section class="text-white text-center py-5" style="background-color:#003366;">
+  <section class="text-white text-center py-5 bg-dark-blue">
     <div class="container">
-      <h2>Join Us in Making a Difference</h2>
-      <p class="lead">Support our mission to uplift communities and create sustainable futures.</p>
-      <a href="donate.html" class="btn btn-warning">Donate Now</a>
+      <h2 class="mb-4">Join Us in Making a Difference</h2>
+      <p class="lead mb-4">Support our mission to uplift communities and create sustainable futures.</p>
+      <a href="donate.html" class="btn btn-gold btn-lg px-4">Donate Now</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0">© 2025 Arm Stretch Foundation Africa Ltd</p>
+  <footer class="py-5 bg-dark-blue text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="mb-3">About ASFA</h5>
+          <p class="mb-4">Empowering communities through sustainable initiatives.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+            <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Contact Us</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
+            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
+            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script>
+    // Current year for footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
