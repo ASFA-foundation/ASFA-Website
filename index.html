@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=1.0.5">
+  <link rel="stylesheet" href="css/style.css?v=1.0.6">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   
@@ -135,7 +135,7 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     
-    /* Video Gallery */
+    /* Media Carousel */
     .media-carousel {
       background-color: var(--light-blue);
       padding: 4rem 0;
@@ -144,9 +144,10 @@
       height: auto;
       min-height: 0;
     }
-    .media-carousel .carousel-item iframe,
+    .media-carousel .carousel-item video,
     .media-carousel .carousel-item img {
-      height: 500px;
+      width: 100%;
+      max-height: 500px;
       object-fit: contain;
       background: #000;
     }
@@ -169,9 +170,9 @@
         bottom: 20%;
         padding: 1.5rem;
       }
-      .media-carousel .carousel-item iframe,
+      .media-carousel .carousel-item video,
       .media-carousel .carousel-item img {
-        height: 400px;
+        max-height: 400px;
       }
     }
     @media (max-width: 767.98px) {
@@ -197,9 +198,9 @@
         height: 40px;
         margin-right: 8px;
       }
-      .media-carousel .carousel-item iframe,
+      .media-carousel .carousel-item video,
       .media-carousel .carousel-item img {
-        height: 300px;
+        max-height: 300px;
       }
     }
     @media (max-width: 575.98px) {
@@ -214,9 +215,9 @@
         font-size: 1.5rem;
         margin-bottom: 1rem;
       }
-      .media-carousel .carousel-item iframe,
+      .media-carousel .carousel-item video,
       .media-carousel .carousel-item img {
-        height: 250px;
+        max-height: 250px;
       }
     }
   </style>
@@ -307,7 +308,10 @@
       <div id="mediaCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <iframe class="d-block w-100" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <video class="d-block w-100" controls>
+              <source src="videos/impact1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
             <div class="carousel-caption">
               <h3>Community Outreach Program</h3>
             </div>
@@ -319,7 +323,10 @@
             </div>
           </div>
           <div class="carousel-item">
-            <iframe class="d-block w-100" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <video class="d-block w-100" controls>
+              <source src="videos/impact2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
             <div class="carousel-caption">
               <h3>Medical Camp Highlights</h3>
             </div>
@@ -498,13 +505,12 @@
       }
     });
 
-    // Pause video when carousel slides
+    // Pause videos when carousel slides
     document.querySelectorAll('#mediaCarousel .carousel-item').forEach(item => {
       item.addEventListener('slid.bs.carousel', function() {
-        const iframe = this.querySelector('iframe');
-        if (iframe) {
-          const iframeSrc = iframe.src;
-          iframe.src = iframeSrc; // This reloads the iframe, effectively pausing any video
+        const video = this.querySelector('video');
+        if (video) {
+          video.pause();
         }
       });
     });
