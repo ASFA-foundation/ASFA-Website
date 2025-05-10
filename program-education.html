@@ -9,17 +9,131 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.0.3">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --gold: #FFD700;
+            --dark-blue: #003366;
+            --light-gold: rgba(255, 215, 0, 0.1);
+        }
+        .bg-dark-blue {
+            background-color: var(--dark-blue) !important;
+        }
+        .bg-light-gold {
+            background-color: var(--light-gold);
+        }
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 600;
+        }
+        .text-gold {
+            color: var(--gold);
+        }
+        .education-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('images/education-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+        }
+        .program-icon-lg {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-animation-slow {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .impact-box {
+            transition: all 0.3s ease;
+        }
+        .impact-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .feature-card {
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .story-card {
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: #000;
+        }
+        .badge.bg-gold {
+            background-color: var(--gold);
+            color: #000;
+            padding: 8px 12px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <div class="logo-circle floating-animation-slow">
-                    <img src="../images/logo.png" alt="ASFA Logo" width="40" height="40">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="logo-circle floating-animation-slow me-2">
+                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
                 </div>
                 <span class="site-name">ASFA Foundation</span>
             </a>
@@ -28,11 +142,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="../programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../stories.html">Stories</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold" href="../donate.html">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stories.html">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="donate.html">Donate</a></li>
                 </ul>
             </div>
         </div>
@@ -43,9 +157,9 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="../programs.html">Programs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Education</li>
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item"><a href="programs.html" class="text-white">Programs</a></li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page">Education</li>
                 </ol>
             </nav>
             <div class="row align-items-center">
@@ -60,7 +174,7 @@
                         <a href="#stories" class="btn btn-outline-light">
                             <i class="fas fa-book-open me-2"></i>Success Stories
                         </a>
-                        <a href="../donate.html" class="btn btn-gold">
+                        <a href="donate.html" class="btn btn-gold">
                             <i class="fas fa-graduation-cap me-2"></i>Sponsor a Child
                         </a>
                     </div>
@@ -96,7 +210,7 @@
                     </div>
                     <div class="col-lg-6 mb-4">
                         <div class="ratio ratio-16x9 rounded shadow overflow-hidden floating-animation">
-                            <img src="../images/program-education-detail.jpg" alt="Students in classroom" class="img-fluid" loading="lazy">
+                            <img src="images/program-education-detail.jpg" alt="Students in classroom" class="img-fluid" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -195,7 +309,7 @@
                     </div>
                     <div class="col-lg-6 mb-4 order-lg-1">
                         <div class="h-100 p-4 bg-light-gold rounded d-flex align-items-center floating-animation">
-                            <img src="../images/education-impact.jpg" alt="Students using computers" class="img-fluid rounded shadow" loading="lazy">
+                            <img src="images/education-impact.jpg" alt="Students using computers" class="img-fluid rounded shadow" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -210,7 +324,7 @@
                         <div class="story-card h-100 floating-animation">
                             <div class="row g-0">
                                 <div class="col-md-5">
-                                    <img src="../images/education-success1.jpg" alt="Sarah's story" class="img-fluid h-100" style="object-fit: cover;" loading="lazy">
+                                    <img src="images/education-success1.jpg" alt="Sarah's story" class="img-fluid h-100" style="object-fit: cover;" loading="lazy">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="p-4">
@@ -219,7 +333,7 @@
                                         <blockquote class="blockquote mt-3">
                                             <p class="small">"ASFA's support gave me hope for a future I never dreamed possible."</p>
                                         </blockquote>
-                                        <a href="../stories.html#sarah" class="btn btn-sm btn-outline-gold mt-2">Read Full Story</a>
+                                        <a href="stories.html#sarah" class="btn btn-sm btn-outline-gold mt-2">Read Full Story</a>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +345,7 @@
                         <div class="story-card h-100 floating-animation">
                             <div class="row g-0">
                                 <div class="col-md-5">
-                                    <img src="../images/education-success2.jpg" alt="James's story" class="img-fluid h-100" style="object-fit: cover;" loading="lazy">
+                                    <img src="images/education-success2.jpg" alt="James's story" class="img-fluid h-100" style="object-fit: cover;" loading="lazy">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="p-4">
@@ -240,7 +354,7 @@
                                         <blockquote class="blockquote mt-3">
                                             <p class="small">"The computer skills I learned changed my entire career path."</p>
                                         </blockquote>
-                                        <a href="../stories.html#james" class="btn btn-sm btn-outline-gold mt-2">Read Full Story</a>
+                                        <a href="stories.html#james" class="btn btn-sm btn-outline-gold mt-2">Read Full Story</a>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +362,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="../stories.html" class="btn btn-gold">
+                    <a href="stories.html" class="btn btn-gold">
                         <i class="fas fa-book-open me-2"></i>View All Success Stories
                     </a>
                 </div>
@@ -265,7 +379,7 @@
                                 <i class="fas fa-graduation-cap fa-3x text-gold mb-3"></i>
                                 <h4>Sponsor a Child</h4>
                                 <p class="mb-3">$50/month covers school fees and supplies</p>
-                                <a href="../donate.html" class="btn btn-gold w-100">Sponsor Now</a>
+                                <a href="donate.html" class="btn btn-gold w-100">Sponsor Now</a>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -273,7 +387,7 @@
                                 <i class="fas fa-laptop fa-3x text-gold mb-3"></i>
                                 <h4>Fund a Computer</h4>
                                 <p class="mb-3">$300 provides a computer for digital learning</p>
-                                <a href="../donate.html" class="btn btn-gold w-100">Donate Now</a>
+                                <a href="donate.html" class="btn btn-gold w-100">Donate Now</a>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -281,7 +395,7 @@
                                 <i class="fas fa-school fa-3x text-gold mb-3"></i>
                                 <h4>Partner With Us</h4>
                                 <p class="mb-3">Corporate and organizational partnerships</p>
-                                <a href="../contact.html" class="btn btn-gold w-100">Contact Us</a>
+                                <a href="contact.html" class="btn btn-gold w-100">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -291,45 +405,43 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer py-5 bg-dark-blue text-white">
+    <footer class="py-5 bg-dark-blue text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
                     <h5 class="mb-3">About ASFA</h5>
-                    <p>Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg floating-animation-slow"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg floating-animation-slow"></i></a>
+                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../index.html" class="text-white">Home</a></li>
-                        <li class="mb-2"><a href="../about.html" class="text-white">About Us</a></li>
-                        <li class="mb-2"><a href="../programs.html" class="text-white">Programs</a></li>
-                        <li class="mb-2"><a href="../stories.html" class="text-white">Success Stories</a></li>
-                        <li><a href="../contact.html" class="text-white">Contact</a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+                        <li class="nav-item mb-2"><a href="stories.html" class="nav-link p-0 text-white">Success Stories</a></li>
+                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6">
                     <h5 class="mb-3">Contact Us</h5>
-                    <address>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> +256 745 993474</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                        </ul>
-                    </address>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> +256 745 993474</li>
+                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 mb-4">
+                <div class="col-lg-3">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
                     <form class="newsletter-form">
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control floating-animation-slow" placeholder="Your Email" required>
+                            <input type="email" class="form-control" placeholder="Your Email" required>
                             <button class="btn btn-gold" type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
