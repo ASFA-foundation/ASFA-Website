@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=1.0.6">
+  <link rel="stylesheet" href="css/style.css?v=1.0.7">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   
@@ -107,20 +107,25 @@
       color: var(--gold);
     }
     
-    /* Hero Carousel */
-    .carousel {
+    /* Combined Hero Media Carousel */
+    .hero-media-carousel {
       margin-top: -70px;
     }
-    .carousel-item {
+    .hero-media-carousel .carousel-item {
       height: 80vh;
       min-height: 500px;
     }
-    .carousel-item img {
+    .hero-media-carousel .carousel-item img {
       object-fit: cover;
       height: 100%;
       width: 100%;
     }
-    .carousel-caption {
+    .hero-media-carousel .carousel-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-media-carousel .carousel-caption {
       bottom: 30%;
       left: 5%;
       right: auto;
@@ -129,68 +134,35 @@
       padding: 2rem;
       border-radius: 10px;
     }
-    .carousel-caption h1 {
+    .hero-media-carousel .carousel-caption h1 {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     
-    /* Media Carousel */
-    .media-carousel {
-      background-color: var(--light-blue);
-      padding: 4rem 0;
-    }
-    .media-carousel .carousel-item {
-      height: auto;
-      min-height: 0;
-    }
-    .media-carousel .carousel-item video,
-    .media-carousel .carousel-item img {
-      width: 100%;
-      max-height: 500px;
-      object-fit: contain;
-      background: #000;
-    }
-    .media-carousel .carousel-caption {
-      background: rgba(0,0,0,0.7);
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      padding: 1rem;
-    }
-    .media-carousel .carousel-caption h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0;
-    }
-    
     /* Responsive Adjustments */
     @media (max-width: 991.98px) {
-      .carousel-caption {
+      .hero-media-carousel .carousel-caption {
         bottom: 20%;
         padding: 1.5rem;
-      }
-      .media-carousel .carousel-item video,
-      .media-carousel .carousel-item img {
-        max-height: 400px;
       }
     }
     @media (max-width: 767.98px) {
       body {
         padding-top: 60px;
       }
-      .carousel-item {
+      .hero-media-carousel .carousel-item {
         height: 60vh;
         min-height: 400px;
       }
-      .carousel-caption {
+      .hero-media-carousel .carousel-caption {
         bottom: 10%;
         left: 50%;
         transform: translateX(-50%);
         width: 90%;
         text-align: center;
       }
-      .carousel-caption h1 {
+      .hero-media-carousel .carousel-caption h1 {
         font-size: 1.8rem;
       }
       .logo-circle {
@@ -198,26 +170,18 @@
         height: 40px;
         margin-right: 8px;
       }
-      .media-carousel .carousel-item video,
-      .media-carousel .carousel-item img {
-        max-height: 300px;
-      }
     }
     @media (max-width: 575.98px) {
-      .carousel-item {
+      .hero-media-carousel .carousel-item {
         height: 50vh;
         min-height: 350px;
       }
-      .carousel-caption {
+      .hero-media-carousel .carousel-caption {
         padding: 1rem;
       }
-      .carousel-caption h1 {
+      .hero-media-carousel .carousel-caption h1 {
         font-size: 1.5rem;
         margin-bottom: 1rem;
-      }
-      .media-carousel .carousel-item video,
-      .media-carousel .carousel-item img {
-        max-height: 250px;
       }
     }
   </style>
@@ -248,29 +212,56 @@
     </div>
   </nav>
 
-  <!-- Hero Carousel -->
-  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <!-- Combined Hero & Media Carousel -->
+  <div id="heroMediaCarousel" class="carousel slide hero-media-carousel carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
+      <!-- Video Slide 1 -->
       <div class="carousel-item active">
-        <img src="images/hero1.jpeg" class="d-block w-100" alt="Community empowerment" loading="eager">
+        <video class="d-block w-100" autoplay loop muted playsinline>
+          <source src="videos/hero-video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="carousel-caption">
+          <h1 class="display-4 mb-3">Community Empowerment in Action</h1>
+          <a href="programs.html" class="btn btn-gold btn-lg">See Our Work</a>
+        </div>
+      </div>
+      
+      <!-- Image Slide 1 -->
+      <div class="carousel-item">
+        <img src="images/hero1.jpeg" class="d-block w-100" alt="Community empowerment" loading="lazy">
         <div class="carousel-caption">
           <h1 class="display-4 mb-3">Empowering Vulnerable Communities</h1>
           <a href="donate.html" class="btn btn-gold btn-lg">Donate Now</a>
         </div>
       </div>
+      
+      <!-- Video Slide 2 -->
       <div class="carousel-item">
-        <img src="images/hero2.jpeg" class="d-block w-100" alt="Education program" loading="lazy">
+        <video class="d-block w-100" autoplay loop muted playsinline>
+          <source src="videos/hero-video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
         <div class="carousel-caption">
           <h1 class="display-4 mb-3">Transforming Lives Through Education</h1>
           <a href="programs.html" class="btn btn-gold btn-lg">Our Programs</a>
         </div>
       </div>
+      
+      <!-- Image Slide 2 -->
+      <div class="carousel-item">
+        <img src="images/hero2.jpeg" class="d-block w-100" alt="Education program" loading="lazy">
+        <div class="carousel-caption">
+          <h1 class="display-4 mb-3">Building Sustainable Futures</h1>
+          <a href="contact.html" class="btn btn-gold btn-lg">Get Involved</a>
+        </div>
+      </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroMediaCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#heroMediaCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -297,55 +288,6 @@
             <a href="team.html" class="btn btn-outline-gold px-4">Meet The Team</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Media Carousel Section -->
-  <section class="media-carousel">
-    <div class="container">
-      <h2 class="text-center mb-4">Our Impact in Action</h2>
-      <div id="mediaCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <video class="d-block w-100" controls>
-              <source src="videos/impact1.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="carousel-caption">
-              <h3>Community Outreach Program</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="images/media1.jpg" class="d-block w-100" alt="Education program">
-            <div class="carousel-caption">
-              <h3>School Renovation Project</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <video class="d-block w-100" controls>
-              <source src="videos/impact2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="carousel-caption">
-              <h3>Medical Camp Highlights</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="images/media2.jpg" class="d-block w-100" alt="Healthcare initiative">
-            <div class="carousel-caption">
-              <h3>Mobile Clinic Service</h3>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   </section>
@@ -505,15 +447,29 @@
       }
     });
 
-    // Pause videos when carousel slides
-    document.querySelectorAll('#mediaCarousel .carousel-item').forEach(item => {
-      item.addEventListener('slid.bs.carousel', function() {
-        const video = this.querySelector('video');
-        if (video) {
-          video.pause();
-        }
+    // Video carousel controls
+    const heroCarousel = document.getElementById('heroMediaCarousel');
+    const videos = document.querySelectorAll('#heroMediaCarousel video');
+    
+    heroCarousel.addEventListener('slide.bs.carousel', function() {
+      videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
       });
     });
+    
+    heroCarousel.addEventListener('slid.bs.carousel', function() {
+      const activeVideo = this.querySelector('.active video');
+      if (activeVideo) {
+        activeVideo.play().catch(e => console.log('Autoplay prevented:', e));
+      }
+    });
+    
+    // Play first video if it exists
+    const firstVideo = document.querySelector('#heroMediaCarousel .carousel-item.active video');
+    if (firstVideo) {
+      firstVideo.play().catch(e => console.log('Autoplay prevented:', e));
+    }
   </script>
 </body>
 </html>
