@@ -67,17 +67,125 @@ document.querySelector('.newsletter-form')?.addEventListener('submit', function(
 
 
 
-// Check for PesaPal callback parameters on page load
-window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const pesapalStatus = urlParams.get('pesapal_merchant_reference');
-    const trackingId = urlParams.get('pesapal_transaction_tracking_id');
-    
-    if (pesapalStatus && trackingId) {
-        // Show a thank you message
-        alert('Thank you for your donation! Your transaction is being processed.');
+// Scripts
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+<script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // PesaPal integration
+    document.addEventListener('DOMContentLoaded', function() {
+        // Enable button by default
+        const pesapalButton = document.getElementById('pesapal-payment-button');
+        pesapalButton.disabled = false;
+
+        // PesaPal amount selection
+        const pesapalAmountButtons = document.querySelectorAll('.pesapal-amount');
+        pesapalAmountButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('pesapalCustomAmount').value = this.dataset.amount;
+                validatePesapalForm();
+            });
+        });
+
+        // PesaPal custom amount handling
+        document.getElementById('pesapalCustomAmount').addEventListener('input', function() {
+            pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
+            validatePesapalForm();
+        });
+
+        // Add input listeners for all required fields
+        const requiredFields = ['pesapalFirstName', 'pesapalLastName', 'pesapalEmail', 'pesapalPhone'];
+        requiredFields.forEach(fieldId => {
+            document.getElementById(fieldId).addEventListener('input', validatePesapalForm);
+        });
+
+        // Form validation function
+        function validatePesapalForm() {
+            const amount = document.getElementById('pesapalCustomAmount').value || 
+                          document.querySelector('.pesapal-amount.active')?.dataset.amount;
+            const firstName = document.getElementById('pesapalFirstName').value;
+            const lastName = document.getElementById('pesapalLastName').value;
+            const email = document.getElementById('pesapalEmail').value;
+            const phone = document.getElementById('pesapalPhone').value;
+            
+            const isValid = amount && firstName && lastName && email && phone;
+            pesapalButton.disabled = !isValid;
+        }
+
+        // Initial validation check
+        validatePesapalForm();
+
+        // PesaPal payment button handler
+        pesapalButton.addEventListener('click', function() {
+            if (this.disabled) return;
+            
+            const amount = document.getElementById('pesapalCustomAmount').value || 
+                          document.querySelector('.pesapal-amount.active').dataset.amount;
+            const firstName = document.getElementById('pesapalFirstName').value;
+            const lastName = document.getElementById('pesapalLastName').value;
+            const email = document.getElementById('pesapalEmail').value;
+            const phone = document.getElementById('pesapalPhone').value;
+            
+            initiatePesapalPayment(amount, firstName, lastName, email, phone);
+        });
+    });
+
+    function initiatePesapalPayment(amount, firstName, lastName, email, phone) {
+        // PesaPal API credentials
+        const consumerKey = '2wox6FcqZuKDvXKiIY0oay2mDoiDhnPa';
+        const consumerSecret = 'u1VQmY/clDp5pz5TqcdlPvKsgxI=';
         
-        // Optionally: Clear the URL parameters without reloading
-        window.history.replaceState({}, document.title, window.location.pathname);
+        // Generate a unique reference
+        const reference = 'ASFA-' + Date.now();
+        
+        // Payment details
+        const desc = "Donation to ASFA Foundation";
+        const callbackUrl = "https://armstretchfoundationafricaltd.org/donate.html";
+        
+        // Check if Pesapal is loaded
+        if (typeof Pesapal === 'undefined') {
+            console.error("PesaPal script not loaded!");
+            alert("Payment service is currently unavailable. Please try again later.");
+            return;
+        }
+        
+        // Initialize PesaPal
+        Pesapal.initialize({
+            credentials: {
+                consumer_key: consumerKey,
+                consumer_secret: consumerSecret
+            },
+            environment: "production"
+        });
+        
+        // Submit the order
+        Pesapal.submitOrder({
+            params: {
+                Amount: amount,
+                Description: desc,
+                Type: "MERCHANT",
+                Reference: reference,
+                FirstName: firstName,
+                LastName: lastName,
+                Email: email,
+                PhoneNumber: phone,
+                Currency: "USD",
+                CallBackURL: callbackUrl
+            },
+            onSuccess: function(response) {
+                console.log("PesaPal success:", response);
+                window.location.href = response.redirect_url;
+            },
+            onError: function(error) {
+                console.error("PesaPal error:", error);
+                alert("Error initiating payment. Please try again.");
+            }
+        });
     }
-});
+
+    // Rest of your existing PayPal and callback code...
+</script>
