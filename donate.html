@@ -1,459 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate | ASFA Foundation</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.3">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --gold: #FFD700;
-            --dark-blue: #003366;
-        }
-        .bg-dark-blue {
-            background-color: var(--dark-blue) !important;
-        }
-        .btn-gold {
-            background-color: var(--gold);
-            color: #000;
-            font-weight: 600;
-        }
-        .text-gold {
-            color: var(--gold);
-        }
-        .floating-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        .floating-animation-slow {
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .donate-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), url('images/donate-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .progress-bar.bg-gold {
-            background-color: var(--gold) !important;
-        }
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .payment-option {
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .payment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .btn-outline-gold {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .btn-outline-gold:hover {
-            background-color: var(--gold);
-            color: #000;
-        }
-    </style>
+    <!-- Keep all your existing head content -->
+    <!-- Add PesaPal script in the head -->
+    <script src="https://www.pesapal.com/api/PostPesapalDirectOrderV4" type="text/javascript"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="logo-circle floating-animation-slow me-2">
-                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
-                </div>
-                <span class="site-name">ASFA Foundation</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Keep all your existing navigation and header content -->
 
-    <!-- Page Header -->
-    <header class="donate-header py-5 text-white">
-        <div class="container text-center">
-            <h1 class="display-4 mb-3 floating-animation-slow">Support Our Mission</h1>
-            <p class="lead">Your generosity changes lives every day</p>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center bg-transparent">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item active text-gold" aria-current="page">Donate</li>
-                </ol>
-            </nav>
-        </div>
-    </header>
+    <!-- Payment Methods Tabs - UPDATED VERSION -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <ul class="nav nav-tabs justify-content-center mb-4" id="donationTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button">
+                        <i class="fas fa-mobile-alt me-2"></i>Mobile Money
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button">
+                        <i class="fas fa-university me-2"></i>Bank Transfer
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pesapal-tab" data-bs-toggle="tab" data-bs-target="#pesapal" type="button">
+                        <i class="fas fa-credit-card me-2"></i>PesaPal (Cards/Mobile)
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button">
+                        <i class="fab fa-paypal me-2"></i>PayPal/Card
+                    </button>
+                </li>
+            </ul>
 
-    <!-- Donation Options -->
-    <main class="py-5">
-        <div class="container">
-            <!-- Impact Meter -->
-            <div class="row mb-5">
-                <div class="col-lg-8 mx-auto">
-                    <div class="impact-meter bg-light p-4 rounded shadow floating-animation">
-                        <h3 class="text-center mb-3">Our 2025 Goal: $60,000</h3>
-                        <div class="progress mb-3" style="height: 30px;">
-                            <div class="progress-bar bg-gold progress-bar-striped progress-bar-animated" 
-                                 role="progressbar" style="width: 10%;" 
-                                 aria-valuenow="1000" aria-valuemin="0" aria-valuemax="10000">
-                                <span class="progress-text">$50 Raised</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <small>0%</small>
-                            <small>100%</small>
-                        </div>
-                        <p class="text-center text-muted mt-2">Your donation helps educate 100+ children this year</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payment Methods Tabs -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <ul class="nav nav-tabs justify-content-center mb-4" id="donationTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button">
-                                <i class="fas fa-mobile-alt me-2"></i>Mobile Money
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button">
-                                <i class="fas fa-university me-2"></i>Bank Transfer
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button">
-                                <i class="fab fa-paypal me-2"></i>PayPal/Card
-                            </button>
-                        </li>
-                    </ul>
-
-                    <!-- Tab Content -->
-                    <div class="tab-content" id="donationTabsContent">
-                        <!-- Mobile Money -->
-                        <div class="tab-pane fade show active" id="mobile" role="tabpanel">
-                            <div class="row g-4">
-                                <!-- MTN Mobile Money -->
-                                <div class="col-md-6">
-                                    <div class="payment-option text-center p-4 h-100 floating-animation">
-                                        <div class="d-flex justify-content-center align-items-center mb-3">
-                                            <img src="images/mtn-momo-small.png" alt="MTN Mobile Money" class="img-fluid me-2" style="height:30px">
-                                            <h4 class="m-0">MTN Mobile Money</h4>
-                                        </div>
-                                        <p class="text-muted">Uganda</p>
-                                        <div class="payment-details bg-light p-3 rounded mb-3">
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Merchant Code:</span>
-                                                <strong class="text-gold">305790</strong>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Name:</span>
-                                                <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
-                                            </div>
-                                            <hr class="my-2">
-                                            <div class="text-start">
-                                                <h6 class="text-gold mb-2">Payment Steps:</h6>
-                                                <ol class="list-group list-group-numbered">
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*165*3#</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Reference: <strong>2</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
-                                                </ol>
-                                            </div>
-                                        </div>
+            <!-- Tab Content -->
+            <div class="tab-content" id="donationTabsContent">
+                <!-- Mobile Money - Keep your existing mobile money content -->
+                
+                <!-- Bank Transfer - Keep your existing bank transfer content -->
+                
+                <!-- NEW PesaPal Tab -->
+                <div class="tab-pane fade" id="pesapal" role="tabpanel">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="payment-option p-4 floating-animation">
+                                <h3 class="text-center mb-4"><i class="fas fa-credit-card text-gold me-2"></i>PesaPal Payment</h3>
+                                <p class="text-center mb-4">Secure payment via credit card, debit card, or mobile money</p>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label">Donation Amount (USD)</label>
+                                    <div class="btn-group w-100 mb-3" role="group">
+                                        <button type="button" class="btn btn-outline-secondary pesapal-amount active" data-amount="25">$25</button>
+                                        <button type="button" class="btn btn-outline-secondary pesapal-amount" data-amount="50">$50</button>
+                                        <button type="button" class="btn btn-outline-secondary pesapal-amount" data-amount="100">$100</button>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="pesapalCustomAmount" placeholder="Other amount" min="1">
                                     </div>
                                 </div>
-
-                                <!-- Airtel Money -->
-                                <div class="col-md-6">
-                                    <div class="payment-option text-center p-4 h-100 floating-animation">
-                                        <div class="d-flex justify-content-center align-items-center mb-3">
-                                            <img src="images/airtel-money-small.png" alt="Airtel Money" class="img-fluid me-2" style="height:30px">
-                                            <h4 class="m-0">Airtel Money</h4>
-                                        </div>
-                                        <p class="text-muted">Uganda</p>
-                                        <div class="payment-details bg-light p-3 rounded mb-3">
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Merchant Code:</span>
-                                                <strong class="text-red-600">4392017</strong>
-
-
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Name:</span>
-                                                <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
-                                            </div>
-                                            <hr class="my-2">
-                                            <div class="text-start">
-                                                <h6 class="text-red mb-2">Payment Steps:</h6>
-                                                <ol class="list-group list-group-numbered">
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*185*9#</strong> then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Reference: <strong>2</strong> then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
-                                                </ol>
-                                            </div>
-                                        </div>
-                                    </div>
+                                
+                                <div class="mb-3">
+                                    <label for="pesapalFirstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="pesapalFirstName" required>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Bank Transfer -->
-                        <div class="tab-pane fade" id="bank" role="tabpanel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="payment-option p-4 floating-animation">
-                                        <h3 class="text-center mb-4"><i class="fas fa-university text-gold me-2"></i>Bank Transfer</h3>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <th class="bg-light">Bank Name</th>
-                                                        <td>Equity Bank Uganda</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Account Name</th>
-                                                        <td>The Armstretch Foundation Africa LTD</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Account Number</th>
-                                                        <td>1052203406633</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Branch</th>
-                                                        <td>Nansana Branch</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Currency</th>
-                                                        <td>USD / UGX</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="alert alert-info mt-3">
-                                            <i class="fas fa-info-circle me-2"></i>
-                                            <strong>For international transfers:</strong> Include "ASFA Donation" in reference
-                                        </div>
-                                        <button class="btn btn-outline-gold w-100 mt-2">
-                                            <i class="fas fa-download me-2"></i>Download Bank Details
-                                        </button>
-                                    </div>
+                                
+                                <div class="mb-3">
+                                    <label for="pesapalLastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="pesapalLastName" required>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- PayPal -->
-                        <div class="tab-pane fade" id="paypal" role="tabpanel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="payment-option p-4 floating-animation">
-                                        <h3 class="text-center mb-4"><i class="fab fa-paypal text-gold me-2"></i>Online Payment</h3>
-                                        <div class="mb-4">
-                                            <label class="form-label">Donation Amount (USD)</label>
-                                            <div class="btn-group w-100 mb-3" role="group">
-                                                <button type="button" class="btn btn-outline-secondary donation-amount active" data-amount="25">$25</button>
-                                                <button type="button" class="btn btn-outline-secondary donation-amount" data-amount="50">$50</button>
-                                                <button type="button" class="btn btn-outline-secondary donation-amount" data-amount="100">$100</button>
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-text">$</span>
-                                                <input type="number" class="form-control" id="customAmount" placeholder="Other amount" min="1">
-                                            </div>
-                                        </div>
-                                        <div id="paypal-button-container" class="mt-4"></div>
-                                        <div class="text-center mt-4">
-                                            <img src="images/payment-options.png" alt="Accepted payment methods" class="img-fluid" style="max-width:300px">
-                                        </div>
-                                    </div>
+                                
+                                <div class="mb-3">
+                                    <label for="pesapalEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="pesapalEmail" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="pesapalPhone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="pesapalPhone" required>
+                                </div>
+                                
+                                <button id="pesapal-payment-button" class="btn btn-gold w-100">
+                                    <i class="fas fa-lock me-2"></i>Proceed to Secure Payment
+                                </button>
+                                
+                                <div class="text-center mt-3">
+                                    <img src="https://www.pesapal.com/wp-content/uploads/2020/08/pesapal-partner-logos.png" alt="PesaPal payment options" class="img-fluid" style="max-width:300px">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Donation Impact -->
-            <section class="py-5 mt-5 bg-light rounded">
-                <div class="container text-center">
-                    <h2 class="mb-4">Your Donation Makes an Impact</h2>
-                    <div class="row g-4">
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
-                                    <i class="fas fa-book fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$50</h4>
-                                <p>School supplies for 1 child</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
-                                    <i class="fas fa-utensils fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$100</h4>
-                                <p>Semester meals for a student</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
-                                    <i class="fas fa-home fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$200</h4>
-                                <p>Shelter for a family for 1 month</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
-                                    <i class="fas fa-stethoscope fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$1000</h4>
-                                <p>Medical supplies for a village</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark-blue text-white">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="mb-3">About ASFA</h5>
-                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
-                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
-                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
-                        <li class="nav-item mb-2"><a href="donate.html" class="nav-link p-0 text-white">Donate</a></li>
-                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-3">Contact Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-                        <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
-                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-3">Newsletter</h5>
-                    <p>Subscribe to our updates</p>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                            <button class="btn btn-gold" type="submit">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+                
+                <!-- PayPal - Keep your existing PayPal content -->
             </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- Scripts -->
+    <!-- Keep all your existing impact section and footer -->
+
+    <!-- Updated Script Section -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Donation amount selection
-        const amountButtons = document.querySelectorAll('.donation-amount');
-        amountButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                amountButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('customAmount').value = this.dataset.amount;
+        // PesaPal integration
+        document.addEventListener('DOMContentLoaded', function() {
+            // PesaPal amount selection
+            const pesapalAmountButtons = document.querySelectorAll('.pesapal-amount');
+            pesapalAmountButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('pesapalCustomAmount').value = this.dataset.amount;
+                });
+            });
+
+            // PesaPal custom amount handling
+            document.getElementById('pesapalCustomAmount').addEventListener('input', function() {
+                pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
+            });
+
+            // PesaPal payment button handler
+            document.getElementById('pesapal-payment-button').addEventListener('click', function() {
+                const amount = document.getElementById('pesapalCustomAmount').value || 
+                              document.querySelector('.pesapal-amount.active').dataset.amount;
+                const firstName = document.getElementById('pesapalFirstName').value;
+                const lastName = document.getElementById('pesapalLastName').value;
+                const email = document.getElementById('pesapalEmail').value;
+                const phone = document.getElementById('pesapalPhone').value;
+                
+                if (!firstName || !lastName || !email || !phone || !amount) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                initiatePesapalPayment(amount, firstName, lastName, email, phone);
             });
         });
 
-        // Custom amount handling
-        document.getElementById('customAmount').addEventListener('input', function() {
-            amountButtons.forEach(btn => btn.classList.remove('active'));
-        });
+        function initiatePesapalPayment(amount, firstName, lastName, email, phone) {
+            // PesaPal API credentials
+            const consumerKey = '2wox6FcqZuKDvXKiIY0oay2mDoiDhnPa';
+            const consumerSecret = 'u1VQmY/clDp5pz5TqcdlPvKsgxI=';
+            
+            // Generate a unique reference
+            const reference = 'ASFA-' + Date.now();
+            
+            // Payment details
+            const desc = "Donation to ASFA Foundation";
+            const callbackUrl = "https://armstretchfoundationafricaltd.org/donate.html"; // Update with your actual callback URL
+            
+            // Create the request
+            const params = {
+                Amount: amount,
+                Description: desc,
+                Type: "MERCHANT",
+                Reference: reference,
+                FirstName: firstName,
+                LastName: lastName,
+                Email: email,
+                PhoneNumber: phone,
+                Currency: "USD",
+                CallBackURL: callbackUrl
+            };
+            
+            // Initialize PesaPal
+            Pesapal.initialize({
+                credentials: {
+                    consumer_key: consumerKey,
+                    consumer_secret: consumerSecret
+                },
+                environment: "production" // or "sandbox" for testing
+            });
+            
+            // Submit the order
+            Pesapal.submitOrder({
+                params: params,
+                onSuccess: function(response) {
+                    console.log("PesaPal success:", response);
+                    // Redirect to PesaPal payment page
+                    window.location.href = response.redirect_url;
+                },
+                onError: function(error) {
+                    console.error("PesaPal error:", error);
+                    alert("Error initiating payment. Please try again.");
+                }
+            });
+        }
 
-        // PayPal integration
-        paypal.Buttons({
-            style: {
-                color: 'gold',
-                shape: 'rect',
-                label: 'pay',
-                height: 45
-            },
-            createOrder: function(data, actions) {
-                const amount = document.getElementById('customAmount').value || 
-                              document.querySelector('.donation-amount.active').dataset.amount;
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: amount,
-                            currency_code: 'USD'
-                        },
-                        description: "Donation to ASFA Foundation"
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('Thank you for your donation of $' + details.purchase_units[0].amount.value + '!');
-                });
-            }
-        }).render('#paypal-button-container');
+        // Keep your existing PayPal integration code
     </script>
 </body>
 </html>
