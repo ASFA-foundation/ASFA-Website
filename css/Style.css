@@ -379,3 +379,18 @@ footer {
     font-size: 0.9rem;
   }
 }
+
+
+/* Add to your style section */
+#pesapal-payment-button {
+    transition: all 0.3s ease;
+}
+#pesapal-payment-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+}
+#pesapal-payment-button:disabled i {
+    color: #666666;
+}
