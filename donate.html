@@ -81,6 +81,10 @@
             justify-content: center;
             background-color: var(--gold);
         }
+        .pesapal-logo {
+            height: 30px;
+            margin-right: 10px;
+        }
     </style>
     <!-- PesaPal Script -->
     <script src="https://www.pesapal.com/api/PostPesapalDirectOrderV4" type="text/javascript"></script>
@@ -294,8 +298,11 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-6">
                                     <div class="payment-option p-4 floating-animation">
-                                        <h3 class="text-center mb-4"><i class="fas fa-credit-card text-gold me-2"></i>PesaPal Payment</h3>
-                                        <p class="text-center mb-4">Secure payment via credit card, debit card, or mobile money</p>
+                                        <div class="d-flex justify-content-center align-items-center mb-3">
+                                            <img src="https://www.pesapal.com/wp-content/uploads/2020/08/pesapal-logo.png" alt="PesaPal" class="pesapal-logo">
+                                            <h3 class="m-0">Secure Online Payment</h3>
+                                        </div>
+                                        <p class="text-center mb-4">Pay via credit card, debit card, or mobile money</p>
                                         
                                         <div class="mb-4">
                                             <label class="form-label">Donation Amount (USD)</label>
@@ -306,7 +313,7 @@
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-text">$</span>
-                                                <input type="number" class="form-control" id="pesapalCustomAmount" placeholder="Other amount" min="1">
+                                                <input type="number" class="form-control" id="pesapalCustomAmount" placeholder="Other amount" min="1" required>
                                             </div>
                                         </div>
                                         
@@ -330,12 +337,13 @@
                                             <input type="tel" class="form-control" id="pesapalPhone" required>
                                         </div>
                                         
-                                        <button id="pesapal-payment-button" class="btn btn-gold w-100">
+                                        <button id="pesapal-payment-button" class="btn btn-gold w-100 py-2">
                                             <i class="fas fa-lock me-2"></i>Proceed to Secure Payment
                                         </button>
                                         
-                                        <div class="text-center mt-3">
-                                            <img src="https://www.pesapal.com/wp-content/uploads/2020/08/pesapal-partner-logos.png" alt="PesaPal payment options" class="img-fluid" style="max-width:300px">
+                                        <div class="alert alert-info mt-3">
+                                            <i class="fas fa-shield-alt me-2"></i>
+                                            <small>Your payment is processed securely by PesaPal. We don't store your payment details.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -515,7 +523,7 @@
         });
 
         function initiatePesapalPayment(amount, firstName, lastName, email, phone) {
-            // PesaPal API credentials
+            // PesaPal API credentials from your update
             const consumerKey = '2wox6FcqZuKDvXKiIY0oay2mDoiDhnPa';
             const consumerSecret = 'u1VQmY/clDp5pz5TqcdlPvKsgxI=';
             
