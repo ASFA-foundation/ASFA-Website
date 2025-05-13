@@ -64,3 +64,20 @@ document.querySelector('.newsletter-form')?.addEventListener('submit', function(
   // Focus management for better accessibility
   emailInput.focus();
 });
+
+
+
+// Check for PesaPal callback parameters on page load
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pesapalStatus = urlParams.get('pesapal_merchant_reference');
+    const trackingId = urlParams.get('pesapal_transaction_tracking_id');
+    
+    if (pesapalStatus && trackingId) {
+        // Show a thank you message
+        alert('Thank you for your donation! Your transaction is being processed.');
+        
+        // Optionally: Clear the URL parameters without reloading
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
