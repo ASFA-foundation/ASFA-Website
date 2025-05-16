@@ -1,144 +1,666 @@
-<!-- CTA Section - Completely Redesigned -->
-<section class="cta-section py-6 position-relative overflow-hidden">
-  <div class="container position-relative z-index-1">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="cta-content-box p-4 p-lg-5 bg-white rounded-3 shadow-lg">
-          <h2 class="display-5 mb-4">Join Our Mission to Transform Lives</h2>
-          <p class="lead mb-4">Every contribution helps us reach more vulnerable communities with essential services and support.</p>
-          
-          <div class="d-flex flex-wrap gap-3 mb-4">
-            <a href="donate.html" class="btn btn-gold btn-lg px-4 py-3 flex-grow-1">
-              <i class="fas fa-donate me-2"></i> Make a Donation
-            </a>
-            <a href="volunteer.html" class="btn btn-outline-dark-blue btn-lg px-4 py-3 flex-grow-1">
-              <i class="fas fa-hands-helping me-2"></i> Volunteer
-            </a>
-          </div>
-          
-          <div class="newsletter-card p-4 bg-light-blue rounded-3">
-            <h4 class="mb-3"><i class="fas fa-envelope-open-text text-gold me-2"></i> Stay Updated</h4>
-            <p>Subscribe to our newsletter for inspiring stories and impact reports</p>
-            <form class="newsletter-form" action="subscribe-handler.php" method="POST">
-              <div class="input-group">
-                <input type="email" class="form-control form-control-lg" placeholder="Your email address" required>
-                <button class="btn btn-gold" type="submit">
-                  <i class="fas fa-paper-plane"></i> Subscribe
-                </button>
-              </div>
-              <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
-            </form>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arm Stretch Foundation Africa Foundation - Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa">
+  <title>Arm Stretch Foundation Africa | Empowering Communities</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css?v=1.0.7">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  
+  <!-- Critical CSS -->
+  <style>
+    :root {
+      --gold: #FFD700;
+      --dark-blue: #003366;
+      --light-blue: #e6f0ff;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+    .bg-dark-blue { background-color: var(--dark-blue); }
+    .bg-light-blue { background-color: var(--light-blue); }
+    .btn-gold { 
+      background-color: var(--gold); 
+      color: #000;
+      font-weight: 600;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-gold:hover {
+      background-color: #e6c200;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-outline-gold {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      transition: var(--transition);
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    .btn-outline-dark-blue {
+      border: 2px solid var(--dark-blue);
+      color: var(--dark-blue);
+      font-weight: 600;
+    }
+    .btn-outline-dark-blue:hover {
+      background-color: var(--dark-blue);
+      color: white;
+    }
+    .text-gold { color: var(--gold); }
+    
+    /* Logo Circle */
+    .logo-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--white);
+      border-radius: 50%;
+      padding: 8px;
+      margin-right: 12px;
+    }
+    .logo-circle img {
+      width: 100%;
+      height: auto;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background-color: var(--dark-blue);
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .nav-link {
+      color: var(--white);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: var(--gold);
+    }
+    
+    /* Hero Media Carousel */
+    .hero-media-carousel {
+      margin-top: -70px;
+    }
+    .hero-media-carousel .carousel-item {
+      height: 80vh;
+      min-height: 500px;
+    }
+    .hero-media-carousel .carousel-item img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+    .hero-media-carousel .carousel-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-media-carousel .carousel-caption {
+      bottom: 30%;
+      left: 5%;
+      right: auto;
+      text-align: left;
+      background: rgba(0, 51, 102, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .hero-media-carousel .carousel-caption h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(255,215,0,0.05) 100%);
+      padding: 6rem 0;
+    }
+    
+    .contact-icon-circle {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .z-index-0 { z-index: 0; }
+    .z-index-1 { z-index: 1; }
+    
+    .newsletter-card {
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    /* Section Titles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--gold);
+      bottom: -10px;
+      left: 25%;
+    }
+    
+    /* Card Hover Effects */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 991.98px) {
+      .hero-media-carousel .carousel-caption {
+        bottom: 20%;
+        padding: 1.5rem;
+      }
+    }
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 60px;
+      }
+      .hero-media-carousel .carousel-item {
+        height: 60vh;
+        min-height: 400px;
+      }
+      .hero-media-carousel .carousel-caption {
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        text-align: center;
+      }
+      .hero-media-carousel .carousel-caption h1 {
+        font-size: 1.8rem;
+      }
+      .logo-circle {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
+      .cta-section {
+        padding: 4rem 0;
+      }
+    }
+    @media (max-width: 575.98px) {
+      .hero-media-carousel .carousel-item {
+        height: 50vh;
+        min-height: 350px;
+      }
+      .hero-media-carousel .carousel-caption {
+        padding: 1rem;
+      }
+      .hero-media-carousel .carousel-caption h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-circle">
+          <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
+        </div>
+        <span class="site-name">Arm Stretch Foundation Africa</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Combined Hero & Media Carousel -->
+  <div id="heroMediaCarousel" class="carousel slide hero-media-carousel carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Video Slide 1 -->
+      <div class="carousel-item active">
+        <video class="d-block w-100" autoplay loop muted playsinline>
+          <source src="images/hero-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="carousel-caption">
+          <h1 class="display-4 mb-3">Community Empowerment in Action</h1>
+          <a href="programs.html" class="btn btn-gold btn-lg">See Our Work</a>
         </div>
       </div>
       
-      <div class="col-lg-6">
-        <div class="contact-card p-4 p-lg-5 bg-dark-blue text-white rounded-3 shadow-lg">
-          <h2 class="display-5 mb-4">Get In Touch</h2>
-          <p class="lead mb-4">We'd love to hear from you! Reach out for partnerships, questions, or to learn more.</p>
-          
-          <div class="contact-methods mb-4">
-            <div class="d-flex align-items-center mb-3">
-              <div class="contact-icon-circle bg-gold text-dark-blue rounded-circle d-flex align-items-center justify-content-center me-3">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div>
-                <h5 class="mb-0">Our Location</h5>
-                <p class="mb-0">Kasubi, Kampala, Uganda</p>
-              </div>
-            </div>
-            
-            <div class="d-flex align-items-center mb-3">
-              <div class="contact-icon-circle bg-gold text-dark-blue rounded-circle d-flex align-items-center justify-content-center me-3">
-                <i class="fas fa-phone-alt"></i>
-              </div>
-              <div>
-                <h5 class="mb-0">Call Us</h5>
-                <p class="mb-0">0200900288 / +256 748095503</p>
-              </div>
-            </div>
-            
-            <div class="d-flex align-items-center">
-              <div class="contact-icon-circle bg-gold text-dark-blue rounded-circle d-flex align-items-center justify-content-center me-3">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <h5 class="mb-0">Email Us</h5>
-                <p class="mb-0">asfafoundationltd@gmail.com</p>
-              </div>
-            </div>
-          </div>
-          
-          <a href="contact.html" class="btn btn-gold btn-lg w-100 py-3">
-            <i class="fas fa-paper-plane me-2"></i> Send Us a Message
-          </a>
+      <!-- Image Slide 1 -->
+      <div class="carousel-item">
+        <img src="images/hero1.jpeg" class="d-block w-100" alt="Community empowerment" loading="lazy">
+        <div class="carousel-caption">
+          <h1 class="display-4 mb-3">Empowering Vulnerable Communities</h1>
+          <a href="donate.html" class="btn btn-gold btn-lg">Donate Now</a>
+        </div>
+      </div>
+      
+      <!-- Image Slide 2 -->
+      <div class="carousel-item">
+        <img src="images/hero2.jpg" class="d-block w-100" alt="Education program" loading="lazy">
+        <div class="carousel-caption">
+          <h1 class="display-4 mb-3">Building Sustainable Futures</h1>
+          <a href="contact.html" class="btn btn-gold btn-lg">Get Involved</a>
         </div>
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroMediaCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroMediaCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  
-  <!-- Decorative elements -->
-  <div class="position-absolute top-0 start-0 w-100 h-100 z-index-0 opacity-10">
-    <div class="position-absolute top-0 start-0" style="font-size: 20rem; line-height: 1;">
-      <i class="fas fa-hands-helping"></i>
-    </div>
-    <div class="position-absolute bottom-0 end-0" style="font-size: 20rem; line-height: 1;">
-      <i class="fas fa-heart"></i>
-    </div>
-  </div>
-</section>
 
-<!-- CSS for the new CTA section -->
-<style>
-  .cta-section {
-    background: linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(255,215,0,0.05) 100%);
-    padding: 6rem 0;
-  }
+  <!-- Quick Links Section -->
+  <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="section-title mb-5">Explore Our Work</h2>
+      <div class="row justify-content-center g-4">
+        <div class="col-md-5">
+          <div class="p-4 h-100 border-0 rounded bg-white shadow-sm card-hover">
+            <i class="fas fa-images fa-3x text-gold mb-3"></i>
+            <h3 class="mb-3">Our Gallery</h3>
+            <p class="mb-4">See the impact we're making in communities through our visual stories</p>
+            <a href="gallery.html" class="btn btn-gold px-4">View Gallery</a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="p-4 h-100 border-0 rounded bg-white shadow-sm card-hover">
+            <i class="fas fa-users fa-3x text-gold mb-3"></i>
+            <h3 class="mb-3">Our Team</h3>
+            <p class="mb-4">Meet the dedicated people behind our foundation's success</p>
+            <a href="team.html" class="btn btn-outline-gold px-4">Meet The Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-5 bg-white">
+    <div class="container text-center">
+      <h2 class="section-title mb-4">Our Mission</h2>
+      <p class="lead mb-5 mx-auto" style="max-width: 700px;">Promoting high self-esteem built through hope, love, and care within underrated communities to create sustainable change.</p>
+      <div class="row justify-content-center mt-4 g-3">
+        <div class="col-md-4">
+          <div class="p-3">
+            <h3 class="text-gold mb-2">100+</h3>
+            <p class="fw-medium">Lives Impacted</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3">
+            <h3 class="text-gold mb-2">10+</h3>
+            <p class="fw-medium">Communities Served</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3">
+            <h3 class="text-gold mb-2">1</h3>
+            <p class="fw-medium">Years of Service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Programs</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/program-education.jpg" class="card-img-top" alt="Education program" loading="lazy">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-book-open fa-3x text-gold mb-3"></i>
+              <h3 class="mb-3">Education</h3>
+              <p class="mb-4">Providing scholarships, learning materials, and infrastructure for underserved children</p>
+              <a href="programs.html" class="btn btn-outline-gold">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/program-health.jpg" class="card-img-top" alt="Healthcare program" loading="lazy">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-heartbeat fa-3x text-gold mb-3"></i>
+              <h3 class="mb-3">Healthcare</h3>
+              <p class="mb-4">Mobile clinics, medical services, and health education for rural communities</p>
+              <a href="programs.html" class="btn btn-outline-gold">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/program-shelter.jpg" class="card-img-top" alt="Shelter program" loading="lazy">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-home fa-3x text-gold mb-3"></i>
+              <h3 class="mb-3">Shelter</h3>
+              <p class="mb-4">Emergency housing and sustainable shelter solutions for families in crisis</p>
+              <a href="programs.html" class="btn btn-outline-gold">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stories -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Impact Stories</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/impact-education.jpg" class="card-img-top" alt="Education impact" loading="lazy">
+            <div class="card-body">
+              <h3 class="text-gold">Education Transformation</h3>
+              <p>How we helped 50 children return to school with full scholarships and supplies</p>
+              <a href="gallery.html" class="btn btn-link text-dark-blue p-0">Read Story →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/impact-health.jpg" class="card-img-top" alt="Health impact" loading="lazy">
+            <div class="card-body">
+              <h3 class="text-gold">Health Outreach</h3>
+              <p>Our mobile clinic served 200 patients in remote villages last month</p>
+              <a href="gallery.html" class="btn btn-link text-dark-blue p-0">Read Story →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm card-hover">
+            <img src="images/impact-empowerment.jpg" class="card-img-top" alt="Empowerment impact" loading="lazy">
+            <div class="card-body">
+              <h3 class="text-gold">Women's Empowerment</h3>
+              <p>Vocational training program graduates starting their own businesses</p>
+              <a href="gallery.html" class="btn btn-link text-dark-blue p-0">Read Story →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section - Redesigned -->
+  <section class="cta-section py-6 position-relative overflow-hidden">
+    <div class="container position-relative z-index-1">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="cta-content-box p-4 p-lg-5 bg-white rounded-3 shadow-lg">
+            <h2 class="display-5 mb-4">Join Our Mission to Transform Lives</h2>
+            <p class="lead mb-4">Every contribution helps us reach more vulnerable communities with essential services and support.</p>
+            
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <a href="donate.html" class="btn btn-gold btn-lg px-4 py-3 flex-grow-1">
+                <i class="fas fa-donate me-2"></i> Make a Donation
+              </a>
+              <a href="volunteer.html" class="btn btn-outline-dark-blue btn-lg px-4 py-3 flex-grow-1">
+                <i class="fas fa-hands-helping me-2"></i> Volunteer
+              </a>
+            </div>
+            
+            <div class="newsletter-card p-4 bg-light-blue rounded-3">
+              <h4 class="mb-3"><i class="fas fa-envelope-open-text text-gold me-2"></i> Stay Updated</h4>
+              <p>Subscribe to our newsletter for inspiring stories and impact reports</p>
+              <form class="newsletter-form" action="subscribe-handler.php" method="POST">
+                <div class="input-group">
+                  <input type="email" class="form-control form-control-lg" placeholder="Your email address" required>
+                  <button class="btn btn-gold" type="submit">
+                    <i class="fas fa-paper-plane"></i> Subscribe
+                  </button>
+                </div>
+                <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="contact-card p-4 p-lg-5 bg-dark-blue text-white rounded-3 shadow-lg">
+            <h2 class="display-5 mb-4">Get In Touch</h2>
+            <p class="lead mb-4">We'd love to hear from you! Reach out for partnerships, questions, or to learn more.</p>
+            
+            <div class="contact-methods mb-4">
+              <div class="d-flex align-items-center mb-3">
+                <div class="contact-icon-circle bg-gold text-dark-blue me-3">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">Our Location</h5>
+                  <p class="mb-0">Kasubi, Kampala, Uganda</p>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-center mb-3">
+                <div class="contact-icon-circle bg-gold text-dark-blue me-3">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">Call Us</h5>
+                  <p class="mb-0">0200900288 / +256 748095503</p>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-center">
+                <div class="contact-icon-circle bg-gold text-dark-blue me-3">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">Email Us</h5>
+                  <p class="mb-0">asfafoundationltd@gmail.com</p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="contact.html" class="btn btn-gold btn-lg w-100 py-3">
+              <i class="fas fa-paper-plane me-2"></i> Send Us a Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 z-index-0 opacity-10">
+      <div class="position-absolute top-0 start-0" style="font-size: 20rem; line-height: 1;">
+        <i class="fas fa-hands-helping"></i>
+      </div>
+      <div class="position-absolute bottom-0 end-0" style="font-size: 20rem; line-height: 1;">
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark-blue text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="mb-3">About ASFA</h5>
+          <div class="d-flex align-items-center mb-3">
+            <div class="logo-circle me-3">
+              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+            </div>
+            <span class="fw-bold">Arm Stretch Foundation Africa Ltd</span>
+          </div>
+          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+            <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
+            <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0 text-white">Team</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Contact Us</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
+            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
+            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Newsletter</h5>
+          <p>Subscribe to our newsletter for updates on our work.</p>
+          <form class="newsletter-form mt-3">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+              <button class="btn btn-gold" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
-  .bg-light-blue {
-    background-color: var(--light-blue);
-  }
-  
-  .contact-icon-circle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-  
-  .btn-outline-dark-blue {
-    border: 2px solid var(--dark-blue);
-    color: var(--dark-blue);
-    font-weight: 600;
-  }
-  
-  .btn-outline-dark-blue:hover {
-    background-color: var(--dark-blue);
-    color: white;
-  }
-  
-  .z-index-0 {
-    z-index: 0;
-  }
-  
-  .z-index-1 {
-    z-index: 1;
-  }
-  
-  .newsletter-card {
-    transition: all 0.3s ease;
-  }
-  
-  .newsletter-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-  
-  .contact-card {
-    transition: all 0.3s ease;
-  }
-  
-  .contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
-</style>
+  <!-- Custom JS -->
+  <script>
+    // Current year for footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Newsletter form handler
+    document.querySelector('.newsletter-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert(`Thank you for subscribing with ${email}! We'll keep you updated.`);
+      this.reset();
+    });
+    
+    // Make navbar solid on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // Video carousel controls
+    const heroCarousel = document.getElementById('heroMediaCarousel');
+    const videos = document.querySelectorAll('#heroMediaCarousel video');
+    
+    heroCarousel.addEventListener('slide.bs.carousel', function() {
+      videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+    
+    heroCarousel.addEventListener('slid.bs.carousel', function() {
+      const activeVideo = this.querySelector('.active video');
+      if (activeVideo) {
+        activeVideo.play().catch(e => console.log('Autoplay prevented:', e));
+      }
+    });
+    
+    // Play first video if it exists
+    const firstVideo = document.querySelector('#heroMediaCarousel .carousel-item.active video');
+    if (firstVideo) {
+      firstVideo.play().catch(e => console.log('Autoplay prevented:', e));
+    }
+  </script>
+</body>
+</html>
