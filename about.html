@@ -1,461 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | ASFA Foundation</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.3">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --gold: #FFD700;
-            --dark-blue: #003366;
-            --light-blue: #e6f0ff;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            padding-top: 70px;
-        }
-        .bg-dark-blue {
-            background-color: var(--dark-blue) !important;
-        }
-        .bg-light-blue {
-            background-color: var(--light-blue);
-        }
-        .btn-gold {
-            background-color: var(--gold);
-            color: #000;
-            font-weight: 600;
-            border: none;
-            transition: var(--transition);
-        }
-        .btn-gold:hover {
-            background-color: #e6c200;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .text-gold {
-            color: var(--gold);
-        }
-        .floating-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        .floating-animation-slow {
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .team-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('images/team-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-        }
-        .team-card {
-            border: none;
-            border-radius: 15px;
-            transition: var(--transition);
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-            height: 100%;
-        }
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .member-img-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-        }
-        .member-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--gold);
-            padding: 3px;
-            transition: var(--transition);
-        }
-        .team-card:hover .member-img {
-            transform: scale(1.05);
-        }
-        .section-title {
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--gold);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .btn-outline-gold {
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            transition: var(--transition);
-        }
-        .btn-outline-gold:hover {
-            background-color: var(--gold);
-            color: #000;
-        }
-        .member-role {
-            background: var(--gold);
-            color: var(--dark-blue);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: rgba(0,51,102,0.1);
-            color: var(--dark-blue);
-            margin: 0 5px;
-            transition: var(--transition);
-        }
-        .social-links a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-3px);
-        }
-        .breadcrumb-item.active {
-            color: var(--gold);
-        }
-        .logo-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--white);
-            border-radius: 50%;
-            padding: 8px;
-            margin-right: 12px;
-        }
-        .logo-circle img {
-            width: 100%;
-            height: auto;
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: var(--gold);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arm Stretch Foundation Africa - Empowering communities through education, health, and social support in Uganda.">
+  <title>About Us | Arm Stretch Foundation Africa</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css?v=1.0.3">
+
+  <!-- Critical CSS -->
+  <style>
+    :root {
+      --gold: #FFD700;
+      --dark-blue: #003366;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--dark-blue);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--gold);
+      bottom: -8px;
+      left: 25%;
+    }
+    .text-gold {
+      color: var(--gold);
+    }
+    .bg-dark-blue {
+      background-color: var(--dark-blue) !important;
+    }
+    .floating-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .values-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .values-list li {
+      margin-bottom: 8px;
+    }
+    .value-prefix {
+      display: inline-block;
+      width: 20px;
+      font-weight: bold;
+    }
+    .value-separator {
+      display: inline-block;
+      width: 10px;
+    }
+    .logo-circle {
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .img-border {
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .mission-card {
+      border-radius: 10px;
+      padding: 25px;
+      height: 100%;
+      transition: transform 0.3s;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .mission-card:hover {
+      transform: translateY(-5px);
+    }
+    .focus-item {
+      padding: 15px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,215,0,0.05);
+      margin-bottom: 10px;
+    }
+    .hero-section {
+      background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.9)), url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-gold {
+      background-color: var(--gold);
+      color: var(--dark-blue);
+      font-weight: 600;
+      border: none;
+    }
+    .btn-gold:hover {
+      background-color: #e6c200;
+      color: var(--dark-blue);
+    }
+    .stats-item {
+      text-align: center;
+      padding: 20px;
+    }
+    .stats-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stats-label {
+      font-size: 1rem;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="logo-circle floating-animation-slow me-2">
-                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
-                </div>
-                <span class="site-name">ASFA Foundation</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="donate.html">Donate</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Page Header -->
-    <header class="team-header py-5 text-white">
-        <div class="container text-center">
-            <h1 class="display-4 mb-3">Meet Our Team</h1>
-            <p class="lead mb-4">The passionate individuals driving our mission forward</p>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center bg-transparent">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Our Team</li>
-                </ol>
-            </nav>
+  <!-- Navbar (Consistent with index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-circle me-2">
+          <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
         </div>
-    </header>
+        <span class="site-name">Arm Stretch Foundation Africa</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Leadership Team -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Executive Team</h2>
-                <p class="lead">Guiding our strategic vision and daily operations</p>
-            </div>
-            <div class="row justify-content-center">
-                <!-- Team Member 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/team/ceo.jpg" alt="Kagara Elly, Founder & CEO" class="member-img" loading="lazy">
-                        </div>
-                        <h3>Kagara Elly</h3>
-                        <p class="member-role">Founder & CEO</p>
-                        <p class="mb-3">Leads our strategic vision and global partnerships to create sustainable impact.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Kukundakwe Betha.jpg" alt="Kukundakwe Betha, Secretary" class="member-img" loading="lazy">
-                        </div>
-                        <h3>Kukundakwe Betha</h3>
-                        <p class="member-role">Secretary</p>
-                        <p class="mb-3">Oversees all organizational documentation, meetings, and compliance matters.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Namazzi Agnes.jpg" alt="Namazzi Agnes, Finance Manager" class="member-img" loading="lazy">
-                        </div>
-                        <h3>Namazzi Agnes</h3>
-                        <p class="member-role">Finance Manager</p>
-                        <p class="mb-3">Ensures financial accountability and manages all organizational funds and reporting.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 4 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Akumu Jackline.jpg" alt="Akumu Jackline, Welfare Officer" class="member-img" loading="lazy">
-                        </div>
-                        <h3>Akumu Jackline</h3>
-                        <p class="member-role">Welfare Officer</p>
-                        <p class="mb-3">Ensures the well-being of both staff and beneficiaries in all our programs.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 5 - Alvin Ategyeka as I.T Lead -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Alvin.png" alt="Alvin Ategyeka, I.T Lead" class="member-img" loading="lazy">
-                        </div>
-                        <h3>Alvin Ategyeka</h3>
-                        <p class="member-role">I.T Lead</p>
-                        <p class="mb-3">Manages all technology infrastructure and digital initiatives for the foundation.</p>
-                        <div class="social-links mt-3">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <header class="hero-section text-white text-center py-5">
+    <div class="container">
+      <div class="logo-circle mx-auto mb-4">
+        <img src="images/logo.png" alt="ASFA Logo" width="100" class="img-fluid">
+      </div>
+      <h1 class="display-5 fw-bold">About Arm Stretch Foundation Africa</h1>
+      <p class="lead">Empowering communities since 2025</p>
+    </div>
+  </header>
 
-    <!-- Board of Directors -->
-    <section class="py-5 bg-light-blue">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Board of Directors</h2>
-                <p class="lead">Providing governance and strategic oversight</p>
-            </div>
-            <div class="row justify-content-center">
-                <!-- Board Member 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Mugumya Andrew.jpg" alt="Mr. Mugumya Andrew" class="member-img" loading="lazy">
-                        </div>
-                        <h4>Mr. Mugumya Andrew</h4>
-                        <p class="member-role">Chairperson</p>
-                        <p class="mb-3">Provides leadership to the board and organization, ensuring alignment with our mission.</p>
-                    </div>
-                </div>
-                
-                <!-- Board Member 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Kyobutungyi Edith.jpg" alt="Ms Kyobutungyi Edith" class="member-img" loading="lazy">
-                        </div>
-                        <h4>Ms Kyobutungyi Edith</h4>
-                        <p class="member-role">Treasurer</p>
-                        <p class="mb-3">Oversees financial governance and ensures accountability in all financial matters.</p>
-                    </div>
-                </div>
-                
-                <!-- Board Member 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card text-center p-4 h-100">
-                        <div class="member-img-container floating-animation">
-                            <img src="images/Nangumya Raymond.jpg" alt="Nangumya Raymond" class="member-img" loading="lazy">
-                        </div>
-                        <h4>Nangumya Raymond</h4>
-                        <p class="member-role">Secretary</p>
-                        <p class="mb-3">Maintains board records and ensures proper documentation of all governance activities.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- About Us -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="images/about-team.jpg" class="img-fluid rounded img-border floating-animation" alt="Our Team" loading="lazy">
         </div>
-    </section>
+        <div class="col-lg-6">
+          <h2 class="section-title">Who We Are</h2>
+          <p class="mb-4 lead">
+            The Arm Stretch Foundation Africa Ltd is a non-profit organization committed to supporting vulnerable children, women, and youth in Uganda through education, healthcare, empowerment, and social inclusion.
+          </p>
+          <p>
+            Founded in 2025, we have been at the forefront of community transformation, working hand-in-hand with local stakeholders to create sustainable solutions for the most pressing challenges faced by marginalized populations.
+          </p>
+          <div class="row mt-4 text-center">
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">5+</div>
+                <div class="stats-label text-dark">Programs</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">100+</div>
+                <div class="stats-label text-dark">Beneficiaries</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">10+</div>
+                <div class="stats-label text-dark">Partners</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">3+</div>
+                <div class="stats-label text-dark">Communities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Volunteer CTA -->
-    <section class="py-5 bg-dark-blue text-white text-center position-relative" style="overflow: hidden;">
-        <div class="container position-relative z-index-1">
-            <h2 class="mb-4">Join Our Team</h2>
-            <p class="lead mb-4">We're always looking for passionate individuals to join our mission.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="contact.html" class="btn btn-gold btn-lg px-4">
-                    <i class="fas fa-hands-helping me-2"></i> Volunteer
-                </a>
-                <a href="careers.html" class="btn btn-outline-light btn-lg px-4">
-                    <i class="fas fa-briefcase me-2"></i> Careers
-                </a>
-                <a href="internships.html" class="btn btn-outline-gold btn-lg px-4">
-                    <i class="fas fa-user-graduate me-2"></i> Internships
-                </a>
-            </div>
+  <!-- Mission & Vision -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Core Principles</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-eye feature-icon"></i>
+            <h3 class="text-gold">Vision</h3>
+            <p>To transform the lives of the hopeless and voiceless into strong, self-reliant individuals.</p>
+            <img src="images/vision.jpg" alt="Vision illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
         </div>
-        <div class="position-absolute top-0 end-0 opacity-25" style="font-size: 20rem; line-height: 1; z-index: 0;">
-            <i class="fas fa-users"></i>
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-bullseye feature-icon"></i>
+            <h3 class="text-gold">Mission</h3>
+            <p>Promoting high self-esteem built through hope, love, and care in marginalized communities.</p>
+            <img src="images/mission.jpg" alt="Mission illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
         </div>
-    </section>
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-star feature-icon"></i>
+            <h3 class="text-gold">Values</h3>
+            <ul class="values-list text-start">
+              <li><span class="value-prefix">P</span><span class="value-separator">-</span> Promoting hope, love, and care</li>
+              <li><span class="value-prefix">E</span><span class="value-separator">-</span> Empowering the vulnerable</li>
+              <li><span class="value-prefix">B</span><span class="value-separator">-</span> Building strong integrity and self-esteem</li>
+              <li><span class="value-prefix">A</span><span class="value-separator">-</span> Attitude instillation in vulnerable</li>
+            </ul>
+            <img src="images/values.jpg" alt="Values illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark-blue text-white">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="mb-3">About ASFA</h5>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="logo-circle me-3">
-                            <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
-                        </div>
-                        <span class="fw-bold">Arm Stretch Foundation Africa Ltd</span>
-                    </div>
-                    <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
-                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
-                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
-                        <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
-                        <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0 text-white">Our Team</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-3">Contact Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-                        <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
-                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-3">Newsletter</h5>
-                    <p>Subscribe to our updates</p>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                            <button class="btn btn-gold" type="submit">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                        <div class="form-text text-white-50">We respect your privacy. Unsubscribe anytime.</div>
-                    </form>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
-            </div>
+  <!-- Objectives -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <img src="images/focus-areas.jpg" class="img-fluid rounded img-border" alt="Our Focus Areas" loading="lazy">
         </div>
-    </footer>
+        <div class="col-lg-7">
+          <h2 class="section-title">Our Key Focus Areas</h2>
+          <p class="lead mb-4">We concentrate our efforts on these critical areas to maximize our impact:</p>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-graduation-cap text-gold me-2"></i> Education & Child Welfare</h5>
+            <p>Ensuring access to quality education and protecting children's rights.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-people-arrows text-gold me-2"></i> Women & Youth Empowerment</h5>
+            <p>Creating opportunities for economic independence and leadership.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-heartbeat text-gold me-2"></i> Health & Nutrition Awareness</h5>
+            <p>Improving community health through education and access.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-tools text-gold me-2"></i> Vocational Skills Development</h5>
+            <p>Equipping individuals with practical skills for sustainable livelihoods.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-hands-helping text-gold me-2"></i> Advocacy & Partnerships</h5>
+            <p>Collaborating for comprehensive community well-being.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+  <!-- Impact Stories -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Impact in Action</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-education.jpg" class="card-img-top" alt="Education Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Education Transformation</h5>
+              <p class="card-text">Providing school supplies and scholarships to underprivileged children in rural communities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-health.jpg" class="card-img-top" alt="Health Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Health Outreach</h5>
+              <p class="card-text">Organizing medical camps and health education sessions in underserved areas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-empowerment.jpg" class="card-img-top" alt="Empowerment Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Skills Training</h5>
+              <p class="card-text">Empowering women and youth with vocational skills for economic independence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="text-white text-center py-5 bg-dark-blue position-relative" style="overflow: hidden;">
+    <div class="container position-relative z-index-1">
+      <h2 class="mb-4">Join Us in Making a Difference</h2>
+      <p class="lead mb-4">Support our mission to uplift communities and create sustainable futures.</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="donate.html" class="btn btn-gold btn-lg px-4">Donate Now</a>
+        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Volunteer</a>
+      </div>
+    </div>
+    <div class="position-absolute top-0 end-0 opacity-25" style="font-size: 20rem; line-height: 1; z-index: 0;">
+      <i class="fas fa-hands-helping"></i>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark-blue text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="mb-3">About ASFA</h5>
+          <div class="d-flex align-items-center mb-3">
+            <div class="logo-circle me-3">
+              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+            </div>
+            <span class="fw-bold">Arm Stretch Foundation Africa</span>
+          </div>
+          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
+            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
+            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
+            <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
+            <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0 text-white">Team</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Contact Us</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
+            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
+            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Newsletter</h5>
+          <p>Subscribe to our newsletter for updates on our work.</p>
+          <form class="mt-3">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+              <button class="btn btn-gold" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script>
+    // Current year for footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
