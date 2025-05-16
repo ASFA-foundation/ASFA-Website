@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Arm Stretch Foundation Africa</title>
+    <title>Our Team | ASFA Foundation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -79,18 +79,22 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-        .team-img-container {
+        .member-img-container {
             position: relative;
-            overflow: hidden;
-            height: 250px;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
         }
-        .team-img {
+        .member-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            padding: 3px;
             transition: var(--transition);
         }
-        .team-card:hover .team-img {
+        .team-card:hover .member-img {
             transform: scale(1.05);
         }
         .section-title {
@@ -121,10 +125,10 @@
             background: var(--gold);
             color: var(--dark-blue);
             display: inline-block;
-            padding: 3px 15px;
+            padding: 5px 20px;
             border-radius: 20px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 15px;
         }
         .social-links a {
@@ -234,92 +238,82 @@
             <div class="row justify-content-center">
                 <!-- Team Member 1 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/team/ceo.jpg" alt="Kagara Elly, Founder & CEO" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/team/ceo.jpg" alt="Kagara Elly, Founder & CEO" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Founder & CEO</div>
-                            <h3>Kagara Elly</h3>
-                            <p class="mb-3">Leads our strategic vision and global partnerships to create sustainable impact.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            </div>
+                        <h3>Kagara Elly</h3>
+                        <p class="member-role">Founder & CEO</p>
+                        <p class="mb-3">Leads our strategic vision and global partnerships to create sustainable impact.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Kukundakwe Betha.jpg" alt="Kukundakwe Betha, Secretary" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Kukundakwe Betha.jpg" alt="Kukundakwe Betha, Secretary" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Secretary</div>
-                            <h3>Kukundakwe Betha</h3>
-                            <p class="mb-3">Oversees all organizational documentation, meetings, and compliance matters.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
+                        <h3>Kukundakwe Betha</h3>
+                        <p class="member-role">Secretary</p>
+                        <p class="mb-3">Oversees all organizational documentation, meetings, and compliance matters.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 3 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Namazzi Agnes.jpg" alt="Namazzi Agnes, Finance Manager" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Namazzi Agnes.jpg" alt="Namazzi Agnes, Finance Manager" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Finance Manager</div>
-                            <h3>Namazzi Agnes</h3>
-                            <p class="mb-3">Ensures financial accountability and manages all organizational funds and reporting.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
+                        <h3>Namazzi Agnes</h3>
+                        <p class="member-role">Finance Manager</p>
+                        <p class="mb-3">Ensures financial accountability and manages all organizational funds and reporting.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 4 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Akumu Jackline.jpg" alt="Akumu Jackline, Welfare Officer" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Akumu Jackline.jpg" alt="Akumu Jackline, Welfare Officer" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Welfare Officer</div>
-                            <h3>Akumu Jackline</h3>
-                            <p class="mb-3">Ensures the well-being of both staff and beneficiaries in all our programs.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
+                        <h3>Akumu Jackline</h3>
+                        <p class="member-role">Welfare Officer</p>
+                        <p class="mb-3">Ensures the well-being of both staff and beneficiaries in all our programs.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 5 - Alvin Ategyeka as I.T Lead -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Alvin.png" alt="Alvin Ategyeka, I.T Lead" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Alvin.png" alt="Alvin Ategyeka, I.T Lead" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">I.T Lead</div>
-                            <h3>Alvin Ategyeka</h3>
-                            <p class="mb-3">Manages all technology infrastructure and digital initiatives for the foundation.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            </div>
+                        <h3>Alvin Ategyeka</h3>
+                        <p class="member-role">I.T Lead</p>
+                        <p class="mb-3">Manages all technology infrastructure and digital initiatives for the foundation.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -337,43 +331,37 @@
             <div class="row justify-content-center">
                 <!-- Board Member 1 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Mugumya Andrew.jpg" alt="Mr. Mugumya Andrew" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Mugumya Andrew.jpg" alt="Mr. Mugumya Andrew" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Chairperson</div>
-                            <h4>Mr. Mugumya Andrew</h4>
-                            <p class="mb-3">Provides leadership to the board and organization, ensuring alignment with our mission.</p>
-                        </div>
+                        <h4>Mr. Mugumya Andrew</h4>
+                        <p class="member-role">Chairperson</p>
+                        <p class="mb-3">Provides leadership to the board and organization, ensuring alignment with our mission.</p>
                     </div>
                 </div>
                 
                 <!-- Board Member 2 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Kyobutungyi Edith.jpg" alt="Ms Kyobutungyi Edith" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Kyobutungyi Edith.jpg" alt="Ms Kyobutungyi Edith" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Treasurer</div>
-                            <h4>Ms Kyobutungyi Edith</h4>
-                            <p class="mb-3">Oversees financial governance and ensures accountability in all financial matters.</p>
-                        </div>
+                        <h4>Ms Kyobutungyi Edith</h4>
+                        <p class="member-role">Treasurer</p>
+                        <p class="mb-3">Oversees financial governance and ensures accountability in all financial matters.</p>
                     </div>
                 </div>
                 
                 <!-- Board Member 3 -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="team-card h-100">
-                        <div class="team-img-container">
-                            <img src="images/Nangumya Raymond.jpg" alt="Nangumya Raymond" class="team-img" loading="lazy">
+                    <div class="team-card text-center p-4 h-100">
+                        <div class="member-img-container floating-animation">
+                            <img src="images/Nangumya Raymond.jpg" alt="Nangumya Raymond" class="member-img" loading="lazy">
                         </div>
-                        <div class="p-4 text-center">
-                            <div class="member-role">Secretary</div>
-                            <h4>Nangumya Raymond</h4>
-                            <p class="mb-3">Maintains board records and ensures proper documentation of all governance activities.</p>
-                        </div>
+                        <h4>Nangumya Raymond</h4>
+                        <p class="member-role">Secretary</p>
+                        <p class="mb-3">Maintains board records and ensures proper documentation of all governance activities.</p>
                     </div>
                 </div>
             </div>
@@ -468,12 +456,6 @@
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Initialize tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        });
     </script>
 </body>
 </html>
