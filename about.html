@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ASFA Foundation - Empowering communities through education, health, and social support in Uganda.">
-  <title>About Us | ASFA Foundation</title>
+  <meta name="description" content="Arm Stretch Foundation Africa - Empowering communities through education, health, and social support in Uganda.">
+  <title>About Us | Arm Stretch Foundation Africa</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,11 +27,23 @@
     body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
+      color: #333;
     }
     .section-title {
       font-weight: 600;
-      margin-bottom: 1rem;
-      color: #333;
+      margin-bottom: 1.5rem;
+      color: var(--dark-blue);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--gold);
+      bottom: -8px;
+      left: 25%;
     }
     .text-gold {
       color: var(--gold);
@@ -63,6 +75,71 @@
       display: inline-block;
       width: 10px;
     }
+    .logo-circle {
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .img-border {
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .mission-card {
+      border-radius: 10px;
+      padding: 25px;
+      height: 100%;
+      transition: transform 0.3s;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .mission-card:hover {
+      transform: translateY(-5px);
+    }
+    .focus-item {
+      padding: 15px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,215,0,0.05);
+      margin-bottom: 10px;
+    }
+    .hero-section {
+      background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.9)), url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-gold {
+      background-color: var(--gold);
+      color: var(--dark-blue);
+      font-weight: 600;
+      border: none;
+    }
+    .btn-gold:hover {
+      background-color: #e6c200;
+      color: var(--dark-blue);
+    }
+    .stats-item {
+      text-align: center;
+      padding: 20px;
+    }
+    .stats-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stats-label {
+      font-size: 1rem;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -92,46 +169,96 @@
     </div>
   </nav>
 
-  <!-- About Header -->
-  <header class="bg-dark-blue text-white text-center py-5">
+  <!-- Hero Section -->
+  <header class="hero-section text-white text-center py-5">
     <div class="container">
-      <img src="images/logo.png" alt="ASFA Logo" width="80" class="mb-3">
-      <h1 class="display-5">About Arm Stretch Foundation Africa Ltd</h1>
+      <div class="logo-circle mx-auto mb-4">
+        <img src="images/logo.png" alt="ASFA Logo" width="100" class="img-fluid">
+      </div>
+      <h1 class="display-5 fw-bold">About Arm Stretch Foundation Africa</h1>
       <p class="lead">Empowering communities since 2025</p>
     </div>
   </header>
 
   <!-- About Us -->
   <section class="py-5">
-    <div class="container text-center">
-      <h2 class="section-title">Who We Are</h2>
-      <p class="mb-4 lead">
-        The Arm Stretch Foundation Africa Ltd is a non-profit organization committed to supporting vulnerable children, women, and youth in Uganda through education, healthcare, empowerment, and social inclusion.
-      </p>
-      <img src="images/team.jpg" class="img-fluid rounded floating-animation" alt="Our Team" loading="lazy" style="max-height: 500px;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="images/about-team.jpg" class="img-fluid rounded img-border floating-animation" alt="Our Team" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="section-title">Who We Are</h2>
+          <p class="mb-4 lead">
+            The Arm Stretch Foundation Africa Ltd is a non-profit organization committed to supporting vulnerable children, women, and youth in Uganda through education, healthcare, empowerment, and social inclusion.
+          </p>
+          <p>
+            Founded in 2025, we have been at the forefront of community transformation, working hand-in-hand with local stakeholders to create sustainable solutions for the most pressing challenges faced by marginalized populations.
+          </p>
+          <div class="row mt-4 text-center">
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">5+</div>
+                <div class="stats-label text-dark">Programs</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">100+</div>
+                <div class="stats-label text-dark">Beneficiaries</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">10+</div>
+                <div class="stats-label text-dark">Partners</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <div class="stats-item">
+                <div class="stats-number">3+</div>
+                <div class="stats-label text-dark">Communities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Mission & Vision -->
-  <section class="bg-light py-5">
+  <section class="py-5 bg-light">
     <div class="container">
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-eye fa-lg mb-3"></i><br>Vision</h3>
-          <p>To transform the lives of the hopeless and voiceless into strong, self-reliant individuals.</p>
+      <h2 class="section-title text-center mb-5">Our Core Principles</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-eye feature-icon"></i>
+            <h3 class="text-gold">Vision</h3>
+            <p>To transform the lives of the hopeless and voiceless into strong, self-reliant individuals.</p>
+            <img src="images/vision.jpg" alt="Vision illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-bullseye fa-lg mb-3"></i><br>Mission</h3>
-          <p>Promoting high self-esteem built through hope, love, and care in marginalized communities.</p>
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-bullseye feature-icon"></i>
+            <h3 class="text-gold">Mission</h3>
+            <p>Promoting high self-esteem built through hope, love, and care in marginalized communities.</p>
+            <img src="images/mission.jpg" alt="Mission illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <h3 class="text-gold"><i class="fas fa-star fa-lg mb-3"></i><br>Values</h3>
-          <ul class="values-list">
-            <li><span class="value-prefix">P</span><span class="value-separator">-</span> Promoting hope, love, and care</li>
-            <li><span class="value-prefix">E</span><span class="value-separator">-</span> Empowering the vulnerable</li>
-            <li><span class="value-prefix">B</span><span class="value-separator">-</span> Building strong integrity and self-esteem</li>
-            <li><span class="value-prefix">A</span><span class="value-separator">-</span> Attitude instillation in vulnerable</li>
-          </ul>
+        <div class="col-md-4">
+          <div class="mission-card text-center">
+            <i class="fas fa-star feature-icon"></i>
+            <h3 class="text-gold">Values</h3>
+            <ul class="values-list text-start">
+              <li><span class="value-prefix">P</span><span class="value-separator">-</span> Promoting hope, love, and care</li>
+              <li><span class="value-prefix">E</span><span class="value-separator">-</span> Empowering the vulnerable</li>
+              <li><span class="value-prefix">B</span><span class="value-separator">-</span> Building strong integrity and self-esteem</li>
+              <li><span class="value-prefix">A</span><span class="value-separator">-</span> Attitude instillation in vulnerable</li>
+            </ul>
+            <img src="images/values.jpg" alt="Values illustration" class="img-fluid rounded mt-3" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
@@ -140,42 +267,91 @@
   <!-- Objectives -->
   <section class="py-5">
     <div class="container">
-      <h2 class="section-title text-center">Key Focus Areas</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item d-flex align-items-center">
-              <i class="fas fa-check-circle text-gold me-3"></i>
-              <span>Education & Child Welfare</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="fas fa-check-circle text-gold me-3"></i>
-              <span>Women & Youth Empowerment</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="fas fa-check-circle text-gold me-3"></i>
-              <span>Health & Nutrition Awareness</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="fas fa-check-circle text-gold me-3"></i>
-              <span>Vocational Skills Development</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="fas fa-check-circle text-gold me-3"></i>
-              <span>Advocacy & Partnerships for Community Well-being</span>
-            </li>
-          </ul>
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <img src="images/focus-areas.jpg" class="img-fluid rounded img-border" alt="Our Focus Areas" loading="lazy">
+        </div>
+        <div class="col-lg-7">
+          <h2 class="section-title">Our Key Focus Areas</h2>
+          <p class="lead mb-4">We concentrate our efforts on these critical areas to maximize our impact:</p>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-graduation-cap text-gold me-2"></i> Education & Child Welfare</h5>
+            <p>Ensuring access to quality education and protecting children's rights.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-people-arrows text-gold me-2"></i> Women & Youth Empowerment</h5>
+            <p>Creating opportunities for economic independence and leadership.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-heartbeat text-gold me-2"></i> Health & Nutrition Awareness</h5>
+            <p>Improving community health through education and access.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-tools text-gold me-2"></i> Vocational Skills Development</h5>
+            <p>Equipping individuals with practical skills for sustainable livelihoods.</p>
+          </div>
+          
+          <div class="focus-item">
+            <h5><i class="fas fa-hands-helping text-gold me-2"></i> Advocacy & Partnerships</h5>
+            <p>Collaborating for comprehensive community well-being.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stories -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Impact in Action</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-education.jpg" class="card-img-top" alt="Education Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Education Transformation</h5>
+              <p class="card-text">Providing school supplies and scholarships to underprivileged children in rural communities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-health.jpg" class="card-img-top" alt="Health Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Health Outreach</h5>
+              <p class="card-text">Organizing medical camps and health education sessions in underserved areas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="images/impact-empowerment.jpg" class="card-img-top" alt="Empowerment Impact" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title text-gold">Skills Training</h5>
+              <p class="card-text">Empowering women and youth with vocational skills for economic independence.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Call to Action -->
-  <section class="text-white text-center py-5 bg-dark-blue">
-    <div class="container">
+  <section class="text-white text-center py-5 bg-dark-blue position-relative" style="overflow: hidden;">
+    <div class="container position-relative z-index-1">
       <h2 class="mb-4">Join Us in Making a Difference</h2>
       <p class="lead mb-4">Support our mission to uplift communities and create sustainable futures.</p>
-      <a href="donate.html" class="btn btn-gold btn-lg px-4">Donate Now</a>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="donate.html" class="btn btn-gold btn-lg px-4">Donate Now</a>
+        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Volunteer</a>
+      </div>
+    </div>
+    <div class="position-absolute top-0 end-0 opacity-25" style="font-size: 20rem; line-height: 1; z-index: 0;">
+      <i class="fas fa-hands-helping"></i>
     </div>
   </section>
 
@@ -185,11 +361,18 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <h5 class="mb-3">About ASFA</h5>
-          <p class="mb-4">Empowering communities through sustainable initiatives.</p>
+          <div class="d-flex align-items-center mb-3">
+            <div class="logo-circle me-3">
+              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+            </div>
+            <span class="fw-bold">Arm Stretch Foundation Africa Ltd</span>
+          </div>
+          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
           <div class="social-links">
             <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
             <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
             <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
           </div>
         </div>
         <div class="col-lg-2 col-md-6">
@@ -198,7 +381,9 @@
             <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
             <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
             <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
-            <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
+            <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
+            <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0 text-white">Team</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -209,6 +394,16 @@
             <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
             <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
           </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Newsletter</h5>
+          <p>Subscribe to our newsletter for updates on our work.</p>
+          <form class="mt-3">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+              <button class="btn btn-gold" type="submit">Subscribe</button>
+            </div>
+          </form>
         </div>
       </div>
       <hr class="my-4">
@@ -227,13 +422,4 @@
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
-  <!-- Primary Meta Tags -->
-<meta name="description" content="About Arm Stretch Foundation Africa - Our mission, vision, and impact in African communities.">
-<meta name="keywords" content="ASFA about us, Africa NGO mission">
-<title>About Us | Arm Stretch Foundation Africa</title>
-
-<!-- Open Graph Tags -->
-<meta property="og:title" content="About Us | Arm Stretch Foundation Africa">
-<meta property="og:description" content="Learn about our mission and impact in Africa.">
-<meta property="og:url" content="https://armstretchfoundationafricaltd.org/about.html">
 </html>
