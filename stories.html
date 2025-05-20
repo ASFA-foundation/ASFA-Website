@@ -34,6 +34,30 @@
     
     <!-- Story Page Specific CSS -->
     <style>
+        :root {
+            --gold: #FFD700;
+            --dark-blue: #003366;
+        }
+        .bg-dark-blue {
+            background-color: var(--dark-blue) !important;
+        }
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 600;
+        }
+        .text-gold {
+            color: var(--gold);
+        }
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gold);
+        }
         .story-card {
             border-radius: 10px;
             overflow: hidden;
@@ -54,17 +78,25 @@
             font-size: 0.9rem;
         }
         .read-more {
-            color: #FFD700;
+            color: var(--gold);
             font-weight: 600;
             text-decoration: none;
         }
         .read-more:hover {
             text-decoration: underline;
         }
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: #000;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation (Copy from your main site) -->
+    <!-- Fixed Header (Matches Your Site) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -106,38 +138,6 @@
     <!-- Main Content -->
     <main class="py-5">
         <div class="container">
-            <!-- Schema.org Structured Data -->
-            <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@type": "ItemList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "item": {
-                    "@type": "NewsArticle",
-                    "headline": "Grace's Education Journey",
-                    "description": "12-year-old Grace received a scholarship through ASFA and now attends school regularly.",
-                    "datePublished": "2024-03-15",
-                    "image": "https://armstretchfoundationafricaltd.org/images/story-education.jpg"
-                  }
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "item": {
-                    "@type": "NewsArticle",
-                    "headline": "Village Health Transformation",
-                    "description": "ASFA's mobile clinic provided free malaria treatment to 200+ villagers in rural Uganda.",
-                    "datePublished": "2024-01-30",
-                    "image": "https://armstretchfoundationafricaltd.org/images/story-health.jpg"
-                  }
-                }
-              ]
-            }
-            </script>
-
             <!-- Stories Grid -->
             <div class="row g-4">
                 <!-- Story 1 -->
@@ -147,7 +147,7 @@
                         <div class="p-4">
                             <h3>Grace's Education Journey</h3>
                             <p class="story-date">March 15, 2024</p>
-                            <p>Grace, a 12-year-old from Kampala, received a scholarship through ASFA and now attends school regularly. Her family couldn't afford education costs before our intervention.</p>
+                            <p>Grace, a 12-year-old from Kampala, received a scholarship through ASFA and now attends school regularly.</p>
                             <a href="#graces-story" class="read-more">Read Full Story →</a>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                         <div class="p-4">
                             <h3>Village Health Transformation</h3>
                             <p class="story-date">January 30, 2024</p>
-                            <p>ASFA's mobile clinic provided free malaria treatment to 200+ villagers in rural Uganda last month, reducing child mortality rates in the region by 40%.</p>
+                            <p>ASFA's mobile clinic provided free malaria treatment to 200+ villagers in rural Uganda.</p>
                             <a href="#health-story" class="read-more">Read Full Story →</a>
                         </div>
                     </div>
@@ -173,56 +173,22 @@
                         <div class="p-4">
                             <h3>New Home for the Nakato Family</h3>
                             <p class="story-date">December 10, 2023</p>
-                            <p>After losing their home in floods, the Nakato family now has a safe shelter thanks to ASFA donors. The children can now focus on their education.</p>
+                            <p>After losing their home in floods, the Nakato family now has a safe shelter.</p>
                             <a href="#nakato-story" class="read-more">Read Full Story →</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Individual Story Sections (for deep linking) -->
-            <div class="py-5">
-                <!-- Story 1 Expanded -->
-                <div id="graces-story" class="py-4">
-                    <h2 class="mb-4">Grace's Education Journey</h2>
-                    <img src="https://source.unsplash.com/random/800x500/?child,school,uganda" alt="Grace in her classroom" class="img-fluid rounded mb-4">
-                    <p>Grace Nalwoga, a bright 12-year-old from the slums of Kampala, was at risk of dropping out of school when her single mother could no longer afford tuition fees. Through ASFA's education sponsorship program:</p>
-                    <ul>
-                        <li>Received full scholarship covering tuition, books, and uniform</li>
-                        <li>Now ranks in top 5 of her class in mathematics</li>
-                        <li>Her mother received vocational training to start a small business</li>
-                    </ul>
-                    <p>"I want to become a doctor to help other children like me," Grace says. Your donations make stories like this possible.</p>
-                    <a href="donate.html" class="btn btn-gold">Support More Children</a>
-                </div>
-
-                <!-- Story 2 Expanded -->
-                <div id="health-story" class="py-4 mt-5">
-                    <h2 class="mb-4">Village Health Transformation</h2>
-                    <img src="https://source.unsplash.com/random/800x500/?medical,africa,village" alt="ASFA mobile clinic in rural Uganda" class="img-fluid rounded mb-4">
-                    <p>In January 2024, ASFA's mobile health unit traveled to the remote village of Kasese, where malaria was affecting 60% of children under 5. Over two weeks:</p>
-                    <ul>
-                        <li>217 patients received free treatment</li>
-                        <li>150 mosquito nets distributed</li>
-                        <li>Community health workers trained in prevention</li>
-                    </ul>
-                    <p>Village elder Kato Mubiru reports: "For the first time in years, our children are healthy enough to attend school regularly."</p>
-                </div>
-            </div>
-
             <!-- Call to Action -->
-            <div class="text-center py-5 mt-3">
+            <div class="text-center py-5 mt-5">
                 <h3 class="mb-4">Be Part of Our Next Success Story</h3>
-                <p class="lead mb-4">Your support creates real change. Join us in transforming more lives across Africa.</p>
-                <div class="d-flex justify-content-center gap-3">
-                    <a href="donate.html" class="btn btn-gold px-4">Donate Now</a>
-                    <a href="contact.html" class="btn btn-outline-gold px-4">Share Your Story</a>
-                </div>
+                <a href="donate.html" class="btn btn-gold px-4">Donate Now</a>
             </div>
         </div>
     </main>
 
-    <!-- Footer (Copy from your main site) -->
+    <!-- Fixed Footer (Matches Your Site) -->
     <footer class="py-5 bg-dark-blue text-white">
         <div class="container">
             <div class="row g-4">
@@ -270,7 +236,7 @@
             </div>
             <hr class="my-4 bg-light">
             <div class="text-center">
-                <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+                <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> ASFA Foundation. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -278,9 +244,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
