@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Homepage -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,7 +12,7 @@
   <!-- About Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/about.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -19,7 +20,7 @@
   <!-- Donate Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/donate.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +28,7 @@
   <!-- Gallery Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/gallery.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -35,7 +36,7 @@
   <!-- Programs Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/programs.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -43,7 +44,7 @@
   <!-- Education Program Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/program-education.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,8 +52,43 @@
   <!-- Team Page -->
   <url>
     <loc>https://armstretchfoundationafricaltd.org/team.html</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2025-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Stories Page -->
+  <url>
+    <loc>https://armstretchfoundationafricaltd.org/stories.html</loc>
+    <lastmod>2025-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- CSS -->
+  <url>
+    <loc>https://armstretchfoundationafricaltd.org/css/style.css</loc>
+    <lastmod>2025-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- JavaScript -->
+  <url>
+    <loc>https://armstretchfoundationafricaltd.org/js/script.js</loc>
+    <lastmod>2025-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Important Documents -->
+  <url>
+    <loc>https://armstretchfoundationafricaltd.org/robots.txt</loc>
+    <lastmod>2025-05-22</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://armstretchfoundationafricaltd.org/CNAME</loc>
+    <lastmod>2025-05-22</lastmod>
+    <changefreq>yearly</changefreq>
   </url>
 </urlset>
