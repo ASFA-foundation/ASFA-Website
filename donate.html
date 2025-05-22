@@ -18,14 +18,16 @@
         :root {
             --gold: #FFD700;
             --dark-blue: #003366;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 70px;
         }
         .bg-dark-blue {
             background-color: var(--dark-blue) !important;
-        }
-        .btn-gold {
-            background-color: var(--gold);
-            color: #000;
-            font-weight: 600;
         }
         .text-gold {
             color: var(--gold);
@@ -45,41 +47,162 @@
             background-size: cover;
             background-position: center;
         }
+        
+        /* Enhanced Button Styles */
+        .btn-gold { 
+            background-color: var(--gold); 
+            color: #000;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+        }
+        .btn-gold:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--dark-blue);
+        }
+        .btn-outline-gold {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        /* Button States */
+        .btn-gold:focus, .btn-gold.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+        }
+        .btn-outline-light:focus, .btn-outline-light.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
+        }
+        .btn-outline-gold:focus, .btn-outline-gold.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+        }
+        .btn-gold:active {
+            background-color: #ccaa00 !important;
+            transform: translateY(0);
+        }
+        .btn-outline-light:active {
+            background-color: var(--white) !important;
+            color: var(--dark-blue) !important;
+        }
+        .btn-outline-gold:active {
+            background-color: var(--gold) !important;
+            color: #000 !important;
+        }
+        
+        /* Progress Bar */
         .progress-bar.bg-gold {
             background-color: var(--gold) !important;
         }
+        
+        /* Card Styles */
+        .payment-option {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: white;
+        }
+        .payment-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
         .icon-box {
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
         }
-        .payment-option {
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 10px;
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--dark-blue);
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
             transition: all 0.3s ease;
         }
-        .payment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .btn-outline-gold {
-            border-color: var(--gold);
+        .nav-link {
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
             color: var(--gold);
         }
-        .btn-outline-gold:hover {
-            background-color: var(--gold);
-            color: #000;
-        }
         .logo-circle {
-            width: 50px;
-            height: 50px;
+            background: white;
             border-radius: 50%;
-            display: flex;
+            padding: 5px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--gold);
+        }
+        
+        /* Tab Styles */
+        .nav-tabs .nav-link {
+            color: var(--dark-blue);
+            border: none;
+            padding: 12px 20px;
+            font-weight: 500;
+        }
+        .nav-tabs .nav-link.active {
+            color: var(--gold);
+            background-color: transparent;
+            border-bottom: 3px solid var(--gold);
+        }
+        .nav-tabs .nav-link:hover:not(.active) {
+            color: var(--gold);
+            border-bottom: 3px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Impact Items */
+        .impact-item {
+            transition: all 0.3s ease;
+        }
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -87,13 +210,13 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
                 <div class="logo-circle floating-animation-slow me-2">
-                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
                 </div>
-                <span class="site-name">ASFA Foundation</span>
+                <span class="site-name">Arm Stretch Foundation Africa</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -102,7 +225,8 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
                     <li class="nav-item"><a class="nav-link active" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -151,17 +275,17 @@
                 <div class="col-lg-10">
                     <ul class="nav nav-tabs justify-content-center mb-4" id="donationTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button">
+                            <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab">
                                 <i class="fas fa-mobile-alt me-2"></i>Mobile Money
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button">
+                            <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button" role="tab">
                                 <i class="fas fa-university me-2"></i>Bank Transfer
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button">
+                            <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button" role="tab">
                                 <i class="fab fa-paypal me-2"></i>PayPal
                             </button>
                         </li>
@@ -201,6 +325,9 @@
                                                 </ol>
                                             </div>
                                         </div>
+                                        <button class="btn btn-outline-gold w-100 mt-2" onclick="copyToClipboard('305790')">
+                                            <i class="fas fa-copy me-2"></i>Copy Merchant Code
+                                        </button>
                                     </div>
                                 </div>
 
@@ -215,7 +342,7 @@
                                         <div class="payment-details bg-light p-3 rounded mb-3">
                                             <div class="d-flex justify-content-between mb-2">
                                                 <span>Merchant Code:</span>
-                                                <strong class="text-red-600">4392017</strong>
+                                                <strong class="text-gold">4392017</strong>
                                             </div>
                                             <div class="d-flex justify-content-between mb-2">
                                                 <span>Name:</span>
@@ -223,7 +350,7 @@
                                             </div>
                                             <hr class="my-2">
                                             <div class="text-start">
-                                                <h6 class="text-red mb-2">Payment Steps:</h6>
+                                                <h6 class="text-gold mb-2">Payment Steps:</h6>
                                                 <ol class="list-group list-group-numbered">
                                                     <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*185*9#</strong> then press <strong>Yes</strong></li>
                                                     <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
@@ -233,6 +360,9 @@
                                                 </ol>
                                             </div>
                                         </div>
+                                        <button class="btn btn-outline-gold w-100 mt-2" onclick="copyToClipboard('4392017')">
+                                            <i class="fas fa-copy me-2"></i>Copy Merchant Code
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +423,8 @@
                                         <div class="d-grid gap-2">
                                             <a href="https://www.paypal.com/donate?hosted_button_id=ULXMDEN93C7MQ" 
                                                class="btn btn-gold btn-lg py-3" 
-                                               target="_blank">
+                                               target="_blank"
+                                               rel="noopener noreferrer">
                                                 <i class="fab fa-paypal me-2"></i> Donate with PayPal
                                             </a>
                                         </div>
@@ -319,7 +450,7 @@
                     <div class="row g-4">
                         <div class="col-md-3">
                             <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
+                                <div class="icon-box mx-auto mb-3">
                                     <i class="fas fa-book fa-2x"></i>
                                 </div>
                                 <h4 class="text-gold">$50</h4>
@@ -328,7 +459,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
+                                <div class="icon-box mx-auto mb-3">
                                     <i class="fas fa-utensils fa-2x"></i>
                                 </div>
                                 <h4 class="text-gold">$100</h4>
@@ -337,7 +468,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
+                                <div class="icon-box mx-auto mb-3">
                                     <i class="fas fa-home fa-2x"></i>
                                 </div>
                                 <h4 class="text-gold">$200</h4>
@@ -346,7 +477,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box bg-gold text-white rounded-circle mx-auto mb-3">
+                                <div class="icon-box mx-auto mb-3">
                                     <i class="fas fa-stethoscope fa-2x"></i>
                                 </div>
                                 <h4 class="text-gold">$1000</h4>
@@ -367,8 +498,8 @@
                     <h5 class="mb-3">About ASFA</h5>
                     <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
                     <div class="social-links">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
                         <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
                         <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
@@ -395,12 +526,15 @@
                 <div class="col-lg-3">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                    <form action="https://forms.gle/17YfQNPgE7dXez73A" method="GET" target="_blank" class="newsletter-form needs-validation" novalidate>
+                        <div class="input-group mb-3 has-validation">
+                            <input type="email" class="form-control" placeholder="Your Email" name="entry.123456789" required>
                             <button class="btn btn-gold" type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
+                            <div class="invalid-feedback">
+                                Please provide a valid email
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -417,15 +551,47 @@
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Make navbar solid on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Form validation
+        document.querySelectorAll('.needs-validation').forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show tooltip or alert
+                alert("Copied to clipboard: " + text);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
     </script>
-</body>
+    
     <!-- Primary Meta Tags -->
-<meta name="description" content="Support Arm Stretch Foundation Africa - Donate to empower communities through education and healthcare.">
-<meta name="keywords" content="donate ASFA, Africa charity donation">
-<title>Donate | Arm Stretch Foundation Africa</title>
+    <meta name="description" content="Support Arm Stretch Foundation Africa - Donate to empower communities through education and healthcare.">
+    <meta name="keywords" content="donate ASFA, Africa charity donation">
+    <title>Donate | Arm Stretch Foundation Africa</title>
 
-<!-- Open Graph Tags -->
-<meta property="og:title" content="Donate | Arm Stretch Foundation Africa">
-<meta property="og:description" content="Your donation helps us transform lives in Africa.">
-<meta property="og:url" content="https://armstretchfoundationafricaltd.org/donate.html">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Donate | Arm Stretch Foundation Africa">
+    <meta property="og:description" content="Your donation helps us transform lives in Africa.">
+    <meta property="og:url" content="https://armstretchfoundationafricaltd.org/donate.html">
+</body>
 </html>
