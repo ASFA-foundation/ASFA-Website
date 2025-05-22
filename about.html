@@ -23,11 +23,15 @@
     :root {
       --gold: #FFD700;
       --dark-blue: #003366;
+      --light-blue: #e6f0ff;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
     }
     body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
       color: #333;
+      padding-top: 70px;
     }
     .section-title {
       font-weight: 600;
@@ -117,16 +121,62 @@
       display: flex;
       align-items: center;
     }
-    .btn-gold {
-      background-color: var(--gold);
-      color: var(--dark-blue);
+    
+    /* Enhanced Button Styles (matching index.html) */
+    .btn-gold { 
+      background-color: var(--gold); 
+      color: #000;
       font-weight: 600;
       border: none;
+      transition: var(--transition);
     }
     .btn-gold:hover {
       background-color: #e6c200;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-outline-light {
+      border: 2px solid var(--white);
+      color: var(--white);
+      transition: var(--transition);
+    }
+    .btn-outline-light:hover {
+      background: var(--white);
       color: var(--dark-blue);
     }
+    .btn-outline-gold {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      transition: var(--transition);
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    
+    /* Button States */
+    .btn-gold:focus, .btn-gold.focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+    }
+    .btn-outline-light:focus, .btn-outline-light.focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
+    }
+    .btn-outline-gold:focus, .btn-outline-gold.focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+    }
+    .btn-gold:active {
+      background-color: #ccaa00 !important;
+      transform: translateY(0);
+    }
+    .btn-outline-light:active {
+      background-color: var(--white) !important;
+      color: var(--dark-blue) !important;
+    }
+    .btn-outline-gold:active {
+      background-color: var(--gold) !important;
+      color: #000 !important;
+    }
+    
     .stats-item {
       text-align: center;
       padding: 20px;
@@ -138,7 +188,55 @@
     }
     .stats-label {
       font-size: 1rem;
-      color: white;
+      color: var(--dark-blue);
+    }
+    
+    /* Card Hover Effects */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Navbar Styles (matching index.html) */
+    .navbar {
+      background-color: var(--dark-blue);
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar-scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .nav-link {
+      color: var(--white);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: var(--gold);
     }
   </style>
 </head>
@@ -195,29 +293,33 @@
           <p>
             Founded in 2025, we have been at the forefront of community transformation, working hand-in-hand with local stakeholders to create sustainable solutions for the most pressing challenges faced by marginalized populations.
           </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="programs.html" class="btn btn-gold px-4">Our Programs</a>
+            <a href="team.html" class="btn btn-outline-gold px-4">Meet Our Team</a>
+          </div>
           <div class="row mt-4 text-center">
             <div class="col-6 col-md-3 mb-3">
               <div class="stats-item">
                 <div class="stats-number">5+</div>
-                <div class="stats-label text-dark">Programs</div>
+                <div class="stats-label">Programs</div>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="stats-item">
                 <div class="stats-number">100+</div>
-                <div class="stats-label text-dark">Beneficiaries</div>
+                <div class="stats-label">Beneficiaries</div>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="stats-item">
                 <div class="stats-number">10+</div>
-                <div class="stats-label text-dark">Partners</div>
+                <div class="stats-label">Partners</div>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="stats-item">
                 <div class="stats-number">3+</div>
-                <div class="stats-label text-dark">Communities</div>
+                <div class="stats-label">Communities</div>
               </div>
             </div>
           </div>
@@ -232,7 +334,7 @@
       <h2 class="section-title text-center mb-5">Our Core Principles</h2>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="mission-card text-center">
+          <div class="mission-card text-center card-hover">
             <i class="fas fa-eye feature-icon"></i>
             <h3 class="text-gold">Vision</h3>
             <p>To transform the lives of the hopeless and voiceless into strong, self-reliant individuals.</p>
@@ -240,7 +342,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="mission-card text-center">
+          <div class="mission-card text-center card-hover">
             <i class="fas fa-bullseye feature-icon"></i>
             <h3 class="text-gold">Mission</h3>
             <p>Promoting high self-esteem built through hope, love, and care in marginalized communities.</p>
@@ -248,7 +350,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="mission-card text-center">
+          <div class="mission-card text-center card-hover">
             <i class="fas fa-star feature-icon"></i>
             <h3 class="text-gold">Values</h3>
             <ul class="values-list text-start">
@@ -275,29 +377,34 @@
           <h2 class="section-title">Our Key Focus Areas</h2>
           <p class="lead mb-4">We concentrate our efforts on these critical areas to maximize our impact:</p>
           
-          <div class="focus-item">
+          <div class="focus-item card-hover">
             <h5><i class="fas fa-graduation-cap text-gold me-2"></i> Education & Child Welfare</h5>
             <p>Ensuring access to quality education and protecting children's rights.</p>
+            <a href="program-education.html" class="btn btn-sm btn-outline-gold mt-2">Learn More</a>
           </div>
           
-          <div class="focus-item">
+          <div class="focus-item card-hover">
             <h5><i class="fas fa-people-arrows text-gold me-2"></i> Women & Youth Empowerment</h5>
             <p>Creating opportunities for economic independence and leadership.</p>
+            <a href="programs.html" class="btn btn-sm btn-outline-gold mt-2">Learn More</a>
           </div>
           
-          <div class="focus-item">
+          <div class="focus-item card-hover">
             <h5><i class="fas fa-heartbeat text-gold me-2"></i> Health & Nutrition Awareness</h5>
             <p>Improving community health through education and access.</p>
+            <a href="programs.html" class="btn btn-sm btn-outline-gold mt-2">Learn More</a>
           </div>
           
-          <div class="focus-item">
+          <div class="focus-item card-hover">
             <h5><i class="fas fa-tools text-gold me-2"></i> Vocational Skills Development</h5>
             <p>Equipping individuals with practical skills for sustainable livelihoods.</p>
+            <a href="programs.html" class="btn btn-sm btn-outline-gold mt-2">Learn More</a>
           </div>
           
-          <div class="focus-item">
+          <div class="focus-item card-hover">
             <h5><i class="fas fa-hands-helping text-gold me-2"></i> Advocacy & Partnerships</h5>
             <p>Collaborating for comprehensive community well-being.</p>
+            <a href="programs.html" class="btn btn-sm btn-outline-gold mt-2">Learn More</a>
           </div>
         </div>
       </div>
@@ -310,32 +417,38 @@
       <h2 class="section-title text-center mb-5">Our Impact in Action</h2>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card h-100 border-0 shadow-sm card-hover">
             <img src="images/impact-education.jpg" class="card-img-top" alt="Education Impact" loading="lazy">
             <div class="card-body">
               <h5 class="card-title text-gold">Education Transformation</h5>
               <p class="card-text">Providing school supplies and scholarships to underprivileged children in rural communities.</p>
+              <a href="gallery.html" class="btn btn-gold mt-3">View Gallery</a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card h-100 border-0 shadow-sm card-hover">
             <img src="images/impact-health.jpg" class="card-img-top" alt="Health Impact" loading="lazy">
             <div class="card-body">
               <h5 class="card-title text-gold">Health Outreach</h5>
               <p class="card-text">Organizing medical camps and health education sessions in underserved areas.</p>
+              <a href="gallery.html" class="btn btn-gold mt-3">View Gallery</a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card h-100 border-0 shadow-sm card-hover">
             <img src="images/impact-empowerment.jpg" class="card-img-top" alt="Empowerment Impact" loading="lazy">
             <div class="card-body">
               <h5 class="card-title text-gold">Skills Training</h5>
               <p class="card-text">Empowering women and youth with vocational skills for economic independence.</p>
+              <a href="gallery.html" class="btn btn-gold mt-3">View Gallery</a>
             </div>
           </div>
         </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="stories.html" class="btn btn-outline-dark-blue px-4">View All Impact Stories</a>
       </div>
     </div>
   </section>
@@ -345,9 +458,13 @@
     <div class="container position-relative z-index-1">
       <h2 class="mb-4">Join Us in Making a Difference</h2>
       <p class="lead mb-4">Support our mission to uplift communities and create sustainable futures.</p>
-      <div class="d-flex justify-content-center gap-3">
-        <a href="donate.html" class="btn btn-gold btn-lg px-4">Donate Now</a>
-        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Volunteer</a>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="donate.html" class="btn btn-gold btn-lg px-4 py-3 flex-grow-1">
+          <i class="fas fa-donate me-2" aria-hidden="true"></i> Donate Now
+        </a>
+        <a href="https://forms.gle/aE5Tc7swzZ48ezrf9" class="btn btn-outline-light btn-lg px-4 py-3 flex-grow-1" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-hands-helping me-2" aria-hidden="true"></i> Volunteer
+        </a>
       </div>
     </div>
     <div class="position-absolute top-0 end-0 opacity-25" style="font-size: 20rem; line-height: 1; z-index: 0;">
@@ -369,8 +486,8 @@
           </div>
           <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
           <div class="social-links">
-            <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-            <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
             <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
             <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube fa-lg"></i></a>
           </div>
@@ -398,10 +515,13 @@
         <div class="col-lg-3 col-md-6">
           <h5 class="mb-3">Newsletter</h5>
           <p>Subscribe to our newsletter for updates on our work.</p>
-          <form class="mt-3">
-            <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+          <form action="https://forms.gle/17YfQNPgE7dXez73A" method="GET" target="_blank" class="newsletter-form needs-validation" novalidate>
+            <div class="input-group mb-3 has-validation">
+              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email" name="entry.123456789" required>
               <button class="btn btn-gold" type="submit">Subscribe</button>
+              <div class="invalid-feedback">
+                Please provide a valid email address
+              </div>
             </div>
           </form>
         </div>
@@ -420,6 +540,27 @@
   <script>
     // Current year for footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Make navbar solid on scroll (matching index.html)
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+    
+    // Form validation
+    document.querySelectorAll('.needs-validation').forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
   </script>
 </body>
 </html>
