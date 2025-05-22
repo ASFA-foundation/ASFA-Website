@@ -18,14 +18,16 @@
         :root {
             --gold: #FFD700;
             --dark-blue: #003366;
+            --light-blue: #e6f0ff;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 70px;
         }
         .bg-dark-blue {
             background-color: var(--dark-blue) !important;
-        }
-        .btn-gold {
-            background-color: var(--gold);
-            color: #000;
-            font-weight: 600;
         }
         .text-gold {
             color: var(--gold);
@@ -45,11 +47,69 @@
             background-size: cover;
             background-position: center;
         }
+        
+        /* Enhanced Button Styles */
+        .btn-gold { 
+            background-color: var(--gold); 
+            color: #000;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+        }
+        .btn-gold:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--dark-blue);
+        }
+        .btn-outline-gold {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        /* Button States */
+        .btn-gold:focus, .btn-gold.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+        }
+        .btn-outline-light:focus, .btn-outline-light.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
+        }
+        .btn-outline-gold:focus, .btn-outline-gold.focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+        }
+        .btn-gold:active {
+            background-color: #ccaa00 !important;
+            transform: translateY(0);
+        }
+        .btn-outline-light:active {
+            background-color: var(--white) !important;
+            color: var(--dark-blue) !important;
+        }
+        .btn-outline-gold:active {
+            background-color: var(--gold) !important;
+            color: #000 !important;
+        }
+        
+        /* Card Styles */
         .program-card {
-            border: 1px solid rgba(0,0,0,0.1);
+            border: none;
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .program-card:hover {
             transform: translateY(-5px);
@@ -57,6 +117,7 @@
         }
         .program-img-container {
             position: relative;
+            overflow: hidden;
         }
         .program-icon {
             position: absolute;
@@ -68,6 +129,10 @@
             align-items: center;
             justify-content: center;
             border: 3px solid white;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
+            z-index: 2;
         }
         .section-title {
             font-weight: 600;
@@ -84,21 +149,15 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        .btn-outline-gold {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .btn-outline-gold:hover {
-            background-color: var(--gold);
-            color: #000;
-        }
         .highlight-card {
-            border: 1px solid rgba(0,0,0,0.1);
+            border: none;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: white;
         }
         .highlight-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .highlight-icon {
             width: 50px;
@@ -106,21 +165,84 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
         }
         .program-stats {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
         .stat-item {
             display: flex;
             align-items: center;
             gap: 5px;
+            background: rgba(255,215,0,0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
         }
         .program-impact ul {
             padding-left: 20px;
         }
         .program-impact li {
             margin-bottom: 5px;
+            position: relative;
+        }
+        .program-impact li:before {
+            content: '•';
+            color: var(--gold);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--dark-blue);
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .nav-link {
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: var(--gold);
+        }
+        .logo-circle {
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -128,13 +250,13 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
                 <div class="logo-circle floating-animation-slow me-2">
-                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
                 </div>
-                <span class="site-name">ASFA Foundation</span>
+                <span class="site-name">Arm Stretch Foundation Africa</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -143,7 +265,8 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link active" href="programs.html">Programs</a></li>
                     <li class="nav-item"><a class="nav-link" href="stories.html">Stories</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-gold ms-lg-3 mt-2 mt-lg-0" href="donate.html">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="donate.html">Donate</a></li>
                 </ul>
             </div>
         </div>
@@ -172,8 +295,8 @@
                     <div class="program-card h-100 floating-animation">
                         <div class="program-img-container">
                             <img src="images/program-education.jpg" alt="Children learning in classroom" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
-                            <div class="program-icon bg-gold text-white rounded-circle">
-                                <i class="fas fa-book-open fa-2x"></i>
+                            <div class="program-icon">
+                                <i class="fas fa-book-open fa-lg"></i>
                             </div>
                         </div>
                         <div class="p-4">
@@ -197,7 +320,9 @@
                                     <li>75% digital literacy</li>
                                 </ul>
                             </div>
-                            <a href="program-education.html" class="btn btn-outline-gold w-100 mt-3">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                            <a href="program-education.html" class="btn btn-outline-gold w-100 mt-3">
+                                <i class="fas fa-arrow-right me-2"></i>Learn More
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -207,8 +332,8 @@
                     <div class="program-card h-100 floating-animation">
                         <div class="program-img-container">
                             <img src="images/program-healthcare.jpg" alt="Doctor examining child" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
-                            <div class="program-icon bg-gold text-white rounded-circle">
-                                <i class="fas fa-heartbeat fa-2x"></i>
+                            <div class="program-icon">
+                                <i class="fas fa-heartbeat fa-lg"></i>
                             </div>
                         </div>
                         <div class="p-4">
@@ -232,7 +357,9 @@
                                     <li>24/7 emergency services</li>
                                 </ul>
                             </div>
-                            <a href="program-healthcare.html" class="btn btn-outline-gold w-100 mt-3">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                            <a href="program-healthcare.html" class="btn btn-outline-gold w-100 mt-3">
+                                <i class="fas fa-arrow-right me-2"></i>Learn More
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -242,8 +369,8 @@
                     <div class="program-card h-100 floating-animation">
                         <div class="program-img-container">
                             <img src="images/program-shelter.jpg" alt="Newly built homes" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
-                            <div class="program-icon bg-gold text-white rounded-circle">
-                                <i class="fas fa-home fa-2x"></i>
+                            <div class="program-icon">
+                                <i class="fas fa-home fa-lg"></i>
                             </div>
                         </div>
                         <div class="p-4">
@@ -267,7 +394,9 @@
                                     <li>15% economic recovery</li>
                                 </ul>
                             </div>
-                            <a href="program-shelter.html" class="btn btn-outline-gold w-100 mt-3">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                            <a href="program-shelter.html" class="btn btn-outline-gold w-100 mt-3">
+                                <i class="fas fa-arrow-right me-2"></i>Learn More
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -285,7 +414,7 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon bg-gold text-white rounded-circle mb-3">
+                        <div class="highlight-icon mb-3">
                             <i class="fas fa-award"></i>
                         </div>
                         <h4>Education Excellence</h4>
@@ -295,7 +424,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon bg-gold text-white rounded-circle mb-3">
+                        <div class="highlight-icon mb-3">
                             <i class="fas fa-hand-holding-medical"></i>
                         </div>
                         <h4>Health Milestone</h4>
@@ -305,7 +434,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon bg-gold text-white rounded-circle mb-3">
+                        <div class="highlight-icon mb-3">
                             <i class="fas fa-home"></i>
                         </div>
                         <h4>Shelter Expansion</h4>
@@ -322,14 +451,14 @@
         <div class="container">
             <h2 class="mb-4">Support Our Life-Changing Programs</h2>
             <p class="lead mb-4">Your contribution helps us expand our reach and impact more lives</p>
-            <div class="d-flex justify-content-center flex-wrap">
-                <a href="donate.html" class="btn btn-gold btn-lg mx-2 mb-2">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="donate.html" class="btn btn-gold btn-lg px-4 py-3">
                     <i class="fas fa-donate me-2"></i>Donate Now
                 </a>
-                <a href="volunteer.html" class="btn btn-outline-light btn-lg mx-2 mb-2">
+                <a href="https://forms.gle/aE5Tc7swzZ48ezrf9" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-hands-helping me-2"></i>Volunteer
                 </a>
-                <a href="partnerships.html" class="btn btn-outline-gold btn-lg mx-2 mb-2">
+                <a href="contact.html" class="btn btn-outline-gold btn-lg px-4 py-3">
                     <i class="fas fa-handshake me-2"></i>Partner With Us
                 </a>
             </div>
@@ -344,8 +473,8 @@
                     <h5 class="mb-3">About ASFA</h5>
                     <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
                     <div class="social-links">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
                         <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
                         <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
@@ -372,12 +501,15 @@
                 <div class="col-lg-3">
                     <h5 class="mb-3">Newsletter</h5>
                     <p>Subscribe to our updates</p>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                    <form action="https://forms.gle/17YfQNPgE7dXez73A" method="GET" target="_blank" class="newsletter-form needs-validation" novalidate>
+                        <div class="input-group mb-3 has-validation">
+                            <input type="email" class="form-control" placeholder="Your Email" name="entry.123456789" required>
                             <button class="btn btn-gold" type="submit">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
+                            <div class="invalid-feedback">
+                                Please provide a valid email
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -394,15 +526,37 @@
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Make navbar solid on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Form validation
+        document.querySelectorAll('.needs-validation').forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
     </script>
-</body>
+    
     <!-- Primary Meta Tags -->
-<meta name="description" content="Our Programs - Arm Stretch Foundation Africa's initiatives in education and healthcare.">
-<meta name="keywords" content="ASFA programs, Africa NGO projects">
-<title>Our Programs | Arm Stretch Foundation Africa</title>
+    <meta name="description" content="Our Programs - Arm Stretch Foundation Africa's initiatives in education and healthcare.">
+    <meta name="keywords" content="ASFA programs, Africa NGO projects">
+    <title>Our Programs | Arm Stretch Foundation Africa</title>
 
-<!-- Open Graph Tags -->
-<meta property="og:title" content="Our Programs | Arm Stretch Foundation Africa">
-<meta property="og:description" content="Explore our initiatives transforming African communities.">
-<meta property="og:url" content="https://armstretchfoundationafricaltd.org/programs.html">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Our Programs | Arm Stretch Foundation Africa">
+    <meta property="og:description" content="Explore our initiatives transforming African communities.">
+    <meta property="og:url" content="https://armstretchfoundationafricaltd.org/programs.html">
+</body>
 </html>
