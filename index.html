@@ -12,29 +12,52 @@
   <meta property="og:image" content="https://yourdomain.com/images/logo-social.jpg">
   <meta property="og:url" content="https://yourdomain.com">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#1E88E5">
-  <meta name="color-scheme" content="light dark">
-
-  <!-- Preload Critical Assets -->
+  <meta name="theme-color" content="#0077B6">
+  
+  <!-- Preload critical assets -->
   <link rel="preload" href="images/logo.png" as="image">
-  <link rel="preload" href="images/hero-video.mp4" as="video" type="video/mp4">
+  <link rel="preload" href="videos/hero-bg.mp4" as="video" type="video/mp4">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
   
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Critical CSS -->
+  <style>
+    /* Preloader styles */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Hide preloader when loaded */
+    body.loaded .preloader {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+  </style>
 </head>
 <body>
   <!-- Preloader -->
@@ -42,16 +65,6 @@
     <div class="loader">
       <svg viewBox="0 0 80 80">
         <circle cx="40" cy="40" r="32"></circle>
-      </svg>
-    </div>
-    <div class="loader triangle">
-      <svg viewBox="0 0 86 80">
-        <polygon points="43 8 79 72 7 72"></polygon>
-      </svg>
-    </div>
-    <div class="loader">
-      <svg viewBox="0 0 80 80">
-        <rect x="8" y="8" width="64" height="64"></rect>
       </svg>
     </div>
   </div>
@@ -62,22 +75,22 @@
       <nav class="navbar">
         <a href="index.html" class="logo">
           <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
-          <span>ASFA Foundation</span>
+          <span>Arm Stretch Foundation</span>
         </a>
         
         <div class="nav-menu">
           <ul class="nav-list">
             <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
             <li class="nav-item dropdown">
-              <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+              <a href="gallery.html" class="nav-link">Media <i class="fas fa-chevron-down"></i></a>
               <ul class="dropdown-menu">
-                <li><a href="programs.html#education">Education</a></li>
-                <li><a href="programs.html#healthcare">Healthcare</a></li>
-                <li><a href="programs.html#shelter">Shelter</a></li>
+                <li><a href="gallery.html">Photo Gallery</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="blog.html">Blog</a></li>
               </ul>
             </li>
-            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
             <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
             <li class="nav-item"><a href="donate.html" class="nav-link donate-btn">Donate</a></li>
           </ul>
@@ -92,12 +105,13 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Video Background -->
   <section class="hero">
     <div class="video-background">
       <video autoplay muted loop id="hero-video" playsinline>
-        <source src="images/hero-video.mp4" type="video/mp4">
-        <img src="images/hero-fallback.jpg" alt="ASFA Community Work">
+        <source src="videos/hero-bg.mp4" type="video/mp4">
+        <!-- Fallback image if video doesn't load -->
+        <img src="images/backgrounds/hero-fallback.jpg" alt="ASFA Community Work">
       </video>
       <div class="video-overlay"></div>
     </div>
@@ -126,7 +140,7 @@
     </div>
     
     <div class="scroll-down">
-      <a href="#mission" class="scroll-link" aria-label="Scroll down">
+      <a href="#welcome" class="scroll-link" aria-label="Scroll down">
         <span></span>
         <span></span>
         <span></span>
@@ -134,56 +148,134 @@
     </div>
   </section>
 
-  <!-- Mission Section -->
-  <section id="mission" class="section mission-section">
+  <!-- Welcome Section -->
+  <section id="welcome" class="section welcome-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Our Purpose</span>
-        <h2 class="section-title">Our Mission</h2>
-        <p class="section-subtitle">Promoting high self-esteem built through hope, love, and care</p>
+        <span class="section-tag">About Us</span>
+        <h2 class="section-title">Welcome to ASFA</h2>
+        <p class="section-subtitle">Arm Stretch Foundation Africa</p>
       </div>
       
-      <div class="mission-content">
-        <div class="mission-text">
-          <p>We are committed to empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa. Our approach focuses on creating long-term solutions that enable communities to thrive independently.</p>
+      <div class="welcome-content">
+        <div class="welcome-text">
+          <div class="mission-vision">
+            <div class="mv-card">
+              <div class="mv-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3>Our Mission</h3>
+              <p>"Promoting high self-esteem built through hope, love, and care within underrated communities to create sustainable change."</p>
+            </div>
+            
+            <div class="mv-card">
+              <div class="mv-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h3>Our Vision</h3>
+              <p>"A world where every individual in underprivileged communities has access to education, healthcare, and shelter."</p>
+            </div>
+          </div>
           
-          <div class="impact-stats">
-            <div class="stat-item">
-              <h3>100+</h3>
-              <p>Lives Impacted</p>
-            </div>
-            <div class="stat-item">
-              <h3>10+</h3>
-              <p>Communities Served</p>
-            </div>
-            <div class="stat-item">
-              <h3>1</h3>
-              <p>Years of Service</p>
-            </div>
+          <div class="welcome-buttons">
+            <a href="about.html" class="btn btn-outline">
+              <span>Learn More About Us</span>
+              <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="welcome-image">
+          <div class="image-frame">
+            <img src="images/welcome-image.jpg" alt="ASFA Team" width="600" height="400" loading="lazy">
+            <div class="frame-overlay"></div>
+            <div class="image-shape"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Programs Section -->
+  <!-- Core Values Section -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Foundation</span>
+        <h2 class="section-title">Core Values</h2>
+        <p class="section-subtitle">The pillars that guide everything we do</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Community</h3>
+          <p>We believe in the power of community and collective action.</p>
+          <div class="value-number">01</div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Compassion</h3>
+          <p>We serve with empathy and understanding for those in need.</p>
+          <div class="value-number">02</div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Integrity</h3>
+          <p>We maintain transparency and accountability in all our work.</p>
+          <div class="value-number">03</div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>We develop creative solutions to complex social problems.</p>
+          <div class="value-number">04</div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Partnership</h3>
+          <p>We collaborate with communities and organizations for greater impact.</p>
+          <div class="value-number">05</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Highlights Section -->
   <section class="section programs-section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">What We Do</span>
         <h2 class="section-title">Our Programs</h2>
-        <p class="section-subtitle">Sustainable initiatives creating lasting change</p>
+        <p class="section-subtitle">Transforming lives through various initiatives</p>
       </div>
       
       <div class="programs-grid">
         <div class="program-card">
           <div class="program-image">
-            <img src="images/program-education.jpg" alt="Education Program" loading="lazy">
+            <img src="images/programs/education.jpg" alt="Education Program" width="400" height="250" loading="lazy">
+            <div class="image-overlay"></div>
           </div>
           <div class="program-content">
             <h3>Education</h3>
             <p>Providing scholarships, learning materials, and infrastructure for underserved children.</p>
-            <a href="programs.html#education" class="btn btn-small">
+            <a href="programs.html" class="btn btn-small">
               <span>Learn More</span>
               <svg width="13px" height="10px" viewBox="0 0 13 10">
                 <path d="M1,5 L11,5"></path>
@@ -195,12 +287,13 @@
         
         <div class="program-card">
           <div class="program-image">
-            <img src="images/program-health.jpg" alt="Healthcare Program" loading="lazy">
+            <img src="images/programs/healthcare.jpg" alt="Healthcare Program" width="400" height="250" loading="lazy">
+            <div class="image-overlay"></div>
           </div>
           <div class="program-content">
             <h3>Healthcare</h3>
             <p>Mobile clinics, medical services, and health education for rural communities.</p>
-            <a href="programs.html#healthcare" class="btn btn-small">
+            <a href="programs.html" class="btn btn-small">
               <span>Learn More</span>
               <svg width="13px" height="10px" viewBox="0 0 13 10">
                 <path d="M1,5 L11,5"></path>
@@ -212,12 +305,13 @@
         
         <div class="program-card">
           <div class="program-image">
-            <img src="images/program-shelter.jpg" alt="Shelter Program" loading="lazy">
+            <img src="images/programs/shelter.jpg" alt="Shelter Program" width="400" height="250" loading="lazy">
+            <div class="image-overlay"></div>
           </div>
           <div class="program-content">
             <h3>Shelter</h3>
             <p>Emergency housing and sustainable shelter solutions for families in crisis.</p>
-            <a href="programs.html#shelter" class="btn btn-small">
+            <a href="programs.html" class="btn btn-small">
               <span>Learn More</span>
               <svg width="13px" height="10px" viewBox="0 0 13 10">
                 <path d="M1,5 L11,5"></path>
@@ -226,66 +320,101 @@
             </a>
           </div>
         </div>
+      </div>
+      
+      <div class="section-footer">
+        <a href="programs.html" class="btn btn-primary">
+          <span>View All Programs</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Impact Stories Section -->
-  <section class="section impact-section">
+  <section class="section stories-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Success Stories</span>
-        <h2 class="section-title">Impact Stories</h2>
-        <p class="section-subtitle">Real lives transformed through our initiatives</p>
+        <span class="section-tag">Our Impact</span>
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-subtitle">Transforming lives and communities</p>
       </div>
       
       <div class="stories-grid">
         <div class="story-card">
           <div class="story-image">
-            <img src="images/impact-education.jpg" alt="Education Impact" loading="lazy">
+            <img src="images/stories/education-story.jpg" alt="Education Success Story" width="400" height="250" loading="lazy">
+            <div class="story-date">
+              <span>15</span>
+              <span>JUN</span>
+            </div>
           </div>
           <div class="story-content">
-            <h3>Education Transformation</h3>
-            <p>How we helped 50 children return to school with full scholarships and supplies</p>
-            <a href="gallery.html" class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+            <h3><a href="#">50 Children Return to School</a></h3>
+            <p class="story-meta">By ASFA Team | Education</p>
+            <p>How we helped 50 children return to school with full scholarships and supplies.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         
         <div class="story-card">
           <div class="story-image">
-            <img src="images/impact-health.jpg" alt="Health Impact" loading="lazy">
+            <img src="images/stories/health-story.jpg" alt="Healthcare Success Story" width="400" height="250" loading="lazy">
+            <div class="story-date">
+              <span>08</span>
+              <span>JUN</span>
+            </div>
           </div>
           <div class="story-content">
-            <h3>Health Outreach</h3>
-            <p>Our mobile clinic served 200 patients in remote villages last month</p>
-            <a href="gallery.html" class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+            <h3><a href="#">Mobile Clinic Serves 200 Patients</a></h3>
+            <p class="story-meta">By Health Team | Healthcare</p>
+            <p>Our mobile clinic served 200 patients in remote villages last month.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         
         <div class="story-card">
           <div class="story-image">
-            <img src="images/impact-empowerment.jpg" alt="Empowerment Impact" loading="lazy">
+            <img src="images/stories/women-story.jpg" alt="Women's Empowerment Story" width="400" height="250" loading="lazy">
+            <div class="story-date">
+              <span>01</span>
+              <span>JUN</span>
+            </div>
           </div>
           <div class="story-content">
-            <h3>Women's Empowerment</h3>
-            <p>Vocational training program graduates starting their own businesses</p>
-            <a href="gallery.html" class="read-more">Read Story <i class="fas fa-arrow-right"></i></a>
+            <h3><a href="#">Women's Empowerment Success</a></h3>
+            <p class="story-meta">By Empowerment Team | Community</p>
+            <p>Vocational training program graduates starting their own businesses.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
+      </div>
+      
+      <div class="section-footer">
+        <a href="stories.html" class="btn btn-outline">
+          <span>View All Stories</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="section cta-section">
+  <!-- Donation Call-to-Action -->
+  <section class="section donation-cta">
     <div class="container">
       <div class="cta-content">
-        <span class="cta-tag">Get Involved</span>
-        <h2>Join Our Mission to Transform Lives</h2>
-        <p>Every contribution helps us reach more vulnerable communities with essential services and support.</p>
+        <span class="cta-tag">Partner With Us</span>
+        <h2>Support Community Development in Uganda</h2>
+        <p>Your generous giving enables us to reach more communities with education, healthcare, and shelter initiatives. Every donation makes a difference.</p>
         <div class="cta-buttons">
           <a href="donate.html" class="btn btn-primary">
-            <span>Donate Now</span>
+            <span>Give Online</span>
             <svg width="13px" height="10px" viewBox="0 0 13 10">
               <path d="M1,5 L11,5"></path>
               <polyline points="8 1 12 5 8 9"></polyline>
@@ -303,6 +432,34 @@
     </div>
   </section>
 
+  <!-- Newsletter Subscription -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-box">
+        <div class="newsletter-content">
+          <h2>Stay Connected</h2>
+          <p>Subscribe to our newsletter for updates, success stories, and program news.</p>
+        </div>
+        
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required aria-label="Your Name">
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required aria-label="Your Email">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <span>Subscribe</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-main">
@@ -310,7 +467,7 @@
         <div class="footer-grid">
           <div class="footer-col footer-about">
             <h3>About ASFA</h3>
-            <p>Arm Stretch Foundation Africa is a dynamic organization committed to empowering vulnerable communities through sustainable initiatives in Uganda.</p>
+            <p>Arm Stretch Foundation Africa is a dynamic, community-centered organization based in Kampala, Uganda, committed to empowering underprivileged communities.</p>
             <div class="footer-social">
               <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
               <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -335,19 +492,28 @@
             <h3>Contact Us</h3>
             <ul>
               <li><i class="fas fa-map-marker-alt"></i> Kasubi, Kampala, Uganda</li>
-              <li><i class="fas fa-phone-alt"></i> 0200900288</li>
+              <li><i class="fas fa-phone-alt"></i> 0200900288 / +256 748095503</li>
               <li><i class="fas fa-envelope"></i> asfafoundationltd@gmail.com</li>
               <li><i class="fab fa-whatsapp"></i> +256 748095503</li>
             </ul>
           </div>
           
-          <div class="footer-col footer-newsletter">
-            <h3>Newsletter</h3>
-            <p>Subscribe to our newsletter for updates on our work.</p>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Your Email" required>
-              <button type="submit" class="btn btn-small">Subscribe</button>
-            </form>
+          <div class="footer-col footer-service-times">
+            <h3>Office Hours</h3>
+            <ul>
+              <li>
+                <span>Monday - Friday</span>
+                <span>9:00 AM - 5:00 PM</span>
+              </li>
+              <li>
+                <span>Saturday</span>
+                <span>10:00 AM - 2:00 PM</span>
+              </li>
+              <li>
+                <span>Sunday</span>
+                <span>Closed</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -358,8 +524,8 @@
         <div class="footer-bottom-content">
           <p>&copy; <span id="current-year">2023</span> Arm Stretch Foundation Africa. All Rights Reserved.</p>
           <div class="footer-legal">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
           </div>
         </div>
       </div>
