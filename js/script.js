@@ -1,6 +1,8 @@
 /**
  * ASFA - Arm Stretch Foundation Africa
  * Main JavaScript File - Optimized
+ * 
+ * Contains all interactive functionality for the website
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -77,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
   function animateOnScroll() {
     const elements = document.querySelectorAll(
       '.hero-content, .section-header, .value-card, .program-card, ' +
-      '.story-card, [data-aos]'
+      '.story-card, .mv-card, .welcome-text, .welcome-image, ' +
+      '[data-aos]'
     );
     
     elements.forEach(element => {
@@ -94,6 +97,13 @@ document.addEventListener('DOMContentLoaded', function() {
     .forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+  document.querySelectorAll('.welcome-text, .welcome-image')
+    .forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(-20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
 
@@ -196,10 +206,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     lazyImages.forEach(img => imageObserver.observe(img));
   }
+
+  // Copy Button Functionality
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const number = this.getAttribute('data-number');
+      navigator.clipboard.writeText(number).then(() => {
+        const originalText = this.textContent;
+        this.textContent = 'Copied!';
+        setTimeout(() => this.textContent = originalText, 2000);
+      });
+    });
+  });
 });
 
 // Initialize plugins on window load
 window.addEventListener('load', function() {
+  // Initialize lightbox if available
+  if (typeof lightbox !== 'undefined') {
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'albumLabel': 'Image %1 of %2'
+    });
+  }
+
   // Counter animation
   const counters = document.querySelectorAll('.counter');
   counters.forEach(counter => {
@@ -221,3 +253,4 @@ window.addEventListener('load', function() {
     }
   });
 });
+
