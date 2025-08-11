@@ -1,191 +1,223 @@
-// Animate progress bar with smoother animation and better practices
-function animateProgressBar() {
-  const progressBar = document.querySelector('.progress-bar');
-  if (!progressBar) return; // Exit if no progress bar found
-  
-  const targetWidth = parseInt(progressBar.getAttribute('aria-valuenow'));
-  const animationDuration = 1000; // 1 second duration
-  const startTime = performance.now();
-  
-  function updateProgress(currentTime) {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / animationDuration, 1);
-      const currentWidth = Math.floor(progress * targetWidth);
-      
-      progressBar.style.width = `${currentWidth}%`;
-      progressBar.textContent = `${currentWidth}%`;
-      
-      if (progress < 1) {
-          requestAnimationFrame(updateProgress);
-      }
+/**
+ * ASFA - Arm Stretch Foundation Africa
+ * Main JavaScript File - Optimized
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Preloader
+  const preloader = document.querySelector('.preloader');
+  if (preloader) {
+    window.addEventListener('load', function() {
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      setTimeout(() => preloader.style.display = 'none', 500);
+    });
   }
-  
-  requestAnimationFrame(updateProgress);
-}
 
-// Trigger on page load with check for reduced motion preference
-window.addEventListener('load', () => {
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      animateProgressBar();
-  } else {
-      // For users who prefer reduced motion, set immediately
-      const progressBar = document.querySelector('.progress-bar');
-      if (progressBar) {
-          const targetWidth = progressBar.getAttribute('aria-valuenow');
-          progressBar.style.width = `${targetWidth}%`;
-          progressBar.textContent = `${targetWidth}%`;
-      }
-  }
-});
+  // Mobile Navigation
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const dropdowns = document.querySelectorAll('.dropdown');
 
-// Newsletter Form Submission with basic validation
-document.querySelector('.newsletter-form')?.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const emailInput = this.querySelector('input[type="email"]');
-  const email = emailInput.value.trim();
-  
-  // Basic email validation
-  if (!email || !email.includes('@')) {
-      emailInput.classList.add('error');
-      emailInput.setAttribute('aria-invalid', 'true');
-      return;
-  }
-  
-  // Remove any error state
-  emailInput.classList.remove('error');
-  emailInput.setAttribute('aria-invalid', 'false');
-  
-  // Show success message (consider replacing alert with a proper UI message)
-  alert(`Thank you for subscribing with ${email}! We'll keep you updated.`);
-  
-  // Reset form
-  this.reset();
-  
-  // Focus management for better accessibility
-  emailInput.focus();
-});
-
-
-
-// Scripts
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
-<script>
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    // PesaPal integration
-    document.addEventListener('DOMContentLoaded', function() {
-        // Enable button by default
-        const pesapalButton = document.getElementById('pesapal-payment-button');
-        pesapalButton.disabled = false;
-
-        // PesaPal amount selection
-        const pesapalAmountButtons = document.querySelectorAll('.pesapal-amount');
-        pesapalAmountButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('pesapalCustomAmount').value = this.dataset.amount;
-                validatePesapalForm();
-            });
-        });
-
-        // PesaPal custom amount handling
-        document.getElementById('pesapalCustomAmount').addEventListener('input', function() {
-            pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
-            validatePesapalForm();
-        });
-
-        // Add input listeners for all required fields
-        const requiredFields = ['pesapalFirstName', 'pesapalLastName', 'pesapalEmail', 'pesapalPhone'];
-        requiredFields.forEach(fieldId => {
-            document.getElementById(fieldId).addEventListener('input', validatePesapalForm);
-        });
-
-        // Form validation function
-        function validatePesapalForm() {
-            const amount = document.getElementById('pesapalCustomAmount').value || 
-                          document.querySelector('.pesapal-amount.active')?.dataset.amount;
-            const firstName = document.getElementById('pesapalFirstName').value;
-            const lastName = document.getElementById('pesapalLastName').value;
-            const email = document.getElementById('pesapalEmail').value;
-            const phone = document.getElementById('pesapalPhone').value;
-            
-            const isValid = amount && firstName && lastName && email && phone;
-            pesapalButton.disabled = !isValid;
-        }
-
-        // Initial validation check
-        validatePesapalForm();
-
-        // PesaPal payment button handler
-        pesapalButton.addEventListener('click', function() {
-            if (this.disabled) return;
-            
-            const amount = document.getElementById('pesapalCustomAmount').value || 
-                          document.querySelector('.pesapal-amount.active').dataset.amount;
-            const firstName = document.getElementById('pesapalFirstName').value;
-            const lastName = document.getElementById('pesapalLastName').value;
-            const email = document.getElementById('pesapalEmail').value;
-            const phone = document.getElementById('pesapalPhone').value;
-            
-            initiatePesapalPayment(amount, firstName, lastName, email, phone);
-        });
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    function initiatePesapalPayment(amount, firstName, lastName, email, phone) {
-        // PesaPal API credentials
-        const consumerKey = '2wox6FcqZuKDvXKiIY0oay2mDoiDhnPa';
-        const consumerSecret = 'u1VQmY/clDp5pz5TqcdlPvKsgxI=';
-        
-        // Generate a unique reference
-        const reference = 'ASFA-' + Date.now();
-        
-        // Payment details
-        const desc = "Donation to ASFA Foundation";
-        const callbackUrl = "https://armstretchfoundationafricaltd.org/donate.html";
-        
-        // Check if Pesapal is loaded
-        if (typeof Pesapal === 'undefined') {
-            console.error("PesaPal script not loaded!");
-            alert("Payment service is currently unavailable. Please try again later.");
-            return;
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (hamburger.classList.contains('active')) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+          document.body.style.overflow = '';
         }
-        
-        // Initialize PesaPal
-        Pesapal.initialize({
-            credentials: {
-                consumer_key: consumerKey,
-                consumer_secret: consumerSecret
-            },
-            environment: "production"
-        });
-        
-        // Submit the order
-        Pesapal.submitOrder({
-            params: {
-                Amount: amount,
-                Description: desc,
-                Type: "MERCHANT",
-                Reference: reference,
-                FirstName: firstName,
-                LastName: lastName,
-                Email: email,
-                PhoneNumber: phone,
-                Currency: "USD",
-                CallBackURL: callbackUrl
-            },
-            onSuccess: function(response) {
-                console.log("PesaPal success:", response);
-                window.location.href = response.redirect_url;
-            },
-            onError: function(error) {
-                console.error("PesaPal error:", error);
-                alert("Error initiating payment. Please try again.");
-            }
-        });
-    }
+      });
+    });
 
-    // Rest of your existing PayPal and callback code...
-</script>
+    dropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('.nav-link');
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+          dropdowns.forEach(other => {
+            if (other !== dropdown) other.classList.remove('active');
+          });
+        }
+      });
+    });
+  }
+
+  // Sticky Header
+  const header = document.querySelector('.header');
+  if (header) {
+    const headerHeight = header.offsetHeight;
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > headerHeight);
+    });
+  }
+
+  // Back to Top Button
+  const backToTopBtn = document.querySelector('#backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', function() {
+      backToTopBtn.classList.toggle('active', window.scrollY > 300);
+    });
+
+    backToTopBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Scroll Reveal Animations
+  function animateOnScroll() {
+    const elements = document.querySelectorAll(
+      '.hero-content, .section-header, .value-card, .program-card, ' +
+      '.story-card, [data-aos]'
+    );
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      if (elementPosition < window.innerHeight - 100) {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }
+    });
+  }
+
+  // Initialize elements with hidden state
+  document.querySelectorAll('[data-aos], .hero-content, .section-header, .value-card, .program-card, .story-card')
+    .forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+  animateOnScroll();
+  window.addEventListener('scroll', animateOnScroll);
+
+  // Active Link on Scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', function() {
+    const scrollY = window.pageYOffset;
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 100;
+      const sectionId = section.getAttribute('id');
+      const navLink = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+      
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight && navLink) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLink.classList.add('active');
+      }
+    });
+  });
+
+  // Video Background Fallback
+  const video = document.getElementById('hero-video');
+  if (video) {
+    video.addEventListener('error', function() {
+      const fallbackImage = this.querySelector('img');
+      if (fallbackImage) {
+        this.parentNode.innerHTML = `
+          <div class="image-background" style="background-image: url('${fallbackImage.src}')">
+            <div class="video-overlay"></div>
+          </div>
+        `;
+      }
+    });
+    
+    video.play().catch(error => console.log('Video autoplay failed:', error));
+  }
+
+  // Form Submission Handling
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      
+      fetch(this.getAttribute('action'), {
+        method: this.getAttribute('method'),
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => response.ok ? response.json() : Promise.reject('Network response was not ok'))
+      .then(data => showFormMessage(this, 'success'))
+      .catch(error => {
+        console.error('Error:', error);
+        showFormMessage(this, 'error');
+      });
+    });
+  });
+
+  function showFormMessage(form, type) {
+    const message = document.createElement('div');
+    message.className = `form-${type}`;
+    message.innerHTML = type === 'success' ? `
+      <div class="success-content">
+        <i class="fas fa-check-circle"></i>
+        <p>Thank you! Your message has been sent successfully.</p>
+      </div>
+    ` : 'There was a problem submitting your form. Please try again.';
+    
+    form.parentNode.insertBefore(message, form.nextSibling);
+    if (type === 'success') form.reset();
+    
+    setTimeout(() => {
+      message.style.opacity = '0';
+      setTimeout(() => message.remove(), 300);
+    }, 5000);
+  }
+
+  // Dynamic Year in Footer
+  const yearElement = document.querySelector('.footer-bottom p');
+  if (yearElement) {
+    yearElement.innerHTML = yearElement.innerHTML.replace('2023', new Date().getFullYear());
+  }
+
+  // Lazy Loading for Images
+  if ('IntersectionObserver' in window) {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+});
+
+// Initialize plugins on window load
+window.addEventListener('load', function() {
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / 100;
+    
+    if (count < target) {
+      const updateCount = () => {
+        const currentCount = +counter.innerText;
+        if (currentCount < target) {
+          counter.innerText = Math.ceil(currentCount + increment);
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    }
+  });
+});
