@@ -1,597 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate | ASFA Foundation</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.3">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support Arm Stretch Foundation Africa - Donate to empower communities through education, healthcare and shelter initiatives">
+  <title>Donate | Arm Stretch Foundation Africa</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta property="og:title" content="Donate | Arm Stretch Foundation Africa">
+  <meta property="og:description" content="Your donation helps us transform lives in Africa through education, healthcare and shelter programs">
+  <meta property="og:image" content="https://armstretchfoundationafricaltd.org/images/donate-social.jpg">
+  <meta property="og:url" content="https://armstretchfoundationafricaltd.org/donate.html">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Donate Page Specific CSS -->
+  <style>
+    /* Donate Header */
+    .donate-header {
+      background: linear-gradient(rgba(0, 174, 239, 0.8), rgba(0, 174, 239, 0.9)), url('images/donate-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      margin-top: -80px;
+      padding-top: 80px;
+    }
     
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --gold: #FFD700;
-            --dark-blue: #003366;
-            --light-blue: #e6f0ff;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            padding-top: 70px;
-        }
-        .bg-dark-blue {
-            background-color: var(--dark-blue) !important;
-        }
-        .text-gold {
-            color: var(--gold);
-        }
-        .floating-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        .floating-animation-slow {
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .donate-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('images/donate-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        /* Enhanced Button Styles */
-        .btn-gold { 
-            background-color: var(--gold); 
-            color: #000;
-            font-weight: 600;
-            border: none;
-            transition: var(--transition);
-        }
-        .btn-gold:hover {
-            background-color: #e6c200;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .btn-outline-light {
-            border: 2px solid var(--white);
-            color: var(--white);
-            transition: var(--transition);
-        }
-        .btn-outline-light:hover {
-            background: var(--white);
-            color: var(--dark-blue);
-        }
-        .btn-outline-gold {
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            transition: var(--transition);
-        }
-        .btn-outline-gold:hover {
-            background: var(--gold);
-            color: #000;
-        }
-        
-        /* Button States */
-        .btn-gold:focus, .btn-gold.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
-        }
-        .btn-outline-light:focus, .btn-outline-light.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
-        }
-        .btn-outline-gold:focus, .btn-outline-gold.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
-        }
-        .btn-gold:active {
-            background-color: #ccaa00 !important;
-            transform: translateY(0);
-        }
-        .btn-outline-light:active {
-            background-color: var(--white) !important;
-            color: var(--dark-blue) !important;
-        }
-        .btn-outline-gold:active {
-            background-color: var(--gold) !important;
-            color: #000 !important;
-        }
-        
-        /* Progress Bar */
-        .progress-bar.bg-gold {
-            background-color: var(--gold) !important;
-        }
-        
-        /* Card Styles */
-        .payment-option {
-            border: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            background-color: white;
-        }
-        .payment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--gold);
-            color: var(--dark-blue);
-            border-radius: 50%;
-        }
-        
-        /* Navbar Styles */
-        .navbar {
-            background-color: var(--dark-blue);
-            padding: 0.8rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        .navbar-scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .nav-link {
-            color: var(--white);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: var(--gold);
-        }
-        .logo-circle {
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Tab Styles */
-        .nav-tabs .nav-link {
-            color: var(--dark-blue);
-            border: none;
-            padding: 12px 20px;
-            font-weight: 500;
-        }
-        .nav-tabs .nav-link.active {
-            color: var(--gold);
-            background-color: transparent;
-            border-bottom: 3px solid var(--gold);
-        }
-        .nav-tabs .nav-link:hover:not(.active) {
-            color: var(--gold);
-            border-bottom: 3px solid rgba(255, 215, 0, 0.3);
-        }
-        
-        /* Impact Items */
-        .impact-item {
-            transition: all 0.3s ease;
-        }
-        .impact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
+    /* Progress Bar */
+    .impact-meter {
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .progress-bar.bg-orange {
+      background-color: var(--orange) !important;
+    }
+    
+    /* Payment Options */
+    .payment-option {
+      border: none;
+      border-radius: 12px;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      background-color: var(--white);
+    }
+    
+    .payment-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--orange);
+      color: var(--white);
+      border-radius: 50%;
+    }
+    
+    /* Tab Styles */
+    .nav-tabs .nav-link {
+      color: var(--black);
+      border: none;
+      padding: 12px 20px;
+      font-weight: 500;
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: var(--orange);
+      background-color: transparent;
+      border-bottom: 3px solid var(--orange);
+    }
+    
+    .nav-tabs .nav-link:hover:not(.active) {
+      color: var(--orange);
+      border-bottom: 3px solid rgba(247, 147, 30, 0.3);
+    }
+    
+    /* Impact Items */
+    .impact-item {
+      transition: var(--transition);
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .impact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Animations */
+    .floating-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .floating-animation-slow {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
-                <div class="logo-circle floating-animation-slow me-2">
-                    <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
-                </div>
-                <span class="site-name">Arm Stretch Foundation Africa</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-circle">
+          <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
         </div>
-    </nav>
+        <span class="site-name">Arm Stretch Foundation Africa</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="donate.html">Donate</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-sky-blue px-4" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Page Header -->
-    <header class="donate-header py-5 text-white">
+  <!-- Page Header -->
+  <header class="donate-header py-5 text-white">
+    <div class="container text-center">
+      <h1 class="display-4 mb-3 floating-animation-slow">Support Our Mission</h1>
+      <p class="lead">Your generosity changes lives every day</p>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center bg-transparent">
+          <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+          <li class="breadcrumb-item active text-orange" aria-current="page">Donate</li>
+        </ol>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Donation Options -->
+  <main class="py-5 bg-light-gray">
+    <div class="container">
+      <!-- Impact Meter -->
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+          <div class="impact-meter bg-white p-4 rounded shadow floating-animation">
+            <h3 class="text-center mb-3">Our 2025 Goal: $60,000</h3>
+            <div class="progress mb-3" style="height: 30px;">
+              <div class="progress-bar bg-orange progress-bar-striped progress-bar-animated" 
+                   role="progressbar" style="width: 10%;" 
+                   aria-valuenow="1000" aria-valuemin="0" aria-valuemax="10000">
+                <span class="progress-text">$50 Raised</span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <small>0%</small>
+              <small>100%</small>
+            </div>
+            <p class="text-center text-muted mt-2">Your donation helps educate 100+ children this year</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Methods Tabs -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <ul class="nav nav-tabs justify-content-center mb-4" id="donationTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab">
+                <i class="fas fa-mobile-alt me-2"></i>Mobile Money
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button" role="tab">
+                <i class="fas fa-university me-2"></i>Bank Transfer
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button" role="tab">
+                <i class="fab fa-paypal me-2"></i>PayPal
+              </button>
+            </li>
+          </ul>
+
+          <!-- Tab Content -->
+          <div class="tab-content" id="donationTabsContent">
+            <!-- Mobile Money -->
+            <div class="tab-pane fade show active" id="mobile" role="tabpanel">
+              <div class="row g-4">
+                <!-- MTN Mobile Money -->
+                <div class="col-md-6">
+                  <div class="payment-option text-center p-4 h-100 floating-animation">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                      <img src="images/mtn-momo-small.png" alt="MTN Mobile Money" class="img-fluid me-2" style="height:30px">
+                      <h4 class="m-0">MTN Mobile Money</h4>
+                    </div>
+                    <p class="text-muted">Uganda</p>
+                    <div class="payment-details bg-light-gray p-3 rounded mb-3">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span>Merchant Code:</span>
+                        <strong class="text-orange">305790</strong>
+                      </div>
+                      <div class="d-flex justify-content-between mb-2">
+                        <span>Name:</span>
+                        <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
+                      </div>
+                      <hr class="my-2">
+                      <div class="text-start">
+                        <h6 class="text-orange mb-2">Payment Steps:</h6>
+                        <ol class="list-group list-group-numbered">
+                          <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*165*3#</strong></li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount</li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Enter Reference: <strong>2</strong></li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-sky-blue w-100 mt-2" onclick="copyToClipboard('305790')">
+                      <i class="fas fa-copy me-2"></i>Copy Merchant Code
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Airtel Money -->
+                <div class="col-md-6">
+                  <div class="payment-option text-center p-4 h-100 floating-animation">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                      <img src="images/airtel-money-small.png" alt="Airtel Money" class="img-fluid me-2" style="height:30px">
+                      <h4 class="m-0">Airtel Money</h4>
+                    </div>
+                    <p class="text-muted">Uganda</p>
+                    <div class="payment-details bg-light-gray p-3 rounded mb-3">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span>Merchant Code:</span>
+                        <strong class="text-orange">4392017</strong>
+                      </div>
+                      <div class="d-flex justify-content-between mb-2">
+                        <span>Name:</span>
+                        <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
+                      </div>
+                      <hr class="my-2">
+                      <div class="text-start">
+                        <h6 class="text-orange mb-2">Payment Steps:</h6>
+                        <ol class="list-group list-group-numbered">
+                          <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*185*9#</strong> then press <strong>Yes</strong></li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount then press <strong>Yes</strong></li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Reference: <strong>2</strong> then press <strong>Yes</strong></li>
+                          <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-sky-blue w-100 mt-2" onclick="copyToClipboard('4392017')">
+                      <i class="fas fa-copy me-2"></i>Copy Merchant Code
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank Transfer -->
+            <div class="tab-pane fade" id="bank" role="tabpanel">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="payment-option p-4 floating-animation">
+                    <h3 class="text-center mb-4"><i class="fas fa-university text-orange me-2"></i>Bank Transfer</h3>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <tbody>
+                          <tr>
+                            <th class="bg-light-gray">Bank Name</th>
+                            <td>Equity Bank Uganda</td>
+                          </tr>
+                          <tr>
+                            <th class="bg-light-gray">Account Name</th>
+                            <td>The Armstretch Foundation Africa LTD</td>
+                          </tr>
+                          <tr>
+                            <th class="bg-light-gray">Account Number</th>
+                            <td>1052203406633</td>
+                          </tr>
+                          <tr>
+                            <th class="bg-light-gray">Branch</th>
+                            <td>Nansana Branch</td>
+                          </tr>
+                          <tr>
+                            <th class="bg-light-gray">Currency</th>
+                            <td>USD / UGX</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="alert alert-info mt-3">
+                      <i class="fas fa-info-circle me-2"></i>
+                      <strong>For international transfers:</strong> Include "ASFA Donation" in reference
+                    </div>
+                    <button class="btn btn-outline-sky-blue w-100 mt-2">
+                      <i class="fas fa-download me-2"></i>Download Bank Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PayPal -->
+            <div class="tab-pane fade" id="paypal" role="tabpanel">
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                  <div class="payment-option p-4 floating-animation text-center">
+                    <h3 class="mb-4"><i class="fab fa-paypal text-orange me-2"></i>PayPal Donation</h3>
+                    <p class="mb-4">Click the button below to make a secure donation via PayPal</p>
+                    
+                    <div class="d-grid gap-2">
+                      <a href="https://www.paypal.com/donate?hosted_button_id=ULXMDEN93C7MQ" 
+                         class="btn btn-orange btn-lg py-3" 
+                         target="_blank"
+                         rel="noopener noreferrer">
+                          <i class="fab fa-paypal me-2"></i> Donate with PayPal
+                      </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" 
+                           alt="PayPal Acceptance Mark" 
+                           class="img-fluid" 
+                           style="max-width: 200px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donation Impact -->
+      <section class="py-5 mt-5 bg-white rounded">
         <div class="container text-center">
-            <h1 class="display-4 mb-3 floating-animation-slow">Support Our Mission</h1>
-            <p class="lead">Your generosity changes lives every day</p>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center bg-transparent">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item active text-gold" aria-current="page">Donate</li>
-                </ol>
-            </nav>
+          <h2 class="mb-4">Your Donation Makes an Impact</h2>
+          <div class="row g-4">
+            <div class="col-md-3">
+              <div class="impact-item p-4 h-100 floating-animation">
+                <div class="icon-box mx-auto mb-3">
+                  <i class="fas fa-book fa-2x"></i>
+                </div>
+                <h4 class="text-orange">$50</h4>
+                <p>School supplies for 1 child</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="impact-item p-4 h-100 floating-animation">
+                <div class="icon-box mx-auto mb-3">
+                  <i class="fas fa-utensils fa-2x"></i>
+                </div>
+                <h4 class="text-orange">$100</h4>
+                <p>Semester meals for a student</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="impact-item p-4 h-100 floating-animation">
+                <div class="icon-box mx-auto mb-3">
+                  <i class="fas fa-home fa-2x"></i>
+                </div>
+                <h4 class="text-orange">$200</h4>
+                <p>Shelter for a family for 1 month</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="impact-item p-4 h-100 floating-animation">
+                <div class="icon-box mx-auto mb-3">
+                  <i class="fas fa-stethoscope fa-2x"></i>
+                </div>
+                <h4 class="text-orange">$1000</h4>
+                <p>Medical supplies for a village</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+      </section>
+    </div>
+  </main>
 
-    <!-- Donation Options -->
-    <main class="py-5">
-        <div class="container">
-            <!-- Impact Meter -->
-            <div class="row mb-5">
-                <div class="col-lg-8 mx-auto">
-                    <div class="impact-meter bg-light p-4 rounded shadow floating-animation">
-                        <h3 class="text-center mb-3">Our 2025 Goal: $60,000</h3>
-                        <div class="progress mb-3" style="height: 30px;">
-                            <div class="progress-bar bg-gold progress-bar-striped progress-bar-animated" 
-                                 role="progressbar" style="width: 10%;" 
-                                 aria-valuenow="1000" aria-valuemin="0" aria-valuemax="10000">
-                                <span class="progress-text">$50 Raised</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <small>0%</small>
-                            <small>100%</small>
-                        </div>
-                        <p class="text-center text-muted mt-2">Your donation helps educate 100+ children this year</p>
-                    </div>
-                </div>
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="mb-3">About ASFA</h5>
+          <div class="d-flex align-items-center mb-3">
+            <div class="logo-circle me-3">
+              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="lazy">
             </div>
-
-            <!-- Payment Methods Tabs -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <ul class="nav nav-tabs justify-content-center mb-4" id="donationTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab">
-                                <i class="fas fa-mobile-alt me-2"></i>Mobile Money
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button" role="tab">
-                                <i class="fas fa-university me-2"></i>Bank Transfer
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button" role="tab">
-                                <i class="fab fa-paypal me-2"></i>PayPal
-                            </button>
-                        </li>
-                    </ul>
-
-                    <!-- Tab Content -->
-                    <div class="tab-content" id="donationTabsContent">
-                        <!-- Mobile Money -->
-                        <div class="tab-pane fade show active" id="mobile" role="tabpanel">
-                            <div class="row g-4">
-                                <!-- MTN Mobile Money -->
-                                <div class="col-md-6">
-                                    <div class="payment-option text-center p-4 h-100 floating-animation">
-                                        <div class="d-flex justify-content-center align-items-center mb-3">
-                                            <img src="images/mtn-momo-small.png" alt="MTN Mobile Money" class="img-fluid me-2" style="height:30px">
-                                            <h4 class="m-0">MTN Mobile Money</h4>
-                                        </div>
-                                        <p class="text-muted">Uganda</p>
-                                        <div class="payment-details bg-light p-3 rounded mb-3">
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Merchant Code:</span>
-                                                <strong class="text-gold">305790</strong>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Name:</span>
-                                                <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
-                                            </div>
-                                            <hr class="my-2">
-                                            <div class="text-start">
-                                                <h6 class="text-gold mb-2">Payment Steps:</h6>
-                                                <ol class="list-group list-group-numbered">
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*165*3#</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Reference: <strong>2</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
-                                                </ol>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-outline-gold w-100 mt-2" onclick="copyToClipboard('305790')">
-                                            <i class="fas fa-copy me-2"></i>Copy Merchant Code
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Airtel Money -->
-                                <div class="col-md-6">
-                                    <div class="payment-option text-center p-4 h-100 floating-animation">
-                                        <div class="d-flex justify-content-center align-items-center mb-3">
-                                            <img src="images/airtel-money-small.png" alt="Airtel Money" class="img-fluid me-2" style="height:30px">
-                                            <h4 class="m-0">Airtel Money</h4>
-                                        </div>
-                                        <p class="text-muted">Uganda</p>
-                                        <div class="payment-details bg-light p-3 rounded mb-3">
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Merchant Code:</span>
-                                                <strong class="text-gold">4392017</strong>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span>Name:</span>
-                                                <strong>THE ARM STRETCH FOUNDATION AFRICA LTD</strong>
-                                            </div>
-                                            <hr class="my-2">
-                                            <div class="text-start">
-                                                <h6 class="text-gold mb-2">Payment Steps:</h6>
-                                                <ol class="list-group list-group-numbered">
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Dial <strong>*185*9#</strong> then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Merchant Code above</li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Enter Amount then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Reference: <strong>2</strong> then press <strong>Yes</strong></li>
-                                                    <li class="list-group-item border-0 p-0 bg-transparent">Confirm your PIN</li>
-                                                </ol>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-outline-gold w-100 mt-2" onclick="copyToClipboard('4392017')">
-                                            <i class="fas fa-copy me-2"></i>Copy Merchant Code
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bank Transfer -->
-                        <div class="tab-pane fade" id="bank" role="tabpanel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="payment-option p-4 floating-animation">
-                                        <h3 class="text-center mb-4"><i class="fas fa-university text-gold me-2"></i>Bank Transfer</h3>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <th class="bg-light">Bank Name</th>
-                                                        <td>Equity Bank Uganda</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Account Name</th>
-                                                        <td>The Armstretch Foundation Africa LTD</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Account Number</th>
-                                                        <td>1052203406633</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Branch</th>
-                                                        <td>Nansana Branch</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-light">Currency</th>
-                                                        <td>USD / UGX</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="alert alert-info mt-3">
-                                            <i class="fas fa-info-circle me-2"></i>
-                                            <strong>For international transfers:</strong> Include "ASFA Donation" in reference
-                                        </div>
-                                        <button class="btn btn-outline-gold w-100 mt-2">
-                                            <i class="fas fa-download me-2"></i>Download Bank Details
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PayPal -->
-                        <div class="tab-pane fade" id="paypal" role="tabpanel">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="payment-option p-4 floating-animation text-center">
-                                        <h3 class="mb-4"><i class="fab fa-paypal text-gold me-2"></i>PayPal Donation</h3>
-                                        <p class="mb-4">Click the button below to make a secure donation via PayPal</p>
-                                        
-                                        <div class="d-grid gap-2">
-                                            <a href="https://www.paypal.com/donate?hosted_button_id=ULXMDEN93C7MQ" 
-                                               class="btn btn-gold btn-lg py-3" 
-                                               target="_blank"
-                                               rel="noopener noreferrer">
-                                                <i class="fab fa-paypal me-2"></i> Donate with PayPal
-                                            </a>
-                                        </div>
-                                        
-                                        <div class="mt-4">
-                                            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" 
-                                                 alt="PayPal Acceptance Mark" 
-                                                 class="img-fluid" 
-                                                 style="max-width: 200px;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Donation Impact -->
-            <section class="py-5 mt-5 bg-light rounded">
-                <div class="container text-center">
-                    <h2 class="mb-4">Your Donation Makes an Impact</h2>
-                    <div class="row g-4">
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box mx-auto mb-3">
-                                    <i class="fas fa-book fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$50</h4>
-                                <p>School supplies for 1 child</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box mx-auto mb-3">
-                                    <i class="fas fa-utensils fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$100</h4>
-                                <p>Semester meals for a student</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box mx-auto mb-3">
-                                    <i class="fas fa-home fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$200</h4>
-                                <p>Shelter for a family for 1 month</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="impact-item p-4 h-100 floating-animation">
-                                <div class="icon-box mx-auto mb-3">
-                                    <i class="fas fa-stethoscope fa-2x"></i>
-                                </div>
-                                <h4 class="text-gold">$1000</h4>
-                                <p>Medical supplies for a village</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <span class="fw-bold text-white">Arm Stretch Foundation Africa Ltd</span>
+          </div>
+          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-2" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/AsfaFoundation" class="text-white me-2" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark-blue text-white">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="mb-3">About ASFA</h5>
-                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
-                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
-                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
-                        <li class="nav-item mb-2"><a href="donate.html" class="nav-link p-0 text-white">Donate</a></li>
-                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-3">Contact Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-                        <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-                        <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
-                        <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-3">Newsletter</h5>
-                    <p>Subscribe to our updates</p>
-                    <form action="https://forms.gle/17YfQNPgE7dXez73A" method="GET" target="_blank" class="newsletter-form needs-validation" novalidate>
-                        <div class="input-group mb-3 has-validation">
-                            <input type="email" class="form-control" placeholder="Your Email" name="entry.123456789" required>
-                            <button class="btn btn-gold" type="submit">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                            <div class="invalid-feedback">
-                                Please provide a valid email
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
-            </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="nav flex-column footer-links">
+            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0">Home</a></li>
+            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0">About</a></li>
+            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0">Programs</a></li>
+            <li class="nav-item mb-2"><a href="donate.html" class="nav-link p-0">Donate</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link p-0">Contact</a></li>
+          </ul>
         </div>
-    </footer>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Contact Us</h5>
+          <ul class="nav flex-column footer-links">
+            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
+            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
+            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
+            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Newsletter</h5>
+          <p>Subscribe to our newsletter for updates on our work.</p>
+          <form class="newsletter-form">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+              <button class="btn btn-sky-blue" type="submit">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Make navbar solid on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        });
-        
-        // Form validation
-        document.querySelectorAll('.needs-validation').forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-        
-        // Copy to clipboard function
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                // Show tooltip or alert
-                alert("Copied to clipboard: " + text);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
-    </script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
     
-    <!-- Primary Meta Tags -->
-    <meta name="description" content="Support Arm Stretch Foundation Africa - Donate to empower communities through education and healthcare.">
-    <meta name="keywords" content="donate ASFA, Africa charity donation">
-    <title>Donate | Arm Stretch Foundation Africa</title>
-
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Donate | Arm Stretch Foundation Africa">
-    <meta property="og:description" content="Your donation helps us transform lives in Africa.">
-    <meta property="og:url" content="https://armstretchfoundationafricaltd.org/donate.html">
+    // Copy to clipboard function
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Show tooltip or alert
+        alert("Copied to clipboard: " + text);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
 </body>
 </html>
