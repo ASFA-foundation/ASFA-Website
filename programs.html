@@ -3,260 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Programs | ASFA Foundation</title>
+    <title>Our Programs | Arm Stretch Foundation Africa</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover Arm Stretch Foundation Africa's programs in education, healthcare, and shelter initiatives across Uganda">
+    <meta property="og:title" content="Our Programs | Arm Stretch Foundation Africa">
+    <meta property="og:description" content="Explore our initiatives transforming communities through education, healthcare and shelter programs">
+    <meta property="og:image" content="https://armstretchfoundationafricaltd.org/images/programs-social.jpg">
+    <meta property="og:url" content="https://armstretchfoundationafricaltd.org/programs.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#00AEEF">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="images/logo.png" as="image">
+    <link rel="preload" href="images/programs-bg.jpg" as="image">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.3">
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     
     <!-- Critical CSS -->
     <style>
         :root {
-            --gold: #FFD700;
-            --dark-blue: #003366;
-            --light-blue: #e6f0ff;
-            --white: #ffffff;
+            --sky-blue: #00AEEF;
+            --orange: #F7931E;
+            --red: #ED1C24;
+            --yellow: #FFF200;
+            --black: #231F20;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --dark-gray: #343A40;
             --transition: all 0.3s ease;
         }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            padding-top: 70px;
+            overflow-x: hidden;
+            padding-top: 80px;
+            color: var(--black);
+            line-height: 1.6;
         }
-        .bg-dark-blue {
-            background-color: var(--dark-blue) !important;
-        }
-        .text-gold {
-            color: var(--gold);
-        }
-        .floating-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        .floating-animation-slow {
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .programs-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('images/programs-bg.jpg');
+        
+        /* Programs Hero */
+        .programs-hero {
+            background: linear-gradient(rgba(0, 174, 239, 0.8), rgba(0, 174, 239, 0.9)), url('images/programs-bg.jpg');
             background-size: cover;
             background-position: center;
-        }
-        
-        /* Enhanced Button Styles */
-        .btn-gold { 
-            background-color: var(--gold); 
-            color: #000;
-            font-weight: 600;
-            border: none;
-            transition: var(--transition);
-        }
-        .btn-gold:hover {
-            background-color: #e6c200;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .btn-outline-light {
-            border: 2px solid var(--white);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
             color: var(--white);
-            transition: var(--transition);
-        }
-        .btn-outline-light:hover {
-            background: var(--white);
-            color: var(--dark-blue);
-        }
-        .btn-outline-gold {
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            transition: var(--transition);
-        }
-        .btn-outline-gold:hover {
-            background: var(--gold);
-            color: #000;
+            padding: 4rem 0;
         }
         
-        /* Button States */
-        .btn-gold:focus, .btn-gold.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
-        }
-        .btn-outline-light:focus, .btn-outline-light.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
-        }
-        .btn-outline-gold:focus, .btn-outline-gold.focus {
-            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
-        }
-        .btn-gold:active {
-            background-color: #ccaa00 !important;
-            transform: translateY(0);
-        }
-        .btn-outline-light:active {
-            background-color: var(--white) !important;
-            color: var(--dark-blue) !important;
-        }
-        .btn-outline-gold:active {
-            background-color: var(--gold) !important;
-            color: #000 !important;
+        .programs-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
         
-        /* Card Styles */
+        .breadcrumb {
+            justify-content: center;
+            background: transparent;
+        }
+        
+        .breadcrumb-item a {
+            color: var(--white);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--yellow);
+        }
+        
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: var(--white);
+        }
+        
+        /* Program Cards */
         .program-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
         }
+        
         .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
+        
         .program-img-container {
-            position: relative;
+            height: 200px;
             overflow: hidden;
         }
+        
+        .program-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .program-card:hover img {
+            transform: scale(1.05);
+        }
+        
         .program-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--sky-blue);
+            color: var(--white);
+            border-radius: 50%;
             position: absolute;
             bottom: -25px;
             right: 20px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid white;
-            background-color: var(--gold);
-            color: var(--dark-blue);
-            border-radius: 50%;
-            z-index: 2;
+            border: 3px solid var(--white);
+            font-size: 1.25rem;
         }
-        .section-title {
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--gold);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .highlight-card {
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            background-color: white;
-        }
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .highlight-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--gold);
-            color: var(--dark-blue);
-            border-radius: 50%;
-        }
+        
         .program-stats {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
+        
         .stat-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
-            background: rgba(255,215,0,0.1);
+            background: rgba(0,174,239,0.1);
             padding: 5px 10px;
             border-radius: 20px;
+            font-size: 0.9rem;
         }
+        
+        .stat-item i {
+            color: var(--sky-blue);
+        }
+        
         .program-impact ul {
             padding-left: 20px;
         }
+        
         .program-impact li {
             margin-bottom: 5px;
             position: relative;
         }
+        
         .program-impact li:before {
             content: '•';
-            color: var(--gold);
+            color: var(--sky-blue);
             font-weight: bold;
             display: inline-block;
             width: 1em;
             margin-left: -1em;
         }
         
-        /* Navbar Styles */
-        .navbar {
-            background-color: var(--dark-blue);
-            padding: 0.8rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
+        /* Highlights Section */
+        .highlights-section {
+            background: var(--light-gray);
         }
-        .navbar-scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .nav-link {
-            color: var(--white);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            bottom: 0;
-            left: 0;
+        
+        .highlight-card {
+            border: none;
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
             transition: var(--transition);
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .nav-link.active {
-            color: var(--gold);
-        }
-        .logo-circle {
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            display: inline-flex;
+        
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--sky-blue);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            color: var(--sky-blue);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--orange);
+            bottom: -12px;
+            left: 25%;
+            border-radius: 2px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .programs-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .programs-hero {
+                min-height: 350px;
+            }
+            
+            .programs-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .programs-hero {
+                min-height: 300px;
+            }
+            
+            .programs-hero h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue sticky-top">
+    <!-- Navbar (Consistent with other pages) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
-                <div class="logo-circle floating-animation-slow me-2">
+                <div class="logo-circle">
                     <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
                 </div>
                 <span class="site-name">Arm Stretch Foundation Africa</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -264,27 +275,27 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link active" href="programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="stories.html">Stories</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="nav-link btn btn-gold px-3" href="donate.html">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-sky-blue px-4" href="donate.html">Donate</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="programs-header py-5 text-white">
-        <div class="container text-center">
-            <h1 class="display-4 mb-3 floating-animation-slow">Our Programs</h1>
+    <!-- Hero Section -->
+    <section class="programs-hero">
+        <div class="container">
+            <h1>Our Programs</h1>
             <p class="lead">Transforming communities through sustainable initiatives</p>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center bg-transparent">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item active text-gold" aria-current="page">Programs</li>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Programs</li>
                 </ol>
             </nav>
         </div>
-    </header>
+    </section>
 
     <!-- Programs Grid -->
     <section class="py-5">
@@ -292,35 +303,35 @@
             <div class="row g-4">
                 <!-- Program 1: Education -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="program-card h-100 floating-animation">
-                        <div class="program-img-container">
-                            <img src="images/program-education.jpg" alt="Children learning in classroom" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
+                    <div class="program-card">
+                        <div class="program-img-container position-relative">
+                            <img src="images/program-education.jpg" alt="Children learning in classroom" loading="lazy">
                             <div class="program-icon">
-                                <i class="fas fa-book-open fa-lg"></i>
+                                <i class="fas fa-book-open"></i>
                             </div>
                         </div>
                         <div class="p-4">
                             <h3>Education Initiative</h3>
-                            <div class="program-stats mb-3">
+                            <div class="program-stats">
                                 <div class="stat-item">
-                                    <i class="fas fa-graduation-cap text-gold"></i>
+                                    <i class="fas fa-graduation-cap"></i>
                                     <span>200+ Students</span>
                                 </div>
                                 <div class="stat-item">
-                                    <i class="fas fa-school text-gold"></i>
+                                    <i class="fas fa-school"></i>
                                     <span>4 Schools</span>
                                 </div>
                             </div>
                             <p>Providing scholarships, school supplies, and digital literacy programs to underserved children across East Africa.</p>
                             <div class="program-impact">
-                                <h5 class="text-gold">Impact:</h5>
+                                <h5 class="text-sky-blue">Impact:</h5>
                                 <ul>
                                     <li>50% enrollment increase</li>
                                     <li>30% improved test scores</li>
                                     <li>75% digital literacy</li>
                                 </ul>
                             </div>
-                            <a href="program-education.html" class="btn btn-outline-gold w-100 mt-3">
+                            <a href="program-education.html" class="btn btn-outline-sky-blue w-100 mt-3">
                                 <i class="fas fa-arrow-right me-2"></i>Learn More
                             </a>
                         </div>
@@ -329,35 +340,35 @@
 
                 <!-- Program 2: Healthcare -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="program-card h-100 floating-animation">
-                        <div class="program-img-container">
-                            <img src="images/program-healthcare.jpg" alt="Doctor examining child" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
+                    <div class="program-card">
+                        <div class="program-img-container position-relative">
+                            <img src="images/program-healthcare.jpg" alt="Doctor examining child" loading="lazy">
                             <div class="program-icon">
-                                <i class="fas fa-heartbeat fa-lg"></i>
+                                <i class="fas fa-heartbeat"></i>
                             </div>
                         </div>
                         <div class="p-4">
                             <h3>Healthcare Access</h3>
-                            <div class="program-stats mb-3">
+                            <div class="program-stats">
                                 <div class="stat-item">
-                                    <i class="fas fa-clinic-medical text-gold"></i>
+                                    <i class="fas fa-clinic-medical"></i>
                                     <span>5+ Clinics</span>
                                 </div>
                                 <div class="stat-item">
-                                    <i class="fas fa-user-md text-gold"></i>
+                                    <i class="fas fa-user-md"></i>
                                     <span>50+ Patients</span>
                                 </div>
                             </div>
                             <p>Mobile clinics, vaccinations, and maternal health services for rural communities with limited medical access.</p>
                             <div class="program-impact">
-                                <h5 class="text-gold">Impact:</h5>
+                                <h5 class="text-sky-blue">Impact:</h5>
                                 <ul>
                                     <li>70% vaccination coverage</li>
                                     <li>60% reduced maternal mortality</li>
                                     <li>24/7 emergency services</li>
                                 </ul>
                             </div>
-                            <a href="program-healthcare.html" class="btn btn-outline-gold w-100 mt-3">
+                            <a href="program-healthcare.html" class="btn btn-outline-sky-blue w-100 mt-3">
                                 <i class="fas fa-arrow-right me-2"></i>Learn More
                             </a>
                         </div>
@@ -366,35 +377,35 @@
 
                 <!-- Program 3: Shelter -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="program-card h-100 floating-animation">
-                        <div class="program-img-container">
-                            <img src="images/program-shelter.jpg" alt="Newly built homes" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy">
+                    <div class="program-card">
+                        <div class="program-img-container position-relative">
+                            <img src="images/program-shelter.jpg" alt="Newly built homes" loading="lazy">
                             <div class="program-icon">
-                                <i class="fas fa-home fa-lg"></i>
+                                <i class="fas fa-home"></i>
                             </div>
                         </div>
                         <div class="p-4">
                             <h3>Shelter Projects</h3>
-                            <div class="program-stats mb-3">
+                            <div class="program-stats">
                                 <div class="stat-item">
-                                    <i class="fas fa-house-user text-gold"></i>
+                                    <i class="fas fa-house-user"></i>
                                     <span>1 Home</span>
                                 </div>
                                 <div class="stat-item">
-                                    <i class="fas fa-people-arrows text-gold"></i>
+                                    <i class="fas fa-people-arrows"></i>
                                     <span>1 Community</span>
                                 </div>
                             </div>
                             <p>Emergency housing and disaster relief for families affected by conflicts or natural disasters.</p>
                             <div class="program-impact">
-                                <h5 class="text-gold">Impact:</h5>
+                                <h5 class="text-sky-blue">Impact:</h5>
                                 <ul>
                                     <li>5% disaster response</li>
                                     <li>2% family stability</li>
                                     <li>15% economic recovery</li>
                                 </ul>
                             </div>
-                            <a href="program-shelter.html" class="btn btn-outline-gold w-100 mt-3">
+                            <a href="program-shelter.html" class="btn btn-outline-sky-blue w-100 mt-3">
                                 <i class="fas fa-arrow-right me-2"></i>Learn More
                             </a>
                         </div>
@@ -404,17 +415,17 @@
         </div>
     </section>
 
-    <!-- Program Highlights -->
-    <section class="py-5 bg-light">
+    <!-- Highlights Section -->
+    <section class="py-5 highlights-section">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">Program Highlights</h2>
-                <p class="lead">Recent achievements and milestones</p>
+                <p class="lead">Recent achievements and milestones in our work</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon mb-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
                             <i class="fas fa-award"></i>
                         </div>
                         <h4>Education Excellence</h4>
@@ -423,8 +434,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon mb-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
                             <i class="fas fa-hand-holding-medical"></i>
                         </div>
                         <h4>Health Milestone</h4>
@@ -433,8 +444,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="highlight-card p-4 rounded h-100 floating-animation">
-                        <div class="highlight-icon mb-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
                             <i class="fas fa-home"></i>
                         </div>
                         <h4>Shelter Expansion</h4>
@@ -447,18 +458,18 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-5 bg-dark-blue text-white text-center">
+    <section class="py-5 bg-sky-blue text-white text-center">
         <div class="container">
             <h2 class="mb-4">Support Our Life-Changing Programs</h2>
             <p class="lead mb-4">Your contribution helps us expand our reach and impact more lives</p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="donate.html" class="btn btn-gold btn-lg px-4 py-3">
+                <a href="donate.html" class="btn btn-white btn-lg px-4 py-3">
                     <i class="fas fa-donate me-2"></i>Donate Now
                 </a>
-                <a href="https://forms.gle/aE5Tc7swzZ48ezrf9" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank" rel="noopener noreferrer">
+                <a href="volunteer.html" class="btn btn-outline-white btn-lg px-4 py-3">
                     <i class="fas fa-hands-helping me-2"></i>Volunteer
                 </a>
-                <a href="contact.html" class="btn btn-outline-gold btn-lg px-4 py-3">
+                <a href="contact.html" class="btn btn-outline-white btn-lg px-4 py-3">
                     <i class="fas fa-handshake me-2"></i>Partner With Us
                 </a>
             </div>
@@ -466,27 +477,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark-blue text-white">
+    <footer class="py-5 bg-black text-white">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
                     <h5 class="mb-3">About ASFA</h5>
-                    <p class="mb-4">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives.</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="logo-circle me-3">
+                            <img src="images/logo.png" alt="ASFA Logo" width="40" height="40">
+                        </div>
+                        <span class="fw-bold">Arm Stretch Foundation Africa</span>
+                    </div>
+                    <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-3" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://x.com/AsfaFoundation" class="text-white me-3" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-2" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/AsfaFoundation" class="text-white me-2" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5 class="mb-3">Quick Links</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
-                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0 text-white">About</a></li>
-                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0 text-white">Programs</a></li>
-                        <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
-                        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact</a></li>
+                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0">Home</a></li>
+                        <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0">About</a></li>
+                        <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0">Programs</a></li>
+                        <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0">Gallery</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link p-0">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -498,36 +515,33 @@
                         <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6">
                     <h5 class="mb-3">Newsletter</h5>
-                    <p>Subscribe to our updates</p>
-                    <form action="https://forms.gle/17YfQNPgE7dXez73A" method="GET" target="_blank" class="newsletter-form needs-validation" novalidate>
-                        <div class="input-group mb-3 has-validation">
-                            <input type="email" class="form-control" placeholder="Your Email" name="entry.123456789" required>
-                            <button class="btn btn-gold" type="submit">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                            <div class="invalid-feedback">
-                                Please provide a valid email
-                            </div>
+                    <p>Subscribe for updates on our work and impact.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <button class="btn btn-sky-blue" type="submit">Subscribe</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <hr class="my-4 bg-light">
+            <hr class="my-4 bg-gray">
             <div class="text-center">
-                <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+                <p class="mb-0">&copy; <span id="currentYear"></span> Arm Stretch Foundation Africa. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
     <script>
-        // Set current year in footer
+        // Current year for footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Make navbar solid on scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -538,25 +552,19 @@
         });
         
         // Form validation
-        document.querySelectorAll('.needs-validation').forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+        document.querySelectorAll('.newsletter-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                if (emailInput.checkValidity()) {
+                    // Replace with your actual submission logic
+                    alert('Thank you for subscribing!');
+                    emailInput.value = '';
+                } else {
+                    emailInput.classList.add('is-invalid');
                 }
-                form.classList.add('was-validated');
-            }, false);
+            });
         });
     </script>
-    
-    <!-- Primary Meta Tags -->
-    <meta name="description" content="Our Programs - Arm Stretch Foundation Africa's initiatives in education and healthcare.">
-    <meta name="keywords" content="ASFA programs, Africa NGO projects">
-    <title>Our Programs | Arm Stretch Foundation Africa</title>
-
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Our Programs | Arm Stretch Foundation Africa">
-    <meta property="og:description" content="Explore our initiatives transforming African communities.">
-    <meta property="og:url" content="https://armstretchfoundationafricaltd.org/programs.html">
 </body>
 </html>
