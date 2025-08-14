@@ -1,16 +1,14 @@
-// =============================================
-// Main JavaScript
-// =============================================
-
 document.addEventListener('DOMContentLoaded', function() {
   // Preloader
   const preloader = document.querySelector('.preloader');
   
   if (preloader) {
     window.addEventListener('load', function() {
-      preloader.style.opacity = '0';
       setTimeout(() => {
-        preloader.style.display = 'none';
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
       }, 500);
     });
   }
@@ -19,18 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar');
   
   if (navbar) {
-    window.addEventListener('scroll', function() {
+    function updateNavbar() {
       if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
-    });
-    
-    // Initialize scroll position
-    if (window.scrollY > 100) {
-      navbar.classList.add('scrolled');
     }
+    
+    window.addEventListener('scroll', updateNavbar);
+    updateNavbar(); // Initialize on load
   }
 
   // Smooth scrolling for anchor links
@@ -43,10 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = targetElement.offsetTop - navbarHeight;
+        
         window.scrollTo({
-          top: targetElement.offsetTop - 80,
+          top: targetPosition,
           behavior: 'smooth'
         });
+        
+        // Update URL without refreshing
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
       }
     });
   });
@@ -89,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const progress = Math.min(elapsedTime / duration, 1);
             const value = Math.floor(progress * countTo);
             
-            target.textContent = value.toLocaleString();
+            target.textContent = value;
             
             if (progress < 1) {
               requestAnimationFrame(animateCount);
@@ -115,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (cookieConsent && acceptCookies && declineCookies) {
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
     
-    if (!cookiesAccepted) {
+    if (cookiesAccepted !== 'true') {
       setTimeout(() => {
         cookieConsent.classList.add('show');
       }, 2000);
@@ -137,38 +143,35 @@ document.addEventListener('DOMContentLoaded', function() {
     currentYear.textContent = new Date().getFullYear();
   }
 
-  // Initialize tooltips
-  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.map(function(tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-
-  // Initialize popovers
-  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-  popoverTriggerList.map(function(popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl);
-  });
-
-  // Hero carousel
-  const heroCarousel = document.getElementById('heroCarousel');
-  if (heroCarousel) {
-    const carousel = new bootstrap.Carousel(heroCarousel, {
-      interval: 5000,
-      pause: 'hover',
-      wrap: true
+  // Initialize Bootstrap components
+  if (typeof bootstrap !== 'undefined') {
+    // Tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function(tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
     });
-    
-    // Pause carousel when video is playing
-    const video = heroCarousel.querySelector('video');
-    if (video) {
-      video.addEventListener('play', function() {
-        carousel.pause();
+
+    // Popovers
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map(function(popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl);
+    });
+
+    // Carousels
+    const carousels = [].slice.call(document.querySelectorAll('.carousel'));
+    carousels.map(function(carouselEl) {
+      return new bootstrap.Carousel(carouselEl, {
+        interval: 5000,
+        pause: 'hover',
+        wrap: true
       });
-      
-      video.addEventListener('ended', function() {
-        carousel.cycle();
-      });
-    }
+    });
+
+    // Dropdowns
+    const dropdowns = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+    dropdowns.map(function(dropdown) {
+      return new bootstrap.Dropdown(dropdown);
+    });
   }
 
   // Form validation
@@ -183,20 +186,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
   });
 
-  // Animate elements on scroll
-  AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-    offset: 100
-  });
+  // Newsletter form submission
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const emailInput = this.querySelector('input[type="email"]');
+      if (emailInput && emailInput.value) {
+        // Here you would typically send the data to your server
+        alert('Thank you for subscribing!');
+        emailInput.value = '';
+      }
+    });
+  }
+
+  // Initialize AOS animation
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+  }
 });
 
-// =============================================
-// Additional Helper Functions
-// =============================================
-
-// Debounce function for performance
+// Debounce function for performance optimization
 function debounce(func, wait = 20, immediate = true) {
   let timeout;
   return function() {
@@ -212,7 +227,7 @@ function debounce(func, wait = 20, immediate = true) {
   };
 }
 
-// Throttle function for performance
+// Throttle function for performance optimization
 function throttle(func, limit) {
   let lastFunc;
   let lastRan;
@@ -232,37 +247,6 @@ function throttle(func, limit) {
       }, limit - (Date.now() - lastRan));
     }
   };
-}
-
-// Dynamic copyright year update
-function updateCopyrightYear() {
-  const yearElements = document.querySelectorAll('.copyright-year');
-  if (yearElements.length > 0) {
-    const currentYear = new Date().getFullYear();
-    yearElements.forEach(el => {
-      el.textContent = currentYear;
-    });
-  }
-}
-
-// Initialize all functions when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  updateCopyrightYear();
-  
-  // Add any other initialization functions here
-});
-
-// Mobile menu toggle
-function setupMobileMenu() {
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function() {
-      this.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-  }
 }
 
 // Lazy loading for images
@@ -301,6 +285,5 @@ function lazyLoadImages() {
 
 // Initialize all functions when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-  setupMobileMenu();
   lazyLoadImages();
 });
