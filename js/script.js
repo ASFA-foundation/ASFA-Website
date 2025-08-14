@@ -1,358 +1,441 @@
+/**
+ * ASFA Foundation - Main JavaScript
+ * Modern, performant, and accessible interactions
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  // =============================================
+  // Core Utilities
+  // =============================================
+  
+  // Set current year in footer
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Initialize Bootstrap tooltips
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
+  // Initialize AOS (Animate On Scroll)
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
     });
+  }
 
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
+  // =============================================
+  // Preloader
+  // =============================================
+  
+  const preloader = document.querySelector('.preloader');
+  if (preloader) {
+    window.addEventListener('load', function() {
+      // Add fade-out class to preloader
+      preloader.classList.add('preloader-fade');
+      
+      // Remove preloader from DOM after animation completes
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+  }
+
+  // =============================================
+  // Navigation
+  // =============================================
+  
+  // Navbar scroll effect
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('navbar-scrolled');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+    
+    // Mobile menu close on click
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(navbarCollapse).hide();
+        }
+      });
+    });
+  }
+
+  // =============================================
+  // Hero Carousel
+  // =============================================
+  
+  const heroCarousel = document.getElementById('heroCarousel');
+  if (heroCarousel) {
+    const carousel = new bootstrap.Carousel(heroCarousel, {
+      interval: 7000,
+      pause: 'hover',
+      wrap: true,
+      touch: true
+    });
+
+    // Keyboard navigation for carousel
+    heroCarousel.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        carousel.prev();
+      } else if (e.key === 'ArrowRight') {
+        carousel.next();
+      }
+    });
+
+    // Pause carousel when not in viewport
+    const carouselObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          carousel.cycle();
         } else {
-            navbar.classList.remove('navbar-scrolled');
+          carousel.pause();
         }
-    });
+      });
+    }, { threshold: 0.5 });
 
-    // Initialize carousel with autoplay and pause on hover
-    const heroCarousel = document.getElementById('heroMediaCarousel');
-    if (heroCarousel) {
-        const carousel = new bootstrap.Carousel(heroCarousel, {
-            interval: 6000,
-            pause: 'hover',
-            wrap: true,
-            touch: true
-        });
+    carouselObserver.observe(heroCarousel);
+  }
 
-        // Keyboard navigation for carousel
-        heroCarousel.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                carousel.prev();
-            } else if (e.key === 'ArrowRight') {
-                carousel.next();
-            }
-        });
-    }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Newsletter form handling
-    const newsletterForms = document.querySelectorAll('.newsletter-form');
-    newsletterForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-            
-            // Enhanced email validation
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                emailInput.classList.add('is-invalid');
-                return;
-            }
-            
-            // Remove error state
-            emailInput.classList.remove('is-invalid');
-            
-            // Show success message (replace with your actual submission logic)
-            const successMessage = document.createElement('div');
-            successMessage.className = 'alert alert-success mt-3';
-            successMessage.textContent = `Thank you for subscribing with ${email}! We'll keep you updated.`;
-            successMessage.setAttribute('role', 'alert');
-            
-            // Insert after form
-            this.parentNode.insertBefore(successMessage, this.nextSibling);
-            
-            // Reset form
-            this.reset();
-            
-            // Remove message after 5 seconds
-            setTimeout(() => {
-                successMessage.remove();
-            }, 5000);
-        });
-    });
-
-    // Cookie consent banner
-    const cookieConsent = document.getElementById('cookieConsent');
-    if (cookieConsent && !localStorage.getItem('cookieConsent')) {
-        cookieConsent.classList.remove('d-none');
+  // =============================================
+  // Smooth Scrolling
+  // =============================================
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
         
-        document.getElementById('acceptCookies').addEventListener('click', function() {
-            localStorage.setItem('cookieConsent', 'true');
-            cookieConsent.classList.add('d-none');
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
         });
         
-        document.getElementById('declineCookies').addEventListener('click', function() {
-            localStorage.setItem('cookieConsent', 'false');
-            cookieConsent.classList.add('d-none');
-        });
-    }
-
-    // Lazy loading images with Intersection Observer
-    if ('IntersectionObserver' in window) {
-        const lazyImages = [].slice.call(document.querySelectorAll('img.lazy-load'));
-        const lazyObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const lazyImage = entry.target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.classList.add('loaded');
-                    lazyObserver.unobserve(lazyImage);
-                }
-            });
-        });
-
-        lazyImages.forEach(function(lazyImage) {
-            lazyObserver.observe(lazyImage);
-        });
-    }
-
-    // PesaPal payment integration
-    const pesapalButton = document.getElementById('pesapal-payment-button');
-    if (pesapalButton) {
-        // Enable button by default
-        pesapalButton.disabled = false;
-
-        // PesaPal amount selection
-        const pesapalAmountButtons = document.querySelectorAll('.pesapal-amount');
-        pesapalAmountButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('pesapalCustomAmount').value = this.dataset.amount;
-                validatePesapalForm();
-            });
-        });
-
-        // PesaPal custom amount handling
-        document.getElementById('pesapalCustomAmount').addEventListener('input', function() {
-            pesapalAmountButtons.forEach(btn => btn.classList.remove('active'));
-            validatePesapalForm();
-        });
-
-        // Add input listeners for all required fields
-        const requiredFields = ['pesapalFirstName', 'pesapalLastName', 'pesapalEmail', 'pesapalPhone'];
-        requiredFields.forEach(fieldId => {
-            document.getElementById(fieldId).addEventListener('input', validatePesapalForm);
-        });
-
-        // Form validation function
-        function validatePesapalForm() {
-            const amount = document.getElementById('pesapalCustomAmount').value || 
-                          document.querySelector('.pesapal-amount.active')?.dataset.amount;
-            const firstName = document.getElementById('pesapalFirstName').value;
-            const lastName = document.getElementById('pesapalLastName').value;
-            const email = document.getElementById('pesapalEmail').value;
-            const phone = document.getElementById('pesapalPhone').value;
-            
-            const isValid = amount && firstName && lastName && email && phone;
-            pesapalButton.disabled = !isValid;
+        // Update URL without jumping
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          window.location.hash = targetId;
         }
-
-        // Initial validation check
-        validatePesapalForm();
-
-        // PesaPal payment button handler
-        pesapalButton.addEventListener('click', function() {
-            if (this.disabled) return;
-            
-            const amount = document.getElementById('pesapalCustomAmount').value || 
-                          document.querySelector('.pesapal-amount.active').dataset.amount;
-            const firstName = document.getElementById('pesapalFirstName').value;
-            const lastName = document.getElementById('pesapalLastName').value;
-            const email = document.getElementById('pesapalEmail').value;
-            const phone = document.getElementById('pesapalPhone').value;
-            
-            initiatePesapalPayment(amount, firstName, lastName, email, phone);
-        });
-
-        function initiatePesapalPayment(amount, firstName, lastName, email, phone) {
-            // PesaPal API credentials
-            const consumerKey = '2wox6FcqZuKDvXKiIY0oay2mDoiDhnPa';
-            const consumerSecret = 'u1VQmY/clDp5pz5TqcdlPvKsgxI=';
-            
-            // Generate a unique reference
-            const reference = 'ASFA-' + Date.now();
-            
-            // Payment details
-            const desc = "Donation to ASFA Foundation";
-            const callbackUrl = "https://armstretchfoundationafricaltd.org/donate.html";
-            
-            // Check if Pesapal is loaded
-            if (typeof Pesapal === 'undefined') {
-                console.error("PesaPal script not loaded!");
-                showAlert("Payment service is currently unavailable. Please try again later.", 'danger');
-                return;
-            }
-            
-            // Initialize PesaPal
-            Pesapal.initialize({
-                credentials: {
-                    consumer_key: consumerKey,
-                    consumer_secret: consumerSecret
-                },
-                environment: "production"
-            });
-            
-            // Submit the order
-            Pesapal.submitOrder({
-                params: {
-                    Amount: amount,
-                    Description: desc,
-                    Type: "MERCHANT",
-                    Reference: reference,
-                    FirstName: firstName,
-                    LastName: lastName,
-                    Email: email,
-                    PhoneNumber: phone,
-                    Currency: "USD",
-                    CallBackURL: callbackUrl
-                },
-                onSuccess: function(response) {
-                    console.log("PesaPal success:", response);
-                    window.location.href = response.redirect_url;
-                },
-                onError: function(error) {
-                    console.error("PesaPal error:", error);
-                    showAlert("Error initiating payment. Please try again.", 'danger');
-                }
-            });
-        }
-    }
-
-    // Helper function to show alerts
-    function showAlert(message, type) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-        alertDiv.setAttribute('role', 'alert');
-        alertDiv.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-        
-        const container = document.querySelector('.container') || document.body;
-        container.prepend(alertDiv);
-        
-        // Auto-dismiss after 5 seconds
-        setTimeout(() => {
-            const bsAlert = new bootstrap.Alert(alertDiv);
-            bsAlert.close();
-        }, 5000);
-    }
-
-    // Initialize PayPal if needed
-    if (document.getElementById('paypal-button-container')) {
-        loadPayPalSDK().then(initializePayPal).catch(error => {
-            console.error('PayPal initialization failed:', error);
-            showAlert('Unable to load PayPal payment options. Please try again later.', 'danger');
-        });
-    }
-});
-
-// Load PayPal SDK dynamically
-function loadPayPalSDK() {
-    return new Promise((resolve, reject) => {
-        if (window.paypal) return resolve(); // Already loaded
-
-        const script = document.createElement('script');
-        script.src = 'https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD';
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
+      }
     });
-}
+  });
 
-// Initialize PayPal buttons
-function initializePayPal() {
-    if (!window.paypal) {
-        throw new Error('PayPal SDK not loaded');
-    }
+  // =============================================
+  // Scroll To Top Button
+  // =============================================
+  
+  const backToTopButton = document.querySelector('.back-to-top');
+  if (backToTopButton) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 
-    // One-Time Donation Button
-    if (document.getElementById('paypal-onetime-container')) {
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'blue',
-                shape: 'rect',
-                label: 'donate'
-            },
-            createOrder: function(data, actions) {
-                const amount = document.getElementById('donationAmount').value || '25.00';
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: amount,
-                            currency_code: 'USD'
-                        },
-                        description: 'Donation to ASFA Foundation'
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    showAlert(`Thank you, ${details.payer.name.given_name}! Your donation of $${details.purchase_units[0].amount.value} was processed successfully.`, 'success');
-                });
-            },
-            onError: function(err) {
-                console.error('PayPal error:', err);
-                showAlert('There was an error processing your donation. Please try again.', 'danger');
+  // =============================================
+  // Animated Counter
+  // =============================================
+  
+  const statNumbers = document.querySelectorAll('.stat-number');
+  if (statNumbers.length > 0) {
+    const animateCounters = () => {
+      statNumbers.forEach(stat => {
+        const target = +stat.getAttribute('data-count');
+        const duration = 2000; // Animation duration in ms
+        const start = 0;
+        const increment = target / (duration / 16); // 60fps
+        
+        const updateCounter = () => {
+          const current = +stat.textContent;
+          if (current < target) {
+            stat.textContent = Math.ceil(current + increment);
+            requestAnimationFrame(updateCounter);
+          } else {
+            stat.textContent = target;
+          }
+        };
+        
+        // Only animate when in viewport
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              updateCounter();
+              observer.unobserve(entry.target);
             }
-        }).render('#paypal-onetime-container');
-    }
-
-    // Monthly Donation Button
-    if (document.getElementById('paypal-monthly-container')) {
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'blue',
-                shape: 'rect',
-                label: 'subscribe'
-            },
-            createSubscription: function(data, actions) {
-                const amount = document.getElementById('monthlyAmount').value || '10.00';
-                return actions.subscription.create({
-                    plan_id: getPlanIdForAmount(amount)
-                });
-            },
-            onApprove: function(data, actions) {
-                showAlert('Thank you for your monthly commitment! We\'ve sent a confirmation to your email.', 'success');
-            },
-            onError: function(err) {
-                console.error('PayPal subscription error:', err);
-                showAlert('There was an error setting up your monthly donation. Please try again.', 'danger');
-            }
-        }).render('#paypal-monthly-container');
-    }
-}
-
-// Helper function to get PayPal plan ID based on amount
-function getPlanIdForAmount(amount) {
-    // In production, this should be handled server-side
-    // This is just a mock implementation
-    const plans = {
-        '5.00': 'P-5MONTHLY',
-        '10.00': 'P-10MONTHLY',
-        '25.00': 'P-25MONTHLY',
-        '50.00': 'P-50MONTHLY'
+          });
+        }, { threshold: 0.5 });
+        
+        observer.observe(stat);
+      });
     };
     
-    return plans[amount] || plans['10.00'];
-}
+    // Wait for fonts to load to avoid layout shifts
+    document.fonts.ready.then(() => {
+      animateCounters();
+    });
+  }
+
+  // =============================================
+  // Newsletter Form
+  // =============================================
+  
+  const newsletterForms = document.querySelectorAll('.newsletter-form');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailInput = this.querySelector('input[type="email"]');
+      const email = emailInput.value.trim();
+      
+      // Validate email
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.classList.add('is-invalid');
+        return;
+      }
+      
+      // Remove error state
+      emailInput.classList.remove('is-invalid');
+      
+      // Create success message
+      const successMessage = document.createElement('div');
+      successMessage.className = 'alert alert-success mt-3';
+      successMessage.setAttribute('role', 'alert');
+      successMessage.innerHTML = `
+        <div class="d-flex align-items-center">
+          <i class="fas fa-check-circle me-2"></i>
+          <div>Thank you for subscribing! We'll keep you updated.</div>
+        </div>
+      `;
+      
+      // Insert after form
+      this.parentNode.insertBefore(successMessage, this.nextSibling);
+      
+      // Reset form
+      this.reset();
+      
+      // Remove message after 5 seconds
+      setTimeout(() => {
+        successMessage.classList.add('fade');
+        setTimeout(() => {
+          successMessage.remove();
+        }, 300);
+      }, 5000);
+    });
+  });
+
+  // =============================================
+  // Cookie Consent
+  // =============================================
+  
+  const cookieConsent = document.getElementById('cookieConsent');
+  if (cookieConsent) {
+    // Check if consent already given
+    if (!localStorage.getItem('cookieConsent')) {
+      // Show after slight delay
+      setTimeout(() => {
+        cookieConsent.classList.add('show');
+      }, 1000);
+    }
+    
+    // Accept cookies
+    document.getElementById('acceptCookies').addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'true');
+      cookieConsent.classList.remove('show');
+    });
+    
+    // Decline cookies
+    document.getElementById('declineCookies').addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'false');
+      cookieConsent.classList.remove('show');
+    });
+  }
+
+  // =============================================
+  // Lazy Loading Images
+  // =============================================
+  
+  if ('IntersectionObserver' in window) {
+    const lazyImages = [].slice.call(document.querySelectorAll('img.lazy-load'));
+    
+    if (lazyImages.length > 0) {
+      const lazyObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const lazyImage = entry.target;
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.add('loaded');
+            lazyObserver.unobserve(lazyImage);
+          }
+        });
+      }, {
+        rootMargin: '200px 0px' // Load images 200px before they enter viewport
+      });
+      
+      lazyImages.forEach(lazyImage => {
+        lazyObserver.observe(lazyImage);
+      });
+    }
+  }
+
+  // =============================================
+  // Program Cards Animation
+  // =============================================
+  
+  const programCards = document.querySelectorAll('.program-card');
+  programCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      const icon = this.querySelector('.program-icon');
+      if (icon) {
+        icon.style.transform = 'translateY(-5px) rotate(5deg)';
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      const icon = this.querySelector('.program-icon');
+      if (icon) {
+        icon.style.transform = '';
+      }
+    });
+  });
+
+  // =============================================
+  // Tooltips Initialization
+  // =============================================
+  
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, {
+      trigger: 'hover focus'
+    });
+  });
+
+  // =============================================
+  // Story Card Hover Effect
+  // =============================================
+  
+  const storyCards = document.querySelectorAll('.story-card');
+  storyCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      const badge = this.querySelector('.story-badge');
+      if (badge) {
+        badge.style.transform = 'translateY(-5px)';
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      const badge = this.querySelector('.story-badge');
+      if (badge) {
+        badge.style.transform = '';
+      }
+    });
+  });
+
+  // =============================================
+  // Contact Form Validation
+  // =============================================
+  
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      let isValid = true;
+      const requiredFields = this.querySelectorAll('[required]');
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add('is-invalid');
+          isValid = false;
+        } else {
+          field.classList.remove('is-invalid');
+        }
+      });
+      
+      if (isValid) {
+        // Form is valid - you would typically submit via AJAX here
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = `
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Sending...
+        `;
+        
+        // Simulate AJAX submission
+        setTimeout(() => {
+          // Show success message
+          const successAlert = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle me-2"></i>
+                <div>Your message has been sent successfully!</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          `;
+          
+          this.insertAdjacentHTML('beforebegin', successAlert);
+          
+          // Reset form
+          this.reset();
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        }, 1500);
+      }
+    });
+  }
+});
+
+// =============================================
+// Window Load Event
+// =============================================
+
+window.addEventListener('load', function() {
+  // Initialize any plugins or scripts that need full page load
+});
+
+// =============================================
+// Resize Event Debouncer
+// =============================================
+
+(function() {
+  const resizeTimeout = {};
+  
+  window.addEventListener('resize', function() {
+    // Clear the timeout if it exists
+    if (resizeTimeout.id) {
+      clearTimeout(resizeTimeout.id);
+    }
+    
+    // Set new timeout
+    resizeTimeout.id = setTimeout(function() {
+      // Handle resize operations here
+      // This ensures they only run once after resize completes
+    }, 250);
+  });
+})();
