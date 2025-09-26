@@ -1316,3 +1316,22 @@ img {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+
+/* Fix for hero background scaling */
+.hero-background {
+  transform: scale(1.05); /* Remove hover effect for better performance */
+  transition: none; /* Remove transition for better performance */
+}
+
+/* Ensure proper image display */
+.hero-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Add fallback background color */
+.hero {
+  background-color: var(--primary); /* Fallback if images don't load */
+}
