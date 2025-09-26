@@ -169,6 +169,41 @@
     </div>
   </header>
 
+  <!-- Welcome Video Section (Added) -->
+  <section class="video-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <span class="section-subtitle">Welcome to ASFA</span>
+        <h2 class="section-title">Our Mission in Action</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-up">
+          <div class="video-container position-relative rounded-4 overflow-hidden shadow-lg">
+            <!-- Video placeholder - replace with your actual video -->
+            <div class="video-placeholder bg-dark position-relative" style="height: 500px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/video-thumbnail.jpg') center/cover;">
+              <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+                <button class="btn btn-primary btn-play rounded-circle p-4 mb-3" onclick="playVideo()">
+                  <i class="fas fa-play fs-4"></i>
+                </button>
+                <h3 class="mb-3">Watch Our Story</h3>
+                <p class="mb-0">See how we're making a difference in communities across Africa</p>
+              </div>
+            </div>
+            
+            <!-- Actual video element (hidden by default) -->
+            <video id="welcomeVideo" class="w-100 h-100 d-none" controls style="object-fit: cover;">
+              <source src="videos/welcome-video.mp4" type="video/mp4">
+              <source src="videos/welcome-video.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Mission Section -->
   <section id="mission" class="mission-section">
     <div class="container">
@@ -396,6 +431,51 @@
     </div>
   </section>
 
+  <!-- Photo Gallery Preview -->
+  <section class="gallery-preview-section bg-light py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <span class="section-subtitle">Our Gallery</span>
+        <h2 class="section-title">Moments of Impact</h2>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-description mx-auto">
+          A visual journey through our work and the lives we've touched.
+        </p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="gallery-item position-relative overflow-hidden rounded-3">
+            <img src="images/gallery-1.jpg" alt="Gallery Image 1" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 opacity-0 transition-all">
+              <i class="fas fa-search-plus text-white fs-1"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="gallery-item position-relative overflow-hidden rounded-3">
+            <img src="images/gallery-2.jpg" alt="Gallery Image 2" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 opacity-0 transition-all">
+              <i class="fas fa-search-plus text-white fs-1"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="gallery-item position-relative overflow-hidden rounded-3">
+            <img src="images/gallery-3.jpg" alt="Gallery Image 3" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 opacity-0 transition-all">
+              <i class="fas fa-search-plus text-white fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="gallery.html" class="btn btn-primary btn-lg">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="container">
@@ -579,6 +659,18 @@
   <!-- Main JS -->
   <script src="js/main.js"></script>
   
+  <!-- Video Play Function -->
+  <script>
+    function playVideo() {
+      const videoPlaceholder = document.querySelector('.video-placeholder');
+      const videoElement = document.getElementById('welcomeVideo');
+      
+      videoPlaceholder.style.display = 'none';
+      videoElement.classList.remove('d-none');
+      videoElement.play();
+    }
+  </script>
+  
   <!-- Initialize AOS -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -588,6 +680,9 @@
         once: true,
         offset: 100
       });
+      
+      // Set current year in footer
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
     });
   </script>
 </body>
