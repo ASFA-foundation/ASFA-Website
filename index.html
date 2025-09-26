@@ -95,7 +95,7 @@
 
   <!-- Hero Section -->
   <header class="hero">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -105,7 +105,7 @@
       <div class="carousel-inner">
         <!-- Slide 1 -->
         <div class="carousel-item active">
-          <div class="hero-background" style="background-image: url('images/Abaana.jpeg');"></div>
+          <div class="hero-background" style="background-image: url('images/hero1.jpg');"></div>
           <div class="hero-overlay"></div>
           <div class="container">
             <div class="hero-content" data-aos="fade-up" data-aos-delay="300">
@@ -121,7 +121,7 @@
         
         <!-- Slide 2 -->
         <div class="carousel-item">
-          <div class="hero-background" style="background-image: url('images/hero2.jpeg');"></div>
+          <div class="hero-background" style="background-image: url('images/hero2.jpg');"></div>
           <div class="hero-overlay"></div>
           <div class="container">
             <div class="hero-content" data-aos="fade-up" data-aos-delay="300">
@@ -137,7 +137,7 @@
         
         <!-- Slide 3 -->
         <div class="carousel-item">
-          <div class="hero-background" style="background-image: url('images/hero1.jpeg');"></div>
+          <div class="hero-background" style="background-image: url('images/hero3.jpg');"></div>
           <div class="hero-overlay"></div>
           <div class="container">
             <div class="hero-content" data-aos="fade-up" data-aos-delay="300">
@@ -163,322 +163,320 @@
     </div>
     
     <div class="hero-scroll-down">
-      <a href="#mission" class="scroll-down-link" aria-label="Scroll down">
+      <a href="#mission" class="scroll-down-link" aria-label="Scroll down to learn more">
         <i class="fas fa-chevron-down"></i>
       </a>
     </div>
   </header>
 
-  <main>
-    <!-- Mission Section -->
-    <section id="mission" class="mission-section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-            <div class="mission-image">
-              <img src="images/mission-image.jpg" alt="Our Mission" class="img-fluid rounded-4">
-              <div class="mission-badge">
-                <i class="fas fa-hands-helping"></i>
-                <span>Making a Difference</span>
-              </div>
-              <div class="mission-image-overlay"></div>
+  <!-- Mission Section -->
+  <section id="mission" class="mission-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <div class="mission-image">
+            <img src="images/mission-image.jpg" alt="Our Mission" class="img-fluid rounded-4">
+            <div class="mission-badge">
+              <i class="fas fa-hands-helping"></i>
+              <span>Making a Difference</span>
             </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-            <div class="section-header">
-              <span class="section-subtitle">Our Mission</span>
-              <h2 class="section-title">Building Hope Through Action</h2>
-              <div class="section-divider"></div>
-            </div>
-            <p class="mission-text">
-              Promoting high self-esteem built through hope, love, and care within underrated communities to create sustainable change.
-            </p>
-            <p class="mission-text">
-              We believe in empowering individuals and communities to break the cycle of poverty through education, healthcare, and economic opportunities.
-            </p>
-            <a href="about.html" class="btn btn-outline-primary">Learn More About Us</a>
+            <div class="mission-image-overlay"></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Impact Stats -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="stat-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-number" data-count="100">0</div>
-            <div class="stat-label">Lives Impacted</div>
-            <div class="stat-decoration"></div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="section-header">
+            <span class="section-subtitle">Our Mission</span>
+            <h2 class="section-title">Building Hope Through Action</h2>
+            <div class="section-divider"></div>
           </div>
-          
-          <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="stat-icon">
-              <i class="fas fa-home"></i>
-            </div>
-            <div class="stat-number" data-count="10">0</div>
-            <div class="stat-label">Communities Served</div>
-            <div class="stat-decoration"></div>
-          </div>
-          
-          <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="stat-icon">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="stat-number" data-count="1">0</div>
-            <div class="stat-label">Years of Service</div>
-            <div class="stat-decoration"></div>
-          </div>
-          
-          <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="stat-icon">
-              <i class="fas fa-hand-holding-heart"></i>
-            </div>
-            <div class="stat-number" data-count="25">0</div>
-            <div class="stat-label">Active Volunteers</div>
-            <div class="stat-decoration"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section id="programs" class="programs-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">What We Do</span>
-          <h2 class="section-title">Our Programs</h2>
-          <div class="section-divider mx-auto"></div>
-          <p class="section-description mx-auto">
-            We implement sustainable initiatives that create lasting change in the communities we serve.
+          <p class="mission-text">
+            Promoting high self-esteem built through hope, love, and care within underrated communities to create sustainable change.
           </p>
+          <p class="mission-text">
+            We believe in empowering individuals and communities to break the cycle of poverty through education, healthcare, and economic opportunities.
+          </p>
+          <a href="about.html" class="btn btn-outline-primary">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-number" data-count="100">0</div>
+          <div class="stat-label">Lives Impacted</div>
+          <div class="stat-decoration"></div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-label">Communities Served</div>
+          <div class="stat-decoration"></div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="stat-number" data-count="1">0</div>
+          <div class="stat-label">Years of Service</div>
+          <div class="stat-decoration"></div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <div class="stat-number" data-count="25">0</div>
+          <div class="stat-label">Active Volunteers</div>
+          <div class="stat-decoration"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs" class="programs-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">What We Do</span>
+        <h2 class="section-title">Our Programs</h2>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-description mx-auto">
+          We implement sustainable initiatives that create lasting change in the communities we serve.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="program-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div class="program-image">
+            <img src="images/program-education.jpg" alt="Education Program" loading="lazy">
+            <div class="program-image-overlay"></div>
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Education</h3>
+            <p class="program-text">
+              Providing scholarships, learning materials, and infrastructure for underserved children to access quality education.
+            </p>
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> School Sponsorships</li>
+              <li><i class="fas fa-check-circle"></i> Learning Materials</li>
+              <li><i class="fas fa-check-circle"></i> Teacher Training</li>
+            </ul>
+            <a href="programs.html#education" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="programs-grid">
-          <div class="program-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="program-icon">
-              <i class="fas fa-book-open"></i>
-            </div>
-            <div class="program-image">
-              <img src="images/program-education.jpg" alt="Education Program" loading="lazy">
-              <div class="program-image-overlay"></div>
-            </div>
-            <div class="program-content">
-              <h3 class="program-title">Education</h3>
-              <p class="program-text">
-                Providing scholarships, learning materials, and infrastructure for underserved children to access quality education.
-              </p>
-              <ul class="program-features">
-                <li><i class="fas fa-check-circle"></i> School Sponsorships</li>
-                <li><i class="fas fa-check-circle"></i> Learning Materials</li>
-                <li><i class="fas fa-check-circle"></i> Teacher Training</li>
-              </ul>
-              <a href="programs.html#education" class="btn btn-link">
-                Learn More <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+        <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="program-icon">
+            <i class="fas fa-heartbeat"></i>
           </div>
-
-          <div class="program-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="program-icon">
-              <i class="fas fa-heartbeat"></i>
-            </div>
-            <div class="program-image">
-              <img src="images/program-health.jpg" alt="Healthcare Program" loading="lazy">
-              <div class="program-image-overlay"></div>
-            </div>
-            <div class="program-content">
-              <h3 class="program-title">Healthcare</h3>
-              <p class="program-text">
-                Mobile clinics, medical services, and health education to improve wellbeing in rural communities.
-              </p>
-              <ul class="program-features">
-                <li><i class="fas fa-check-circle"></i> Mobile Clinics</li>
-                <li><i class="fas fa-check-circle"></i> Health Education</li>
-                <li><i class="fas fa-check-circle"></i> Medical Supplies</li>
-              </ul>
-              <a href="programs.html#healthcare" class="btn btn-link">
-                Learn More <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+          <div class="program-image">
+            <img src="images/program-health.jpg" alt="Healthcare Program" loading="lazy">
+            <div class="program-image-overlay"></div>
           </div>
+          <div class="program-content">
+            <h3 class="program-title">Healthcare</h3>
+            <p class="program-text">
+              Mobile clinics, medical services, and health education to improve wellbeing in rural communities.
+            </p>
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Mobile Clinics</li>
+              <li><i class="fas fa-check-circle"></i> Health Education</li>
+              <li><i class="fas fa-check-circle"></i> Medical Supplies</li>
+            </ul>
+            <a href="programs.html#healthcare" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
 
-          <div class="program-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="program-icon">
-              <i class="fas fa-home"></i>
-            </div>
-            <div class="program-image">
-              <img src="images/program-shelter.jpg" alt="Shelter Program" loading="lazy">
-              <div class="program-image-overlay"></div>
-            </div>
-            <div class="program-content">
-              <h3 class="program-title">Shelter</h3>
-              <p class="program-text">
-                Emergency housing and sustainable shelter solutions for families in crisis situations.
-              </p>
-              <ul class="program-features">
-                <li><i class="fas fa-check-circle"></i> Emergency Housing</li>
-                <li><i class="fas fa-check-circle"></i> Home Repairs</li>
-                <li><i class="fas fa-check-circle"></i> Community Buildings</li>
-              </ul>
-              <a href="programs.html#shelter" class="btn btn-link">
-                Learn More <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+        <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="program-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="program-image">
+            <img src="images/program-shelter.jpg" alt="Shelter Program" loading="lazy">
+            <div class="program-image-overlay"></div>
+          </div>
+          <div class="program-content">
+            <h3 class="program-title">Shelter</h3>
+            <p class="program-text">
+              Emergency housing and sustainable shelter solutions for families in crisis situations.
+            </p>
+            <ul class="program-features">
+              <li><i class="fas fa-check-circle"></i> Emergency Housing</li>
+              <li><i class="fas fa-check-circle"></i> Home Repairs</li>
+              <li><i class="fas fa-check-circle"></i> Community Buildings</li>
+            </ul>
+            <a href="programs.html#shelter" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Impact Stories -->
-    <section class="stories-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Making a Difference</span>
-          <h2 class="section-title">Impact Stories</h2>
-          <div class="section-divider mx-auto"></div>
+  <!-- Impact Stories -->
+  <section class="stories-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Making a Difference</span>
+        <h2 class="section-title">Impact Stories</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="stories-slider">
+        <div class="story-card" data-aos="fade-up">
+          <div class="story-image">
+            <img src="images/impact-education.jpg" alt="Education Impact" loading="lazy">
+            <div class="story-image-overlay"></div>
+            <div class="story-badge">Education</div>
+          </div>
+          <div class="story-content">
+            <h3 class="story-title">Education Transformation</h3>
+            <p class="story-excerpt">
+              How we helped 50 children return to school with full scholarships and supplies, transforming their future prospects.
+            </p>
+            <a href="gallery.html" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="stories-slider">
-          <div class="story-card" data-aos="fade-up">
-            <div class="story-image">
-              <img src="images/impact-education.jpg" alt="Education Impact" loading="lazy">
-              <div class="story-image-overlay"></div>
-              <div class="story-badge">Education</div>
-            </div>
-            <div class="story-content">
-              <h3 class="story-title">Education Transformation</h3>
-              <p class="story-excerpt">
-                How we helped 50 children return to school with full scholarships and supplies, transforming their future prospects.
-              </p>
-              <a href="gallery.html" class="btn btn-link">
-                Read Full Story <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+        <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="story-image">
+            <img src="images/impact-health.jpg" alt="Health Impact" loading="lazy">
+            <div class="story-image-overlay"></div>
+            <div class="story-badge">Healthcare</div>
           </div>
-
-          <div class="story-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="story-image">
-              <img src="images/impact-health.jpg" alt="Health Impact" loading="lazy">
-              <div class="story-image-overlay"></div>
-              <div class="story-badge">Healthcare</div>
-            </div>
-            <div class="story-content">
-              <h3 class="story-title">Health Outreach</h3>
-              <p class="story-excerpt">
-                Our mobile clinic served 200 patients in remote villages last month, providing essential medical care.
-              </p>
-              <a href="gallery.html" class="btn btn-link">
-                Read Full Story <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+          <div class="story-content">
+            <h3 class="story-title">Health Outreach</h3>
+            <p class="story-excerpt">
+              Our mobile clinic served 200 patients in remote villages last month, providing essential medical care.
+            </p>
+            <a href="gallery.html" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
+        </div>
 
-          <div class="story-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="story-image">
-              <img src="images/impact-empowerment.jpg" alt="Empowerment Impact" loading="lazy">
-              <div class="story-image-overlay"></div>
-              <div class="story-badge">Empowerment</div>
-            </div>
-            <div class="story-content">
-              <h3 class="story-title">Women's Empowerment</h3>
-              <p class="story-excerpt">
-                Vocational training program graduates starting their own businesses and becoming community leaders.
-              </p>
-              <a href="gallery.html" class="btn btn-link">
-                Read Full Story <i class="fas fa-arrow-right ms-2"></i>
-              </a>
-            </div>
+        <div class="story-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="story-image">
+            <img src="images/impact-empowerment.jpg" alt="Empowerment Impact" loading="lazy">
+            <div class="story-image-overlay"></div>
+            <div class="story-badge">Empowerment</div>
+          </div>
+          <div class="story-content">
+            <h3 class="story-title">Women's Empowerment</h3>
+            <p class="story-excerpt">
+              Vocational training program graduates starting their own businesses and becoming community leaders.
+            </p>
+            <a href="gallery.html" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-card" data-aos="fade-up">
-          <div class="row align-items-center">
-            <div class="col-lg-8">
-              <h2 class="cta-title">Ready to Make a Difference?</h2>
-              <p class="cta-text">
-                Your support helps us reach more vulnerable communities with essential services and sustainable solutions.
-              </p>
-            </div>
-            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-              <a href="donate.html" class="btn btn-primary btn-lg me-3">Donate Now</a>
-              <a href="volunteer.html" class="btn btn-outline-light btn-lg">Volunteer</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-      <div class="container">
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card" data-aos="fade-up">
         <div class="row align-items-center">
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="newsletter-content" data-aos="fade-right">
-              <h2 class="section-title">Stay Updated</h2>
-              <p class="newsletter-text">
-                Subscribe to our newsletter for inspiring stories, impact reports, and updates on our work.
-              </p>
-              <form class="newsletter-form">
-                <div class="input-group">
-                  <input type="email" class="form-control" placeholder="Your email address" required>
-                  <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-paper-plane"></i> Subscribe
-                  </button>
-                </div>
-                <div class="form-note">
-                  We respect your privacy. Unsubscribe at any time.
-                </div>
-              </form>
-            </div>
+          <div class="col-lg-8">
+            <h2 class="cta-title">Ready to Make a Difference?</h2>
+            <p class="cta-text">
+              Your support helps us reach more vulnerable communities with essential services and sustainable solutions.
+            </p>
           </div>
-          <div class="col-lg-6">
-            <div class="contact-card" data-aos="fade-left">
-              <h2 class="section-title">Get In Touch</h2>
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="contact-details">
-                  <h3>Our Location</h3>
-                  <p>Kasubi, Kampala, Uganda</p>
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <i class="fas fa-phone-alt"></i>
-                </div>
-                <div class="contact-details">
-                  <h3>Call Us</h3>
-                  <p>0200900288 / +256 748095503</p>
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-details">
-                  <h3>Email Us</h3>
-                  <p>asfafoundationltd@gmail.com</p>
-                </div>
-              </div>
-              <a href="contact.html" class="btn btn-outline-primary mt-4">
-                <i class="fas fa-paper-plane me-2"></i> Send Message
-              </a>
-            </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+            <a href="donate.html" class="btn btn-primary btn-lg me-3">Donate Now</a>
+            <a href="volunteer.html" class="btn btn-outline-light btn-lg">Volunteer</a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="newsletter-content" data-aos="fade-right">
+            <h2 class="section-title">Stay Updated</h2>
+            <p class="newsletter-text">
+              Subscribe to our newsletter for inspiring stories, impact reports, and updates on our work.
+            </p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Your email address" required>
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-paper-plane"></i> Subscribe
+                </button>
+              </div>
+              <div class="form-note">
+                We respect your privacy. Unsubscribe at any time.
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-card" data-aos="fade-left">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Our Location</h3>
+                <p>Kasubi, Kampala, Uganda</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Call Us</h3>
+                <p>0200900288 / +256 748095503</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email Us</h3>
+                <p>asfafoundationltd@gmail.com</p>
+              </div>
+            </div>
+            <a href="contact.html" class="btn btn-outline-primary mt-4">
+              <i class="fas fa-paper-plane me-2"></i> Send Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -590,9 +588,6 @@
         once: true,
         offset: 100
       });
-      
-      // Set current year in footer
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
     });
   </script>
 </body>
