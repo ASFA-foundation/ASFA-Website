@@ -12,22 +12,37 @@
   <meta property="og:image" content="https://armstretchfoundationafricaltd.org/images/team-social.jpg">
   <meta property="og:url" content="https://armstretchfoundationafricaltd.org/team.html">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#00AEEF">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="images/logo.png" as="image">
+  <link rel="preload" href="css/main.css" as="style">
+  <link rel="preload" href="js/main.js" as="script">
   
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   
   <!-- Team Page Specific CSS -->
   <style>
     /* Team Header */
     .team-header {
-      background: linear-gradient(rgba(0, 174, 239, 0.8), rgba(0, 174, 239, 0.9)), url('images/team-bg.jpg');
+      background: linear-gradient(135deg, rgba(30,42,58,0.8) 0%, rgba(15,23,33,0.9) 100%), url('images/team-bg.jpg');
       background-size: cover;
       background-position: center;
       min-height: 400px;
@@ -35,22 +50,24 @@
       align-items: center;
       margin-top: -80px;
       padding-top: 80px;
+      color: var(--light);
     }
     
     /* Team Cards */
     .team-card {
       border: none;
-      border-radius: 12px;
+      border-radius: var(--radius-xl);
       transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-md);
       overflow: hidden;
       height: 100%;
-      background: var(--white);
+      background: white;
+      position: relative;
     }
     
     .team-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-xl);
     }
     
     .member-img-container {
@@ -58,6 +75,11 @@
       width: 200px;
       height: 200px;
       margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid var(--primary);
+      padding: 3px;
+      background: white;
     }
     
     .member-img {
@@ -65,8 +87,6 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      border: 5px solid var(--orange);
-      padding: 3px;
       transition: var(--transition);
     }
     
@@ -75,11 +95,11 @@
     }
     
     .member-role {
-      background: var(--orange);
-      color: var(--white);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
       display: inline-block;
       padding: 5px 20px;
-      border-radius: 20px;
+      border-radius: var(--radius-round);
       font-weight: 600;
       font-size: 0.9rem;
       margin-bottom: 15px;
@@ -100,33 +120,33 @@
     }
     
     /* Social Links */
-    .social-links a {
+    .team-social-links a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 35px;
       height: 35px;
       border-radius: 50%;
-      background: rgba(0,174,239,0.1);
-      color: var(--sky-blue);
+      background: var(--primary-light);
+      color: var(--primary);
       margin: 0 5px;
       transition: var(--transition);
     }
     
-    .social-links a:hover {
-      background: var(--orange);
-      color: var(--white);
+    .team-social-links a:hover {
+      background: var(--primary);
+      color: white;
       transform: translateY(-3px);
     }
     
     /* Breadcrumb */
     .breadcrumb-item.active {
-      color: var(--orange);
+      color: var(--primary);
     }
     
     /* Volunteer CTA */
     .volunteer-cta {
-      background: linear-gradient(135deg, var(--sky-blue) 0%, #0085C7 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -140,43 +160,82 @@
       line-height: 1;
       z-index: 0;
     }
+    
+    /* Section backgrounds */
+    .bg-light-gray {
+      background-color: var(--lighter);
+    }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <img src="images/logo.png" alt="ASFA Logo" width="80" height="80">
+        <div class="preloader-pulse"></div>
+      </div>
+      <div class="preloader-text">
+        <h3>Arm Stretch Foundation Africa</h3>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
-        <div class="logo-circle">
+      <a class="navbar-brand" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-mark">
           <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
+          <div class="logo-glow"></div>
         </div>
-        <span class="site-name">Arm Stretch Foundation Africa</span>
+        <span class="logo-text">
+          <span class="logo-primary">Arm Stretch</span>
+          <span class="logo-secondary">Foundation Africa</span>
+        </span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false">Programs</a>
+            <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item" href="programs.html#education">Education</a></li>
+              <li><a class="dropdown-item" href="programs.html#healthcare">Healthcare</a></li>
+              <li><a class="dropdown-item" href="programs.html#shelter">Shelter</a></li>
+              <li><a class="dropdown-item" href="programs.html#empowerment">Empowerment</a></li>
+            </ul>
+          </li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link active" href="team.html">Team</a></li>
-          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-sky-blue px-4" href="donate.html">Donate</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-donate" href="donate.html">
+              <i class="fas fa-heart me-2"></i>Donate
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Page Header -->
-  <header class="team-header py-5 text-white">
+  <header class="team-header py-5">
     <div class="container text-center">
-      <h1 class="display-4 mb-3">Meet Our Team</h1>
-      <p class="lead mb-4">The passionate individuals driving our mission forward</p>
+      <h1 class="hero-title mb-3">Meet Our Team</h1>
+      <p class="hero-text mb-4">The passionate individuals driving our mission forward</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-center bg-transparent">
           <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Our Team</li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Our Team</li>
         </ol>
       </nav>
     </div>
@@ -185,21 +244,23 @@
   <!-- Leadership Team -->
   <section class="py-5 bg-light-gray">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="section-header text-center mb-5">
+        <span class="section-subtitle">Our Leadership</span>
         <h2 class="section-title">Executive Team</h2>
-        <p class="lead">Guiding our strategic vision and daily operations</p>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-description mx-auto">Guiding our strategic vision and daily operations</p>
       </div>
       <div class="row justify-content-center">
         <!-- Team Member 1 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/team/ceo.jpg" alt="Kagara Elly, Founder & CEO" class="member-img" loading="lazy">
             </div>
-            <h3>Kagara Elly</h3>
+            <h3 class="program-title">Kagara Elly</h3>
             <p class="member-role">Founder & CEO</p>
-            <p class="mb-3">Leads our strategic vision and global partnerships to create sustainable impact.</p>
-            <div class="social-links mt-3">
+            <p class="program-text mb-3">Leads our strategic vision and global partnerships to create sustainable impact.</p>
+            <div class="team-social-links mt-3">
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
               <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -208,15 +269,15 @@
         </div>
         
         <!-- Team Member 2 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Kukundakwe Betha.jpg" alt="Kukundakwe Betha, Secretary" class="member-img" loading="lazy">
             </div>
-            <h3>Kukundakwe Betha</h3>
+            <h3 class="program-title">Kukundakwe Betha</h3>
             <p class="member-role">Secretary</p>
-            <p class="mb-3">Oversees all organizational documentation, meetings, and compliance matters.</p>
-            <div class="social-links mt-3">
+            <p class="program-text mb-3">Oversees all organizational documentation, meetings, and compliance matters.</p>
+            <div class="team-social-links mt-3">
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
@@ -224,15 +285,15 @@
         </div>
         
         <!-- Team Member 3 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Namazzi Agnes.jpg" alt="Namazzi Agnes, Finance Manager" class="member-img" loading="lazy">
             </div>
-            <h3>Namazzi Agnes</h3>
+            <h3 class="program-title">Namazzi Agnes</h3>
             <p class="member-role">Finance Manager</p>
-            <p class="mb-3">Ensures financial accountability and manages all organizational funds and reporting.</p>
-            <div class="social-links mt-3">
+            <p class="program-text mb-3">Ensures financial accountability and manages all organizational funds and reporting.</p>
+            <div class="team-social-links mt-3">
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
@@ -240,15 +301,15 @@
         </div>
         
         <!-- Team Member 4 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Akumu Jackline.jpg" alt="Akumu Jackline, Welfare Officer" class="member-img" loading="lazy">
             </div>
-            <h3>Akumu Jackline</h3>
+            <h3 class="program-title">Akumu Jackline</h3>
             <p class="member-role">Welfare Officer</p>
-            <p class="mb-3">Ensures the well-being of both staff and beneficiaries in all our programs.</p>
-            <div class="social-links mt-3">
+            <p class="program-text mb-3">Ensures the well-being of both staff and beneficiaries in all our programs.</p>
+            <div class="team-social-links mt-3">
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
@@ -256,15 +317,15 @@
         </div>
         
         <!-- Team Member 5 - Alvin Ategyeka as I.T Lead -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Alvin.png" alt="Alvin Ategyeka, I.T Lead" class="member-img" loading="lazy">
             </div>
-            <h3>Alvin Ategyeka</h3>
+            <h3 class="program-title">Alvin Ategyeka</h3>
             <p class="member-role">I.T Lead</p>
-            <p class="mb-3">Manages all technology infrastructure and digital initiatives for the foundation.</p>
-            <div class="social-links mt-3">
+            <p class="program-text mb-3">Manages all technology infrastructure and digital initiatives for the foundation.</p>
+            <div class="team-social-links mt-3">
               <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
               <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -276,46 +337,48 @@
   </section>
 
   <!-- Board of Directors -->
-  <section class="py-5 bg-white">
+  <section class="py-5">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="section-header text-center mb-5">
+        <span class="section-subtitle">Governance</span>
         <h2 class="section-title">Board of Directors</h2>
-        <p class="lead">Providing governance and strategic oversight</p>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-description mx-auto">Providing governance and strategic oversight</p>
       </div>
       <div class="row justify-content-center">
         <!-- Board Member 1 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Mugumya Andrew.jpg" alt="Mr. Mugumya Andrew" class="member-img" loading="lazy">
             </div>
-            <h4>Mr. Mugumya Andrew</h4>
+            <h4 class="program-title">Mr. Mugumya Andrew</h4>
             <p class="member-role">Chairperson</p>
-            <p class="mb-3">Provides leadership to the board and organization, ensuring alignment with our mission.</p>
+            <p class="program-text mb-3">Provides leadership to the board and organization, ensuring alignment with our mission.</p>
           </div>
         </div>
         
         <!-- Board Member 2 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Kyobutungyi Edith.jpg" alt="Ms Kyobutungyi Edith" class="member-img" loading="lazy">
             </div>
-            <h4>Ms Kyobutungyi Edith</h4>
+            <h4 class="program-title">Ms Kyobutungyi Edith</h4>
             <p class="member-role">Treasurer</p>
-            <p class="mb-3">Oversees financial governance and ensures accountability in all financial matters.</p>
+            <p class="program-text mb-3">Oversees financial governance and ensures accountability in all financial matters.</p>
           </div>
         </div>
         
         <!-- Board Member 3 -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="team-card text-center p-4 h-100">
             <div class="member-img-container floating-animation">
               <img src="images/Nangumya Raymond.jpg" alt="Nangumya Raymond" class="member-img" loading="lazy">
             </div>
-            <h4>Nangumya Raymond</h4>
+            <h4 class="program-title">Nangumya Raymond</h4>
             <p class="member-role">Secretary</p>
-            <p class="mb-3">Maintains board records and ensures proper documentation of all governance activities.</p>
+            <p class="program-text mb-3">Maintains board records and ensures proper documentation of all governance activities.</p>
           </div>
         </div>
       </div>
@@ -325,16 +388,16 @@
   <!-- Volunteer CTA -->
   <section class="volunteer-cta py-5 text-white text-center position-relative">
     <div class="container position-relative z-index-1">
-      <h2 class="mb-4">Join Our Team</h2>
-      <p class="lead mb-4">We're always looking for passionate individuals to join our mission.</p>
+      <h2 class="cta-title mb-4">Join Our Team</h2>
+      <p class="cta-text mb-4">We're always looking for passionate individuals to join our mission.</p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="contact.html" class="btn btn-orange btn-lg px-4">
+        <a href="contact.html" class="btn btn-primary btn-lg px-4">
           <i class="fas fa-hands-helping me-2"></i> Volunteer
         </a>
-        <a href="careers.html" class="btn btn-outline-white btn-lg px-4">
+        <a href="careers.html" class="btn btn-outline-light btn-lg px-4">
           <i class="fas fa-briefcase me-2"></i> Careers
         </a>
-        <a href="internships.html" class="btn btn-outline-white btn-lg px-4">
+        <a href="internships.html" class="btn btn-outline-light btn-lg px-4">
           <i class="fas fa-user-graduate me-2"></i> Internships
         </a>
       </div>
@@ -345,69 +408,97 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-5">
+  <footer class="footer">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <h5 class="mb-3">About ASFA</h5>
-          <div class="d-flex align-items-center mb-3">
-            <div class="logo-circle me-3">
-              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="lazy">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo">
+            <img src="images/logo.png" alt="ASFA Logo" width="50" height="50" loading="lazy">
+            <div>
+              <h3 class="footer-logo-text">Arm Stretch Foundation Africa</h3>
             </div>
-            <span class="fw-bold text-white">Arm Stretch Foundation Africa Ltd</span>
           </div>
-          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
+          <p class="footer-about-text">
+            Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa.
+          </p>
           <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-2" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/AsfaFoundation" class="text-white me-2" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white me-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/AsfaFoundation" aria-label="Follow us on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-md-6">
-          <h5 class="mb-3">Quick Links</h5>
-          <ul class="nav flex-column footer-links">
-            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0">Home</a></li>
-            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0">About</a></li>
-            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0">Programs</a></li>
-            <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0">Gallery</a></li>
-            <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0">Team</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link p-0">Contact</a></li>
+        
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="team.html">Our Team</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="mb-3">Contact Us</h5>
-          <ul class="nav flex-column footer-links">
-            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
-            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+        
+        <div class="col-lg-3 col-md-4 mb-5 mb-md-0">
+          <h4 class="footer-title">Programs</h4>
+          <ul class="footer-links">
+            <li><a href="programs.html#education">Education</a></li>
+            <li><a href="programs.html#healthcare">Healthcare</a></li>
+            <li><a href="programs.html#shelter">Shelter</a></li>
+            <li><a href="programs.html#empowerment">Empowerment</a></li>
+            <li><a href="programs.html">All Programs</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="mb-3">Newsletter</h5>
-          <p>Subscribe to our newsletter for updates on our work.</p>
-          <form class="newsletter-form">
-            <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email" required>
-              <button class="btn btn-sky-blue" type="submit">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </div>
-            <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
-          </form>
+        
+        <div class="col-lg-3 col-md-4">
+          <h4 class="footer-title">Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kasubi, Kampala, Uganda</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:0200900288">0200900288</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="tel:+256748095503">+256 748095503</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:asfafoundationltd@gmail.com">asfafoundationltd@gmail.com</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <hr class="my-4">
-      <div class="text-center">
-        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="copyright">&copy; <span id="currentYear"></span> Arm Stretch Foundation Africa. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <ul class="footer-bottom-links">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
   <script>
     // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
