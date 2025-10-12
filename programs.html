@@ -221,6 +221,48 @@
             font-size: 1.25rem;
         }
         
+        .budget-section {
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(255, 107, 107, 0.05) 100%);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .budget-table th,
+        .budget-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .budget-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .budget-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 600;
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        .budget-total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: right;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--primary);
+        }
+        
         .bank-details {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
@@ -377,7 +419,7 @@
                 <div class="col-lg-4 col-md-6" id="healthcare">
                     <div class="program-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="program-img-container position-relative">
-                            <img src="images/program-healthcare.jpg" alt="Doctor examining child" loading="lazy">
+                            <img src="images/women hero.jpg" alt="Doctor examining child" loading="lazy">
                             <div class="program-icon">
                                 <i class="fas fa-heartbeat"></i>
                             </div>
@@ -551,6 +593,15 @@
                     </ul>
                 </div>
                 
+                <div class="budget-section" data-aos="fade-up">
+                    <h3 class="concept-title"><i class="fas fa-money-bill-wave"></i>Estimated Budget</h3>
+                    <p>The total estimated budget required for the 36-month implementation of the "Save the Hopeless Youth in Uganda" project is:</p>
+                    <div class="budget-total">UGX 250,000,000 (Two Hundred Fifty Million Uganda Shillings)</div>
+                    
+                
+                    <p class="mt-3"><em>Note: Detailed budget breakdown available upon request.</em></p>
+                </div>
+                
                 <div class="row">
                     <div class="col-md-8">
                         <div class="concept-section">
@@ -572,6 +623,11 @@
                             <h3 class="concept-title"><i class="fas fa-calendar-alt"></i>Project Duration</h3>
                             <p>36 months (2025 – 2027)</p>
                         </div>
+                        
+                        <div class="concept-section">
+                            <h3 class="concept-title"><i class="fas fa-handshake"></i>Partnerships and Support Requested</h3>
+                            <p>We seek support from the Government of Uganda (Office of the Prime Minister), development partners, and private sector stakeholders to provide funding, technical guidance, and collaboration in implementing this life-changing initiative.</p>
+                        </div>
                     </div>
                     
                     <div class="col-md-4">
@@ -590,11 +646,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                <div class="concept-section">
-                    <h3 class="concept-title"><i class="fas fa-handshake"></i>Partnerships and Support Requested</h3>
-                    <p>We seek support from the Government of Uganda (Office of the Prime Minister), development partners, and private sector stakeholders to provide funding, technical guidance, and collaboration in implementing this life-changing initiative.</p>
                 </div>
                 
                 <div class="concept-section">
