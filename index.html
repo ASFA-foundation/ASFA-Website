@@ -23,7 +23,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,27 +39,27 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   
   <style>
-    /* Enhanced CSS Variables */
+    /* Enhanced CSS Variables with Better Color Scheme */
     :root {
       --primary: #00AEEF;
       --primary-light: rgba(0, 174, 239, 0.1);
       --primary-dark: #0088C6;
-      --secondary: #FF6B6B;
-      --accent: #FFC107;
-      --dark: #2C3E50;
-      --darker: #1A252F;
+      --secondary: #FF6B35;
+      --accent: #FFD166;
+      --dark: #1E2A3A;
+      --darker: #0F1721;
       --light: #FFFFFF;
-      --lighter: #F8F9FA;
+      --lighter: #F8FAFC;
       --gray-light: #E9ECEF;
       --gray-medium: #6C757D;
       --gray-dark: #343A40;
-      --text-primary: #212529;
-      --text-secondary: #495057;
+      --text-primary: #1E2A3A;
+      --text-secondary: #4A5568;
       --text-light: #E9ECEF;
       
-      --font-primary: 'Poppins', sans-serif;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-secondary: 'Open Sans', sans-serif;
+      --font-primary: 'Inter', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+      --font-secondary: 'Inter', sans-serif;
       
       --radius-sm: 4px;
       --radius-md: 8px;
@@ -67,10 +67,10 @@
       --radius-xl: 16px;
       --radius-round: 50px;
       
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
-      --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+      --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.2);
       --shadow-primary: 0 4px 16px rgba(0, 174, 239, 0.3);
       
       --text-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -78,6 +78,21 @@
       --transition: all 0.3s ease;
       --transition-fast: all 0.15s ease;
       --transition-slow: all 0.5s ease;
+    }
+
+    /* Enhanced Base Styles */
+    body {
+      font-family: var(--font-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
     }
 
     /* Enhanced Hero Section */
@@ -110,7 +125,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+      background: linear-gradient(to bottom, rgba(30,42,58,0.4) 0%, rgba(30,42,58,0.8) 100%);
       z-index: 2;
     }
     
@@ -121,11 +136,11 @@
       max-width: 800px;
       text-align: center;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 20px;
     }
     
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1.5rem;
@@ -134,7 +149,7 @@
     }
     
     .hero-text {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       margin-bottom: 2.5rem;
       opacity: 0.9;
       text-shadow: var(--text-shadow-dark);
@@ -154,632 +169,29 @@
       transition: var(--transition);
     }
     
+    .hero-actions .btn-primary {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+    }
+    
+    .hero-actions .btn-primary:hover {
+      background-color: #E55A2B;
+      border-color: #E55A2B;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+    }
+    
     .hero-actions .btn-outline-light {
       border-width: 2px;
     }
     
     .hero-actions .btn-outline-light:hover {
       color: var(--dark);
-      background-color: var(--light);
+      transform: translateY(-3px);
     }
-    
-    /* Enhanced Stats Section */
-    .stats-section {
-      padding: 5rem 0;
-      background-color: var(--primary);
-      color: var(--light);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .stats-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-dots.png') center/cover;
-      opacity: 0.1;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-    
-    .stat-card {
-      position: relative;
-      padding: 2.5rem 2rem;
-      background-color: rgba(255,255,255,0.1);
-      border-radius: var(--radius-xl);
-      backdrop-filter: blur(5px);
-      transition: var(--transition);
-      z-index: 2;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-10px);
-      background-color: rgba(255,255,255,0.2);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-    
-    .stat-card:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
-    }
-    
-    .stat-card:hover:before {
-      transform: translateX(100%);
-    }
-    
-    .stat-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      font-family: var(--font-heading);
-      background: linear-gradient(to right, #ffffff, #e0f7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .stat-label {
-      font-size: 1rem;
-      font-weight: 500;
-      opacity: 0.9;
-    }
-    
-    /* Enhanced Programs Section */
-    .programs-section {
-      padding: 6rem 0;
-      background-color: var(--lighter);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .programs-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-light.png') center/cover;
-      opacity: 0.05;
-    }
-    
-    .programs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-    
-    .program-card {
-      background-color: var(--light);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    .program-card:hover {
-      transform: translateY(-15px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .program-icon {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: var(--light);
-      border-radius: var(--radius-round);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      z-index: 2;
-      box-shadow: var(--shadow-primary);
-    }
-    
-    .program-image {
-      position: relative;
-      height: 220px;
-      overflow: hidden;
-    }
-    
-    .program-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-slow);
-    }
-    
-    .program-card:hover .program-image img {
-      transform: scale(1.1);
-    }
-    
-    .program-image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-    }
-    
-    .program-content {
-      padding: 2.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .program-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--dark);
-      font-weight: 700;
-    }
-    
-    .program-text {
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    
-    .program-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      padding: 0;
-    }
-    
-    .program-features li {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-    
-    .program-features i {
-      color: var(--primary);
-      margin-right: 0.75rem;
-      font-size: 0.9rem;
-    }
-    
-    /* Enhanced Mission Section */
-    .mission-section {
-      padding: 6rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .mission-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-light.png') center/cover;
-      opacity: 0.05;
-    }
-    
-    .mission-image {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      transform: perspective(1000px) rotateY(-5deg);
-      transition: var(--transition);
-    }
-    
-    .mission-image:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
-    
-    .mission-image img {
-      width: 100%;
-      height: auto;
-      transition: var(--transition-slow);
-    }
-    
-    .mission-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    .mission-badge {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: var(--light);
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      box-shadow: var(--shadow-primary);
-      z-index: 2;
-    }
-    
-    .mission-badge i {
-      margin-right: 0.5rem;
-      font-size: 1.2rem;
-    }
-    
-    .mission-image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,174,239,0.3) 0%, rgba(0,174,239,0) 50%);
-      opacity: 0;
-      transition: var(--transition);
-    }
-    
-    .mission-image:hover .mission-image-overlay {
-      opacity: 1;
-    }
-    
-    .mission-text {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-left: 1.5rem;
-      line-height: 1.7;
-    }
-    
-    .mission-text:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5rem;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--primary);
-    }
-    
-    /* Enhanced Stories Section */
-    .stories-section {
-      padding: 6rem 0;
-      background-color: var(--light);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .stories-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-light.png') center/cover;
-      opacity: 0.05;
-    }
-    
-    .stories-slider {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-    
-    .story-card {
-      background-color: var(--light);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    .story-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .story-image {
-      position: relative;
-      height: 250px;
-      overflow: hidden;
-    }
-    
-    .story-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-slow);
-    }
-    
-    .story-card:hover .story-image img {
-      transform: scale(1.1);
-    }
-    
-    .story-image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-    }
-    
-    .story-badge {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: var(--light);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
-    
-    .story-content {
-      padding: 2rem;
-    }
-    
-    .story-title {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: var(--dark);
-      font-weight: 700;
-    }
-    
-    .story-excerpt {
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    
-    /* Enhanced CTA Section */
-    .cta-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--light);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-dots.png') center/cover;
-      opacity: 0.1;
-    }
-    
-    .cta-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-      padding: 4rem 3rem;
-      border-radius: var(--radius-xl);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .cta-card:before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.05);
-    }
-    
-    .cta-title {
-      font-size: 2.5rem;
-      color: var(--light);
-      margin-bottom: 1.5rem;
-      font-weight: 800;
-    }
-    
-    .cta-text {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 0;
-      line-height: 1.6;
-    }
-    
-    /* Enhanced Newsletter Section */
-    .newsletter-section {
-      padding: 6rem 0;
-      background-color: var(--lighter);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .newsletter-section:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-light.png') center/cover;
-      opacity: 0.05;
-    }
-    
-    .newsletter-content {
-      max-width: 500px;
-    }
-    
-    .newsletter-form {
-      margin-top: 2rem;
-    }
-    
-    .newsletter-form .input-group {
-      border-radius: 50px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .newsletter-form .form-control {
-      height: 60px;
-      border: none;
-      padding: 0 1.5rem;
-      font-size: 1rem;
-    }
-    
-    .newsletter-form .btn {
-      padding: 0 2rem;
-      height: 60px;
-      border-radius: 0 50px 50px 0;
-      border: none;
-      font-weight: 600;
-    }
-    
-    .newsletter-image {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .newsletter-image img {
-      width: 100%;
-      height: auto;
-      transition: var(--transition-slow);
-    }
-    
-    .newsletter-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    .newsletter-image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,174,239,0.3) 0%, rgba(0,174,239,0) 50%);
-      opacity: 0;
-      transition: var(--transition);
-    }
-    
-    .newsletter-image:hover .newsletter-image-overlay {
-      opacity: 1;
-    }
-    
-    /* Enhanced Footer */
-    .footer {
-      background-color: var(--darker);
-      color: var(--light);
-      padding: 5rem 0 0;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .footer:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/pattern-dark.png') center/cover;
-      opacity: 0.05;
-    }
-    
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-logo img {
-      margin-right: 0.75rem;
-    }
-    
-    .footer-about-text {
-      opacity: 0.7;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.1);
-      color: var(--light);
-      transition: var(--transition);
-    }
-    
-    .social-links a:hover {
-      background-color: var(--primary);
-      transform: translateY(-5px);
-      color: white;
-    }
-    
-    /* Enhanced Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.7; }
-      70% { transform: scale(1.1); opacity: 0.3; }
-      100% { transform: scale(0.95); opacity: 0.7; }
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-20px); }
-      60% { transform: translateY(-10px); }
-    }
-    
-    /* Enhanced Section Styling */
+
+    /* Enhanced Section Headers */
     .section-header {
       margin-bottom: 4rem;
       position: relative;
@@ -809,8 +221,8 @@
     }
     
     .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 2.8rem;
+      font-weight: 700;
       margin-bottom: 1.5rem;
       position: relative;
     }
@@ -846,42 +258,646 @@
       font-size: 1.1rem;
       color: var(--text-secondary);
       max-width: 700px;
-      line-height: 1.6;
     }
     
     .text-center .section-description {
       margin-left: auto;
       margin-right: auto;
     }
+
+    /* Enhanced Mission Section */
+    .mission-section {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--lighter);
+    }
+
+    .mission-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,174,239,0.1) 0%, rgba(0,174,239,0) 70%);
+      z-index: 0;
+    }
+
+    .mission-image {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: var(--transition);
+    }
+
+    .mission-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+
+    .mission-image img {
+      width: 100%;
+      height: auto;
+      transition: var(--transition-slow);
+    }
+
+    .mission-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .mission-badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background-color: var(--primary);
+      color: var(--light);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--shadow-primary);
+      z-index: 2;
+    }
+
+    .mission-badge i {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .mission-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,174,239,0.3) 0%, rgba(0,174,239,0) 50%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .mission-image:hover .mission-image-overlay {
+      opacity: 1;
+    }
+
+    .mission-text {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .mission-text:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary);
+    }
+
+    /* Enhanced Stats Section */
+    .stats-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
     
+    .stats-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIiBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==') repeat;
+      opacity: 0.1;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .stat-card {
+      position: relative;
+      padding: 2.5rem 1.5rem;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      z-index: 2;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255,255,255,0.15);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .stat-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    
+    .stat-card:hover:before {
+      transform: translateX(100%);
+    }
+    
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    /* Enhanced Programs Section */
+    .programs-section {
+      padding: 6rem 0;
+      background-color: var(--lighter);
+      position: relative;
+    }
+
+    .programs-section:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(255,107,53,0) 70%);
+      z-index: 0;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .program-card {
+      background-color: var(--light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .program-icon {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary);
+      color: var(--light);
+      border-radius: var(--radius-round);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 2;
+      box-shadow: var(--shadow-primary);
+    }
+    
+    .program-image {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .program-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    
+    .program-card:hover .program-image img {
+      transform: scale(1.1);
+    }
+    
+    .program-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    }
+    
+    .program-content {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .program-text {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+    
+    .program-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    
+    .program-features li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .program-features i {
+      color: var(--primary);
+      margin-right: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    /* Enhanced Stories Section */
+    .stories-section {
+      padding: 6rem 0;
+      background-color: var(--light);
+      position: relative;
+    }
+
+    .stories-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,209,102,0.1) 0%, rgba(255,209,102,0) 70%);
+      z-index: 0;
+    }
+
+    .stories-slider {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .story-card {
+      background-color: var(--light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .story-image {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    
+    .story-card:hover .story-image img {
+      transform: scale(1.1);
+    }
+    
+    .story-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    }
+    
+    .story-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background-color: var(--primary);
+      color: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+    
+    .story-content {
+      padding: 1.5rem;
+    }
+    
+    .story-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .story-excerpt {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    /* Enhanced CTA Section */
+    .cta-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIiBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==') repeat;
+      opacity: 0.1;
+    }
+    
+    .cta-card {
+      background-color: var(--dark);
+      padding: 3rem;
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .cta-card:before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.05);
+    }
+    
+    .cta-title {
+      font-size: 2.2rem;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-text {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+
+    /* Enhanced Newsletter Section */
+    .newsletter-section {
+      padding: 6rem 0;
+      background-color: var(--lighter);
+      position: relative;
+    }
+
+    .newsletter-section:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,174,239,0.1) 0%, rgba(0,174,239,0) 70%);
+      z-index: 0;
+    }
+
+    .newsletter-content {
+      max-width: 500px;
+    }
+    
+    .newsletter-form {
+      margin-top: 2rem;
+    }
+    
+    .newsletter-form .input-group {
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .newsletter-form .form-control {
+      height: 50px;
+      border: none;
+      padding: 0 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .newsletter-form .btn {
+      padding: 0 1.5rem;
+      height: 50px;
+      border-radius: 0 50px 50px 0;
+      border: none;
+    }
+    
+    .form-text {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+    
+    .newsletter-image {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .newsletter-image img {
+      width: 100%;
+      height: auto;
+      transition: var(--transition-slow);
+    }
+    
+    .newsletter-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    .newsletter-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,174,239,0.3) 0%, rgba(0,174,239,0) 50%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .newsletter-image:hover .newsletter-image-overlay {
+      opacity: 1;
+    }
+
+    /* Enhanced Footer */
+    .footer {
+      background-color: var(--darker);
+      color: var(--light);
+      padding: 4rem 0 0;
+      position: relative;
+    }
+
+    .footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIiBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=') repeat;
+      opacity: 0.1;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-logo img {
+      margin-right: 0.75rem;
+    }
+    
+    .footer-about-text {
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.1);
+      color: var(--light);
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Enhanced Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      70% { transform: scale(1.1); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+
     /* Enhanced Buttons */
     .btn {
       font-weight: 600;
       transition: var(--transition);
     }
-    
+
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border: none;
-      box-shadow: var(--shadow-primary);
+      background-color: var(--primary);
+      border-color: var(--primary);
     }
-    
+
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,174,239,0.4);
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,174,239,0.4);
     }
-    
+
     .btn-outline-primary {
-      border-width: 2px;
-      font-weight: 600;
+      color: var(--primary);
+      border-color: var(--primary);
     }
-    
+
     .btn-outline-primary:hover {
       background-color: var(--primary);
       border-color: var(--primary);
-      transform: translateY(-3px);
+      color: white;
+      transform: translateY(-2px);
     }
-    
+
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -893,43 +909,43 @@
       background: none;
       padding: 0;
     }
-    
+
     .btn-link i {
       transition: var(--transition-fast);
     }
-    
+
     .btn-link:hover {
       color: var(--primary-dark);
     }
-    
+
     .btn-link:hover i {
       transform: translateX(5px);
     }
-    
+
     /* Enhanced Navigation */
     .navbar {
-      padding: 1.2rem 0;
+      padding: 1rem 0;
       transition: all 0.3s ease;
       background-color: transparent;
     }
-    
+
     .navbar.scrolled {
       background-color: rgba(255, 255, 255, 0.98) !important;
       box-shadow: var(--shadow-md);
-      padding: 0.8rem 0;
+      padding: 0.5rem 0;
     }
-    
+
     .navbar-brand {
       display: flex;
       align-items: center;
       font-weight: 700;
     }
-    
+
     .logo-mark {
       position: relative;
       margin-right: 0.75rem;
     }
-    
+
     .logo-glow {
       position: absolute;
       top: 0;
@@ -941,38 +957,38 @@
       opacity: 0;
       transition: var(--transition);
     }
-    
+
     .navbar-brand:hover .logo-glow {
       opacity: 1;
     }
-    
+
     .logo-text {
       display: flex;
       flex-direction: column;
       line-height: 1.2;
     }
-    
+
     .logo-primary {
       font-size: 1.25rem;
       font-weight: 800;
       color: var(--dark);
       font-family: var(--font-heading);
     }
-    
+
     .logo-secondary {
       font-size: 0.75rem;
       font-weight: 500;
       color: var(--primary);
       letter-spacing: 0.5px;
     }
-    
+
     .navbar-nav .nav-link {
       font-weight: 500;
       padding: 0.5rem 1rem;
       color: var(--dark);
       position: relative;
     }
-    
+
     .navbar-nav .nav-link:after {
       content: '';
       position: absolute;
@@ -984,28 +1000,30 @@
       transform: scaleX(0);
       transition: var(--transition);
     }
-    
+
     .navbar-nav .nav-link:hover:after,
     .navbar-nav .nav-link.active:after {
       transform: scaleX(1);
     }
-    
+
     .btn-donate {
       font-weight: 600;
       padding: 0.5rem 1.5rem;
       border-radius: 50px;
       transition: var(--transition);
       box-shadow: var(--shadow-primary);
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background-color: var(--primary);
       color: white;
       border: none;
     }
-    
+
     .btn-donate:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,174,239,0.4);
+      box-shadow: var(--shadow-lg);
+      background-color: var(--primary-dark);
+      color: white;
     }
-    
+
     /* Enhanced Preloader */
     .preloader {
       position: fixed;
@@ -1021,12 +1039,12 @@
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
-    
+
     .preloader-logo {
       position: relative;
       margin-bottom: 2rem;
     }
-    
+
     .preloader-pulse {
       position: absolute;
       top: -10px;
@@ -1037,7 +1055,7 @@
       border-radius: 50%;
       animation: pulse 1.5s infinite;
     }
-    
+
     .preloader-spinner {
       width: 50px;
       height: 50px;
@@ -1046,19 +1064,19 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
-    
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
-    /* Enhanced Back to Top Button */
+
+    /* Enhanced Back to Top */
     .back-to-top {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background-color: var(--primary);
       color: var(--light);
       border-radius: 50%;
       display: flex;
@@ -1073,17 +1091,17 @@
       border: none;
       cursor: pointer;
     }
-    
+
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
     }
-    
+
     .back-to-top:hover {
+      background-color: var(--primary-dark);
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,174,239,0.4);
     }
-    
+
     /* Responsive Styles */
     @media (max-width: 1199.98px) {
       h1 { font-size: 2.8rem; }
@@ -1128,87 +1146,30 @@
       h2 { font-size: 1.8rem; }
       h3 { font-size: 1.4rem; }
       
-      .section-header {
-        margin-bottom: 2rem;
-      }
-      
-      .hero {
-        min-height: 500px;
-        height: auto;
-        padding: 8rem 0 6rem;
-      }
-      
       .hero-title {
         font-size: 2rem;
-        margin-bottom: 1rem;
       }
       
       .hero-text {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
       }
       
       .hero-actions .btn {
-        padding: 0.5rem 1.5rem;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
       }
       
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .section-title {
+        font-size: 1.8rem;
       }
       
       .programs-grid {
         grid-template-columns: 1fr;
       }
       
-      .newsletter-section .row {
-        flex-direction: column-reverse;
-      }
-      
-      .newsletter-content {
-        margin-top: 3rem;
-      }
-      
-      .footer-logo {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .footer-logo img {
-        margin-bottom: 1rem;
-      }
-    }
-    
-    @media (max-width: 575.98px) {
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.5rem; }
-      
-      .hero {
-        padding: 7rem 0 4rem;
-      }
-      
-      .hero-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .hero-actions .btn {
-        width: 100%;
-      }
-      
       .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .cta-card {
@@ -1216,50 +1177,61 @@
       }
       
       .cta-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 575.98px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
       
-      .cta-actions {
-        display: flex;
+      .stories-slider {
+        grid-template-columns: 1fr;
+      }
+      
+      .newsletter-form .input-group {
         flex-direction: column;
-        gap: 1rem;
+        border-radius: var(--radius-lg);
       }
       
-      .cta-actions .btn {
+      .newsletter-form .form-control {
+        border-radius: var(--radius-lg);
+        margin-bottom: 1rem;
+      }
+      
+      .newsletter-form .btn {
+        border-radius: var(--radius-lg);
         width: 100%;
-      }
-      
-      .back-to-top {
-        bottom: 1rem;
-        right: 1rem;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Preloader -->
   <div class="preloader">
     <div class="preloader-logo">
-      <img src="images/logo.png" alt="Arm Stretch Foundation Africa" width="80">
       <div class="preloader-pulse"></div>
+      <img src="images/logo.png" alt="Arm Stretch Foundation Africa" width="80">
     </div>
     <div class="preloader-spinner"></div>
   </div>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
         <div class="logo-mark">
-          <img src="images/logo.png" alt="Arm Stretch Foundation Africa" width="40">
           <div class="logo-glow"></div>
+          <img src="images/logo.png" alt="Arm Stretch Foundation Africa" height="40">
         </div>
         <div class="logo-text">
-          <span class="logo-primary">Arm Stretch</span>
-          <span class="logo-secondary">Foundation Africa</span>
+          <span class="logo-primary">Arm Stretch Foundation</span>
+          <span class="logo-secondary">Africa</span>
         </div>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -1279,25 +1251,59 @@
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
-          <li class="nav-item ms-lg-3">
-            <a class="btn btn-donate" href="#donate">Donate Now</a>
-          </li>
         </ul>
+        <a href="#" class="btn btn-donate ms-lg-3 mt-3 mt-lg-0">Donate Now</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" id="home">
+  <section id="home" class="hero">
     <div class="hero-background" style="background-image: url('images/hero-bg.jpg');"></div>
     <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Empowering Vulnerable Communities in Africa</h1>
+      <p class="hero-text">We provide sustainable education, healthcare, and shelter initiatives to uplift communities and transform lives across Africa.</p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-primary">Our Programs</a>
+        <a href="#contact" class="btn btn-outline-light">Get Involved</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="about" class="mission-section">
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">Empowering Vulnerable Communities in Africa</h1>
-        <p class="hero-text">We are dedicated to transforming lives through sustainable education, healthcare, and shelter initiatives across Africa.</p>
-        <div class="hero-actions">
-          <a href="#about" class="btn btn-light">Learn More</a>
-          <a href="#donate" class="btn btn-outline-light">Donate Now</a>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <div class="mission-image">
+            <div class="mission-badge">
+              <i class="fas fa-heart"></i>
+              <span>Since 2015</span>
+            </div>
+            <img src="images/mission-image.jpg" alt="Our Mission">
+            <div class="mission-image-overlay"></div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="section-header">
+            <span class="section-subtitle">Our Mission</span>
+            <h2 class="section-title">Transforming Lives Through Sustainable Development</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">Arm Stretch Foundation Africa is dedicated to empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives across the continent.</p>
+          </div>
+          <div class="mission-text">
+            <p>We believe in creating lasting change by addressing the root causes of poverty and inequality through community-led development projects.</p>
+          </div>
+          <div class="mission-text">
+            <p>Our approach combines immediate relief with long-term sustainable solutions that empower communities to become self-sufficient.</p>
+          </div>
+          <div class="mission-text">
+            <p>Through partnerships with local organizations, we ensure our initiatives are culturally appropriate and have maximum impact.</p>
+          </div>
+          <a href="#" class="btn btn-link mt-4">
+            Learn More About Us <i class="fas fa-arrow-right ms-2"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -1318,35 +1324,35 @@
           <div class="stat-icon">
             <i class="fas fa-school"></i>
           </div>
-          <div class="stat-number">25</div>
+          <div class="stat-number">24</div>
           <div class="stat-label">Schools Built</div>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="stat-icon">
-            <i class="fas fa-home"></i>
-          </div>
-          <div class="stat-number">500+</div>
-          <div class="stat-label">Homes Provided</div>
-        </div>
-        <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
           <div class="stat-icon">
             <i class="fas fa-hand-holding-heart"></i>
           </div>
           <div class="stat-number">8</div>
           <div class="stat-label">African Countries</div>
         </div>
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Homes Provided</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Programs Section -->
-  <section class="programs-section" id="programs">
+  <section id="programs" class="programs-section">
     <div class="container">
-      <div class="section-header text-center">
+      <div class="section-header text-center mb-5">
         <span class="section-subtitle">Our Programs</span>
-        <h2 class="section-title">Transforming Communities</h2>
+        <h2 class="section-title">Creating Sustainable Change</h2>
         <div class="section-divider"></div>
-        <p class="section-description">We implement sustainable programs that address the most pressing needs in vulnerable communities across Africa.</p>
+        <p class="section-description">We focus on three key areas to create lasting impact in vulnerable communities across Africa.</p>
       </div>
       <div class="programs-grid">
         <div class="program-card" data-aos="fade-up" data-aos-delay="100">
@@ -1358,15 +1364,17 @@
             <div class="program-image-overlay"></div>
           </div>
           <div class="program-content">
-            <h3 class="program-title">Education for All</h3>
-            <p class="program-text">We provide access to quality education by building schools, providing scholarships, and training teachers in underserved communities.</p>
+            <h3 class="program-title">Education Initiative</h3>
+            <p class="program-text">Providing access to quality education for children in underserved communities through school construction, teacher training, and scholarship programs.</p>
             <ul class="program-features">
-              <li><i class="fas fa-check-circle"></i> School construction and renovation</li>
-              <li><i class="fas fa-check-circle"></i> Scholarship programs</li>
-              <li><i class="fas fa-check-circle"></i> Teacher training</li>
-              <li><i class="fas fa-check-circle"></i> Educational materials</li>
+              <li><i class="fas fa-check"></i> School construction and renovation</li>
+              <li><i class="fas fa-check"></i> Teacher training programs</li>
+              <li><i class="fas fa-check"></i> Scholarship opportunities</li>
+              <li><i class="fas fa-check"></i> Educational materials provision</li>
             </ul>
-            <a href="#" class="btn btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
         <div class="program-card" data-aos="fade-up" data-aos-delay="200">
@@ -1379,14 +1387,16 @@
           </div>
           <div class="program-content">
             <h3 class="program-title">Healthcare Access</h3>
-            <p class="program-text">We improve healthcare access by building clinics, providing medical supplies, and organizing health education campaigns.</p>
+            <p class="program-text">Improving health outcomes through medical camps, health education, and infrastructure development in remote areas.</p>
             <ul class="program-features">
-              <li><i class="fas fa-check-circle"></i> Medical clinic construction</li>
-              <li><i class="fas fa-check-circle"></i> Health education programs</li>
-              <li><i class="fas fa-check-circle"></i> Maternal and child health</li>
-              <li><i class="fas fa-check-circle"></i> Disease prevention</li>
+              <li><i class="fas fa-check"></i> Mobile medical clinics</li>
+              <li><i class="fas fa-check"></i> Health education programs</li>
+              <li><i class="fas fa-check"></i> Maternal and child health</li>
+              <li><i class="fas fa-check"></i> Disease prevention initiatives</li>
             </ul>
-            <a href="#" class="btn btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
         <div class="program-card" data-aos="fade-up" data-aos-delay="300">
@@ -1398,48 +1408,17 @@
             <div class="program-image-overlay"></div>
           </div>
           <div class="program-content">
-            <h3 class="program-title">Safe Shelter</h3>
-            <p class="program-text">We provide safe and dignified housing for vulnerable families, orphans, and the elderly through our shelter initiatives.</p>
+            <h3 class="program-title">Shelter & Housing</h3>
+            <p class="program-text">Providing safe and dignified housing for families in need, with a focus on sustainable building practices and community development.</p>
             <ul class="program-features">
-              <li><i class="fas fa-check-circle"></i> Home construction</li>
-              <li><i class="fas fa-check-circle"></i> Orphanage support</li>
-              <li><i class="fas fa-check-circle"></i> Elderly care facilities</li>
-              <li><i class="fas fa-check-circle"></i> Disaster relief housing</li>
+              <li><i class="fas fa-check"></i> Safe housing construction</li>
+              <li><i class="fas fa-check"></i> Disaster relief housing</li>
+              <li><i class="fas fa-check"></i> Community infrastructure</li>
+              <li><i class="fas fa-check"></i> Sustainable building practices</li>
             </ul>
-            <a href="#" class="btn btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mission Section -->
-  <section class="mission-section" id="about">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="mission-image" data-aos="fade-right">
-            <img src="images/mission-image.jpg" alt="Our Mission">
-            <div class="mission-badge">
-              <i class="fas fa-bullseye"></i> Our Mission
-            </div>
-            <div class="mission-image-overlay"></div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="ps-lg-5" data-aos="fade-left">
-            <div class="section-header">
-              <span class="section-subtitle">About Us</span>
-              <h2 class="section-title">Our Mission & Vision</h2>
-              <div class="section-divider"></div>
-            </div>
-            <p class="mission-text">Arm Stretch Foundation Africa is committed to empowering vulnerable communities across Africa through sustainable development initiatives in education, healthcare, and shelter.</p>
-            <p class="mission-text">Our vision is to create a continent where every individual has access to basic human rights and opportunities for growth and development.</p>
-            <p class="mission-text">Since our establishment, we have impacted over 15,000 lives across 8 African countries, building schools, healthcare facilities, and homes for those in need.</p>
-            <div class="mt-4">
-              <a href="#" class="btn btn-primary me-3">Our Story</a>
-              <a href="#" class="btn btn-outline-primary">Meet Our Team</a>
-            </div>
+            <a href="#" class="btn btn-link">
+              Learn More <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -1447,49 +1426,55 @@
   </section>
 
   <!-- Stories Section -->
-  <section class="stories-section" id="stories">
+  <section id="stories" class="stories-section">
     <div class="container">
-      <div class="section-header text-center">
+      <div class="section-header text-center mb-5">
         <span class="section-subtitle">Impact Stories</span>
-        <h2 class="section-title">Transforming Lives</h2>
+        <h2 class="section-title">Transforming Lives Across Africa</h2>
         <div class="section-divider"></div>
-        <p class="section-description">Read inspiring stories of individuals and communities whose lives have been transformed through our programs.</p>
+        <p class="section-description">Read inspiring stories of individuals and communities whose lives have been transformed through our initiatives.</p>
       </div>
       <div class="stories-slider">
         <div class="story-card" data-aos="fade-up" data-aos-delay="100">
           <div class="story-image">
-            <img src="images/story-1.jpg" alt="Sarah's Story">
+            <img src="images/story-1.jpg" alt="Success Story">
             <div class="story-image-overlay"></div>
             <div class="story-badge">Education</div>
           </div>
           <div class="story-content">
-            <h3 class="story-title">Sarah's Journey to Education</h3>
-            <p class="story-excerpt">Sarah, a 12-year-old girl from rural Kenya, was able to attend school for the first time thanks to our scholarship program. She's now excelling in her studies and dreams of becoming a doctor.</p>
-            <a href="#" class="btn btn-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+            <h3 class="story-title">From Dropout to Doctor: Sarah's Journey</h3>
+            <p class="story-excerpt">Sarah was forced to drop out of school at age 12. Through our scholarship program, she completed her education and is now studying medicine.</p>
+            <a href="#" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
         <div class="story-card" data-aos="fade-up" data-aos-delay="200">
           <div class="story-image">
-            <img src="images/story-2.jpg" alt="Community Health">
+            <img src="images/story-2.jpg" alt="Success Story">
             <div class="story-image-overlay"></div>
             <div class="story-badge">Healthcare</div>
           </div>
           <div class="story-content">
-            <h3 class="story-title">A Community Transformed</h3>
-            <p class="story-excerpt">The village of Makeni in Sierra Leone now has access to clean water and basic healthcare through our community development program, reducing waterborne diseases by 80%.</p>
-            <a href="#" class="btn btn-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+            <h3 class="story-title">A Community Transformed: The Health Center That Changed Everything</h3>
+            <p class="story-excerpt">A remote village gained access to healthcare for the first time through our mobile clinic initiative, reducing child mortality by 60%.</p>
+            <a href="#" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
         <div class="story-card" data-aos="fade-up" data-aos-delay="300">
           <div class="story-image">
-            <img src="images/story-3.jpg" alt="Family Home">
+            <img src="images/story-3.jpg" alt="Success Story">
             <div class="story-image-overlay"></div>
             <div class="story-badge">Shelter</div>
           </div>
           <div class="story-content">
-            <h3 class="story-title">A Safe Place to Call Home</h3>
-            <p class="story-excerpt">The Johnson family, who lost their home in a flood, now has a safe and secure place to live thanks to our emergency housing program, giving them stability and hope for the future.</p>
-            <a href="#" class="btn btn-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+            <h3 class="story-title">Safe Haven: The Family That Found Shelter</h3>
+            <p class="story-excerpt">After losing their home to flooding, the Mbeki family found safety and stability through our housing initiative, allowing them to rebuild their lives.</p>
+            <a href="#" class="btn btn-link">
+              Read Full Story <i class="fas fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -1497,16 +1482,16 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="cta-section" id="donate">
+  <section class="cta-section">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="cta-card text-center" data-aos="zoom-in">
+        <div class="col-lg-8 text-center">
+          <div class="cta-card" data-aos="zoom-in">
             <h2 class="cta-title">Join Us in Making a Difference</h2>
             <p class="cta-text">Your support can transform lives and create lasting change in vulnerable communities across Africa. Together, we can build a brighter future.</p>
-            <div class="cta-actions mt-4">
+            <div class="mt-4">
               <a href="#" class="btn btn-light me-3">Donate Now</a>
-              <a href="#" class="btn btn-outline-light">Become a Volunteer</a>
+              <a href="#" class="btn btn-outline-light">Volunteer</a>
             </div>
           </div>
         </div>
@@ -1518,26 +1503,27 @@
   <section class="newsletter-section">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="newsletter-image" data-aos="fade-right">
-            <img src="images/newsletter-image.jpg" alt="Stay Connected">
-            <div class="newsletter-image-overlay"></div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="newsletter-content" data-aos="fade-left">
-            <div class="section-header">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <div class="newsletter-content">
+            <div class="section-header mb-4">
               <span class="section-subtitle">Stay Connected</span>
               <h2 class="section-title">Join Our Community</h2>
               <div class="section-divider"></div>
+              <p class="section-description">Subscribe to our newsletter to receive updates on our projects, success stories, and opportunities to get involved.</p>
             </div>
-            <p>Subscribe to our newsletter to receive updates on our programs, impact stories, and opportunities to get involved.</p>
-            <form class="newsletter-form">
+            <div class="newsletter-form">
               <div class="input-group">
-                <input type="email" class="form-control" placeholder="Enter your email address" required>
-                <button class="btn btn-primary" type="submit">Subscribe</button>
+                <input type="email" class="form-control" placeholder="Enter your email address">
+                <button class="btn btn-primary" type="button">Subscribe</button>
               </div>
-            </form>
+              <div class="form-text">We respect your privacy and will never share your information.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="newsletter-image">
+            <img src="images/newsletter-image.jpg" alt="Community">
+            <div class="newsletter-image-overlay"></div>
           </div>
         </div>
       </div>
@@ -1550,19 +1536,18 @@
       <div class="row">
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="footer-logo">
-            <img src="images/logo.png" alt="Arm Stretch Foundation Africa" width="50">
-            <div>
-              <h4 class="text-white mb-0">Arm Stretch</h4>
-              <small class="text-primary">Foundation Africa</small>
+            <img src="images/logo.png" alt="Arm Stretch Foundation Africa" height="40">
+            <div class="logo-text">
+              <span class="logo-primary">Arm Stretch Foundation</span>
+              <span class="logo-secondary">Africa</span>
             </div>
           </div>
-          <p class="footer-about-text">We are dedicated to empowering vulnerable communities across Africa through sustainable education, healthcare, and shelter initiatives.</p>
+          <p class="footer-about-text">Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
@@ -1571,48 +1556,49 @@
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Home</a></li>
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">About Us</a></li>
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Programs</a></li>
-            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Impact</a></li>
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Get Involved</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Contact</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-4 mb-5 mb-md-0">
           <h5 class="text-white mb-4">Our Programs</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Education for All</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Education Initiative</a></li>
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Healthcare Access</a></li>
-            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Safe Shelter</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Shelter & Housing</a></li>
             <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Community Development</a></li>
-            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Emergency Relief</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Disaster Relief</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-4">
           <h5 class="text-white mb-4">Contact Us</h5>
           <ul class="list-unstyled">
-            <li class="mb-3 d-flex">
+            <li class="mb-3 d-flex align-items-start">
               <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
-              <span class="opacity-75">123 Foundation Street, Kampala, Uganda</span>
+              <span class="text-light opacity-75">123 Foundation Street, Kampala, Uganda</span>
             </li>
-            <li class="mb-3 d-flex">
-              <i class="fas fa-phone text-primary me-3 mt-1"></i>
-              <span class="opacity-75">+256 712 345 678</span>
+            <li class="mb-3 d-flex align-items-center">
+              <i class="fas fa-phone text-primary me-3"></i>
+              <span class="text-light opacity-75">+256 123 456 789</span>
             </li>
-            <li class="mb-3 d-flex">
-              <i class="fas fa-envelope text-primary me-3 mt-1"></i>
-              <span class="opacity-75">info@armstretchfoundation.org</span>
+            <li class="mb-3 d-flex align-items-center">
+              <i class="fas fa-envelope text-primary me-3"></i>
+              <span class="text-light opacity-75">info@armstretchfoundation.org</span>
             </li>
           </ul>
         </div>
       </div>
-      <hr class="my-5 opacity-25">
+      <hr class="my-5 border-secondary">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0 opacity-75">&copy; 2023 Arm Stretch Foundation Africa. All rights reserved.</p>
+          <p class="text-light opacity-75 mb-0">© 2023 Arm Stretch Foundation Africa. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-center text-md-end">
-          <div class="d-flex justify-content-md-end justify-content-center">
-            <a href="#" class="text-light text-decoration-none opacity-75 me-3 hover-opacity-100">Privacy Policy</a>
-            <a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Terms of Service</a>
-          </div>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Privacy Policy</a></li>
+            <li class="list-inline-item mx-3">|</li>
+            <li class="list-inline-item"><a href="#" class="text-light text-decoration-none opacity-75 hover-opacity-100">Terms of Service</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1630,6 +1616,7 @@
     // Initialize AOS
     AOS.init({
       duration: 800,
+      easing: 'ease-in-out',
       once: true,
       offset: 100
     });
@@ -1663,7 +1650,8 @@
       }
     });
 
-    backToTopButton.addEventListener('click', function() {
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -1684,44 +1672,14 @@
       });
     });
 
-    // Hero background animation
-    const heroBackground = document.querySelector('.hero-background');
+    // Hero background parallax effect
     window.addEventListener('scroll', function() {
       const scrolled = window.pageYOffset;
-      const rate = scrolled * 0.5;
-      heroBackground.style.transform = `translateY(${rate}px)`;
+      const heroBackground = document.querySelector('.hero-background');
+      if (heroBackground) {
+        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
     });
-
-    // Stats counter animation
-    function animateStats() {
-      const statNumbers = document.querySelectorAll('.stat-number');
-      statNumbers.forEach(stat => {
-        const target = parseInt(stat.textContent);
-        let count = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-          count += increment;
-          if (count >= target) {
-            count = target;
-            clearInterval(timer);
-          }
-          stat.textContent = Math.floor(count).toLocaleString();
-        }, 20);
-      });
-    }
-
-    // Intersection Observer for stats animation
-    const statsSection = document.querySelector('.stats-section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateStats();
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(statsSection);
   </script>
 </body>
 </html>
