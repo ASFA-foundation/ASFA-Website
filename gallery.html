@@ -12,6 +12,12 @@
   <meta property="og:image" content="https://armstretchfoundationafricaltd.org/images/gallery-social.jpg">
   <meta property="og:url" content="https://armstretchfoundationafricaltd.org/gallery.html">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#00AEEF">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="images/logo.png" as="image">
+  <link rel="preload" href="css/main.css" as="style">
   
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,17 +25,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Lightbox CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main.css">
   
   <!-- Gallery Page Specific CSS -->
   <style>
     /* Gallery Header */
     .gallery-header {
-      background: linear-gradient(rgba(0, 174, 239, 0.8), rgba(0, 174, 239, 0.9)), url('images/gallery-bg.jpg');
+      background: linear-gradient(135deg, rgba(30, 42, 58, 0.85) 0%, rgba(15, 23, 33, 0.9) 100%), url('images/gallery-bg.jpg');
       background-size: cover;
       background-position: center;
       min-height: 400px;
@@ -37,28 +43,67 @@
       align-items: center;
       margin-top: -80px;
       padding-top: 80px;
+      position: relative;
     }
     
-    /* Gallery Items */
+    /* Gallery Section */
+    .gallery-section {
+      padding: 5rem 0;
+      background-color: var(--lighter);
+    }
+    
+    /* Gallery Filters */
+    .gallery-filters {
+      padding: 2rem 0;
+      background-color: var(--light);
+      border-bottom: 1px solid var(--gray-light);
+    }
+    
+    .filter-btn {
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+      border-radius: var(--radius-round);
+      transition: var(--transition);
+      margin: 0.25rem;
+      border: 2px solid var(--primary);
+      background-color: transparent;
+      color: var(--primary);
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-primary);
+    }
+    
+    /* Gallery Grid */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       transition: var(--transition);
-      margin-bottom: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 4/3;
     }
     
     .gallery-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-xl);
     }
     
     .gallery-item img {
-      transition: transform 0.5s ease;
       width: 100%;
-      height: 250px;
+      height: 100%;
       object-fit: cover;
+      transition: var(--transition-slow);
     }
     
     .gallery-item:hover img {
@@ -70,98 +115,226 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 174, 239, 0.8);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
       color: white;
-      padding: 15px;
+      padding: 1.5rem;
       transform: translateY(100%);
-      transition: transform 0.3s ease;
+      transition: var(--transition);
     }
     
     .gallery-item:hover .gallery-caption {
       transform: translateY(0);
     }
     
-    /* Filter Buttons */
-    .filter-btn.active {
-      background-color: var(--orange);
-      color: var(--white);
-      border-color: var(--orange);
+    .gallery-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-round);
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+    
+    /* Video Section */
+    .video-section {
+      background-color: var(--light);
+    }
+    
+    .video-card {
+      background-color: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .video-content {
+      padding: 1.5rem;
     }
     
     /* Lightbox Overrides */
+    .lightboxOverlay {
+      background: rgba(0, 0, 0, 0.85);
+    }
+    
+    .lightbox .lb-image {
+      border-radius: var(--radius-md);
+    }
+    
     .lb-data .lb-caption {
       font-size: 1rem;
       line-height: 1.4;
+      color: var(--text-light);
     }
     
     .lb-nav a.lb-prev,
     .lb-nav a.lb-next {
       opacity: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lb-nav a.lb-prev:hover,
+    .lb-nav a.lb-next:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Load More Button */
+    .load-more-container {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    
+    .btn-load-more {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: var(--radius-round);
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--shadow-primary);
+    }
+    
+    .btn-load-more:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 767.98px) {
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      
+      .gallery-caption {
+        padding: 1rem;
+        transform: translateY(0);
+        background: rgba(0, 0, 0, 0.7);
+      }
+      
+      .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <img src="images/logo.png" alt="ASFA Logo" width="80" height="80">
+        <div class="preloader-pulse"></div>
+      </div>
+      <div class="preloader-text">
+        <h3>Arm Stretch Foundation Africa</h3>
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="ASFA Foundation Home">
-        <div class="logo-circle">
+      <a class="navbar-brand" href="index.html" aria-label="ASFA Foundation Home">
+        <div class="logo-mark">
           <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="eager">
+          <div class="logo-glow"></div>
         </div>
-        <span class="site-name">Arm Stretch Foundation Africa</span>
+        <span class="logo-text">
+          <span class="logo-primary">Arm Stretch</span>
+          <span class="logo-secondary">Foundation Africa</span>
+        </span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false">Programs</a>
+            <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item" href="programs.html#education">Education</a></li>
+              <li><a class="dropdown-item" href="programs.html#healthcare">Healthcare</a></li>
+              <li><a class="dropdown-item" href="programs.html#shelter">Shelter</a></li>
+              <li><a class="dropdown-item" href="programs.html#empowerment">Empowerment</a></li>
+            </ul>
+          </li>
           <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
-          <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-sky-blue px-4" href="donate.html">Donate</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-donate" href="donate.html">
+              <i class="fas fa-heart me-2"></i>Donate
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Page Header -->
-  <header class="gallery-header py-5 text-white">
-    <div class="container text-center">
-      <h1 class="display-4 mb-3">Our Gallery</h1>
-      <p class="lead">Capturing moments that define our impact</p>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center bg-transparent">
-          <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-          <li class="breadcrumb-item active text-orange" aria-current="page">Gallery</li>
-        </ol>
-      </nav>
+  <header class="gallery-header">
+    <div class="container text-center text-white">
+      <div data-aos="fade-up">
+        <h1 class="hero-title mb-3">Our Gallery</h1>
+        <p class="hero-text">Capturing moments that define our impact across African communities</p>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center bg-transparent">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+            <li class="breadcrumb-item active text-primary" aria-current="page">Gallery</li>
+          </ol>
+        </nav>
+      </div>
     </div>
   </header>
 
   <!-- Gallery Filters -->
-  <section class="py-4 bg-light-gray">
+  <section class="gallery-filters">
     <div class="container text-center">
-      <div class="btn-group flex-wrap" role="group">
-        <button type="button" class="btn btn-outline-sky-blue filter-btn active" data-filter="all">All</button>
-        <button type="button" class="btn btn-outline-sky-blue filter-btn" data-filter="education">Education</button>
-        <button type="button" class="btn btn-outline-sky-blue filter-btn" data-filter="healthcare">Healthcare</button>
-        <button type="button" class="btn btn-outline-sky-blue filter-btn" data-filter="shelter">Shelter</button>
-        <button type="button" class="btn btn-outline-sky-blue filter-btn" data-filter="events">Events</button>
-        <button type="button" class="btn btn-outline-sky-blue filter-btn" data-filter="community">Community</button>
+      <div class="btn-group flex-wrap" role="group" aria-label="Gallery filters">
+        <button type="button" class="filter-btn active" data-filter="all">All Photos</button>
+        <button type="button" class="filter-btn" data-filter="education">Education</button>
+        <button type="button" class="filter-btn" data-filter="healthcare">Healthcare</button>
+        <button type="button" class="filter-btn" data-filter="shelter">Shelter</button>
+        <button type="button" class="filter-btn" data-filter="empowerment">Empowerment</button>
+        <button type="button" class="filter-btn" data-filter="events">Events</button>
+        <button type="button" class="filter-btn" data-filter="community">Community</button>
       </div>
     </div>
   </section>
 
   <!-- Gallery Grid -->
-  <section class="py-5 bg-white">
+  <section class="gallery-section">
     <div class="container">
-      <div class="row gallery-container">
+      <div class="gallery-container" id="galleryContainer">
         <!-- Image 1 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="education">
-          <a href="images/gallery/education-1.jpg" data-lightbox="gallery" data-title="Students receiving school supplies">
-            <img src="images/gallery/education-1-thumb.jpg" alt="Students receiving school supplies" class="img-fluid" loading="lazy">
+        <div class="gallery-item" data-category="education" data-aos="fade-up">
+          <a href="images/gallery/education-1.jpg" data-lightbox="gallery" data-title="Students receiving school supplies in Kampala">
+            <img src="images/gallery/education-1-thumb.jpg" alt="Students receiving school supplies" loading="lazy">
+            <div class="gallery-category">Education</div>
             <div class="gallery-caption">
               <h5>Education Support</h5>
               <p>Students receiving school supplies in Kampala</p>
@@ -170,9 +343,10 @@
         </div>
 
         <!-- Image 2 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="healthcare">
+        <div class="gallery-item" data-category="healthcare" data-aos="fade-up" data-aos-delay="100">
           <a href="images/gallery/health-1.jpg" data-lightbox="gallery" data-title="Mobile health clinic in rural village">
-            <img src="images/gallery/health-1-thumb.jpg" alt="Mobile health clinic" class="img-fluid" loading="lazy">
+            <img src="images/gallery/health-1-thumb.jpg" alt="Mobile health clinic" loading="lazy">
+            <div class="gallery-category">Healthcare</div>
             <div class="gallery-caption">
               <h5>Mobile Clinic</h5>
               <p>Providing healthcare in rural communities</p>
@@ -181,9 +355,10 @@
         </div>
 
         <!-- Image 3 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="shelter">
+        <div class="gallery-item" data-category="shelter" data-aos="fade-up" data-aos-delay="200">
           <a href="images/gallery/shelter-1.jpg" data-lightbox="gallery" data-title="New home construction for displaced family">
-            <img src="images/gallery/shelter-1-thumb.jpg" alt="Home construction" class="img-fluid" loading="lazy">
+            <img src="images/gallery/shelter-1-thumb.jpg" alt="Home construction" loading="lazy">
+            <div class="gallery-category">Shelter</div>
             <div class="gallery-caption">
               <h5>Shelter Project</h5>
               <p>New home for displaced family in Bududa</p>
@@ -192,9 +367,10 @@
         </div>
 
         <!-- Image 4 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="education">
+        <div class="gallery-item" data-category="education" data-aos="fade-up">
           <a href="images/gallery/education-2.jpg" data-lightbox="gallery" data-title="Digital literacy training session">
-            <img src="images/gallery/education-2-thumb.jpg" alt="Digital literacy training" class="img-fluid" loading="lazy">
+            <img src="images/gallery/education-2-thumb.jpg" alt="Digital literacy training" loading="lazy">
+            <div class="gallery-category">Education</div>
             <div class="gallery-caption">
               <h5>Digital Training</h5>
               <p>Students learning computer skills</p>
@@ -203,9 +379,10 @@
         </div>
 
         <!-- Image 5 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="events">
+        <div class="gallery-item" data-category="events" data-aos="fade-up" data-aos-delay="100">
           <a href="images/gallery/event-1.jpg" data-lightbox="gallery" data-title="Annual fundraising gala">
-            <img src="images/gallery/event-1-thumb.jpg" alt="Fundraising event" class="img-fluid" loading="lazy">
+            <img src="images/gallery/event-1-thumb.jpg" alt="Fundraising event" loading="lazy">
+            <div class="gallery-category">Events</div>
             <div class="gallery-caption">
               <h5>Fundraising Gala</h5>
               <p>2023 Annual Charity Dinner</p>
@@ -214,9 +391,10 @@
         </div>
 
         <!-- Image 6 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="community">
+        <div class="gallery-item" data-category="empowerment" data-aos="fade-up" data-aos-delay="200">
           <a href="images/gallery/community-1.jpg" data-lightbox="gallery" data-title="Women's empowerment workshop">
-            <img src="images/gallery/community-1-thumb.jpg" alt="Women's workshop" class="img-fluid" loading="lazy">
+            <img src="images/gallery/community-1-thumb.jpg" alt="Women's workshop" loading="lazy">
+            <div class="gallery-category">Empowerment</div>
             <div class="gallery-caption">
               <h5>Empowerment Workshop</h5>
               <p>Skills training for local women</p>
@@ -225,9 +403,10 @@
         </div>
 
         <!-- Image 7 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="healthcare">
+        <div class="gallery-item" data-category="healthcare" data-aos="fade-up">
           <a href="images/gallery/health-2.jpg" data-lightbox="gallery" data-title="Vaccination drive in rural village">
-            <img src="images/gallery/health-2-thumb.jpg" alt="Vaccination program" class="img-fluid" loading="lazy">
+            <img src="images/gallery/health-2-thumb.jpg" alt="Vaccination program" loading="lazy">
+            <div class="gallery-category">Healthcare</div>
             <div class="gallery-caption">
               <h5>Vaccination Drive</h5>
               <p>Protecting children from preventable diseases</p>
@@ -236,9 +415,10 @@
         </div>
 
         <!-- Image 8 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="events">
+        <div class="gallery-item" data-category="events" data-aos="fade-up" data-aos-delay="100">
           <a href="images/gallery/event-2.jpg" data-lightbox="gallery" data-title="Volunteer appreciation day">
-            <img src="images/gallery/event-2-thumb.jpg" alt="Volunteer event" class="img-fluid" loading="lazy">
+            <img src="images/gallery/event-2-thumb.jpg" alt="Volunteer event" loading="lazy">
+            <div class="gallery-category">Events</div>
             <div class="gallery-caption">
               <h5>Volunteer Day</h5>
               <p>Recognizing our dedicated volunteers</p>
@@ -247,42 +427,94 @@
         </div>
 
         <!-- Image 9 -->
-        <div class="col-lg-4 col-md-6 gallery-item" data-category="community">
+        <div class="gallery-item" data-category="community" data-aos="fade-up" data-aos-delay="200">
           <a href="images/gallery/community-2.jpg" data-lightbox="gallery" data-title="Community clean-up initiative">
-            <img src="images/gallery/community-2-thumb.jpg" alt="Community clean-up" class="img-fluid" loading="lazy">
+            <img src="images/gallery/community-2-thumb.jpg" alt="Community clean-up" loading="lazy">
+            <div class="gallery-category">Community</div>
             <div class="gallery-caption">
               <h5>Clean-Up Campaign</h5>
               <p>Improving local community sanitation</p>
             </div>
           </a>
         </div>
+        
+        <!-- Additional Images (for demonstration) -->
+        <div class="gallery-item" data-category="education" data-aos="fade-up">
+          <a href="images/gallery/education-3.jpg" data-lightbox="gallery" data-title="School library renovation">
+            <img src="images/gallery/education-3-thumb.jpg" alt="School library" loading="lazy">
+            <div class="gallery-category">Education</div>
+            <div class="gallery-caption">
+              <h5>Library Renovation</h5>
+              <p>Newly renovated school library in rural Uganda</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="healthcare" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/gallery/health-3.jpg" data-lightbox="gallery" data-title="Maternal health program">
+            <img src="images/gallery/health-3-thumb.jpg" alt="Maternal health" loading="lazy">
+            <div class="gallery-category">Healthcare</div>
+            <div class="gallery-caption">
+              <h5>Maternal Health</h5>
+              <p>Prenatal care for expectant mothers</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="empowerment" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/gallery/empowerment-1.jpg" data-lightbox="gallery" data-title="Youth skills training">
+            <img src="images/gallery/empowerment-1-thumb.jpg" alt="Youth training" loading="lazy">
+            <div class="gallery-category">Empowerment</div>
+            <div class="gallery-caption">
+              <h5>Youth Training</h5>
+              <p>Vocational skills development program</p>
+            </div>
+          </a>
+        </div>
       </div>
 
       <!-- Load More Button -->
-      <div class="text-center mt-4">
-        <button class="btn btn-orange btn-lg" id="loadMore">
-          <i class="fas fa-plus-circle me-2"></i>Load More
+      <div class="load-more-container">
+        <button class="btn btn-load-more" id="loadMore">
+          <i class="fas fa-plus-circle me-2"></i>Load More Photos
         </button>
       </div>
     </div>
   </section>
 
   <!-- Video Section -->
-  <section class="py-5 bg-light-gray">
+  <section class="video-section py-5">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="section-title">Our Stories in Motion</h2>
-        <p class="lead">Watch how we're making a difference</p>
+      <div class="section-header text-center mb-5">
+        <span class="section-subtitle">Our Stories</span>
+        <h2 class="section-title">Impact in Motion</h2>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-description mx-auto">
+          Watch how we're transforming lives and communities across Africa
+        </p>
       </div>
+      
       <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Foundation Impact Video" allowfullscreen></iframe>
+        <div class="col-lg-6" data-aos="fade-up">
+          <div class="video-card">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Foundation Impact Video" allowfullscreen></iframe>
+            </div>
+            <div class="video-content">
+              <h4>Our Impact in 2023</h4>
+              <p class="mb-0">A visual journey through our programs and the lives we've touched this year.</p>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Education Program" allowfullscreen></iframe>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="video-card">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="ASFA Education Program" allowfullscreen></iframe>
+            </div>
+            <div class="video-content">
+              <h4>Education Program Highlights</h4>
+              <p class="mb-0">See how our education initiatives are creating opportunities for children.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -290,127 +522,206 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="py-5 bg-sky-blue text-white text-center">
+  <section class="cta-section">
     <div class="container">
-      <h2 class="mb-4">Want to See More of Our Work?</h2>
-      <p class="lead mb-4">Follow us on social media for daily updates</p>
-      <div class="d-flex justify-content-center flex-wrap">
-        <a href="https://www.facebook.com/profile.php?id=61575009377582" class="btn btn-orange btn-lg mx-2 mb-2" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-facebook-f me-2"></i>Facebook
-        </a>
-        <a href="#" class="btn btn-outline-white btn-lg mx-2 mb-2">
-          <i class="fab fa-instagram me-2"></i>Instagram
-        </a>
-        <a href="#" class="btn btn-outline-white btn-lg mx-2 mb-2">
-          <i class="fab fa-youtube me-2"></i>YouTube
-        </a>
+      <div class="cta-card" data-aos="fade-up">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h2 class="cta-title">Want to See More of Our Work?</h2>
+            <p class="cta-text">
+              Follow us on social media for daily updates, stories, and behind-the-scenes content.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="btn btn-primary btn-lg me-3" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook-f me-2"></i>Facebook
+            </a>
+            <a href="https://x.com/AsfaFoundation" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-twitter me-2"></i>Twitter
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-5">
+  <footer class="footer">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <h5 class="mb-3">About ASFA</h5>
-          <div class="d-flex align-items-center mb-3">
-            <div class="logo-circle me-3">
-              <img src="images/logo.png" alt="ASFA Logo" width="40" height="40" loading="lazy">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo">
+            <img src="images/logo.png" alt="ASFA Logo" width="50" height="50" loading="lazy">
+            <div>
+              <h3 class="footer-logo-text">Arm Stretch Foundation Africa</h3>
             </div>
-            <span class="fw-bold text-white">Arm Stretch Foundation Africa Ltd</span>
           </div>
-          <p class="mb-4">Empowering communities through sustainable initiatives in Uganda.</p>
+          <p class="footer-about-text">
+            Empowering vulnerable communities through sustainable education, healthcare, and shelter initiatives in Africa.
+          </p>
           <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61575009377582" class="text-white me-2" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/AsfaFoundation" class="text-white me-2" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white me-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61575009377582" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/AsfaFoundation" aria-label="Follow us on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-md-6">
-          <h5 class="mb-3">Quick Links</h5>
-          <ul class="nav flex-column footer-links">
-            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0">Home</a></li>
-            <li class="nav-item mb-2"><a href="about.html" class="nav-link p-0">About</a></li>
-            <li class="nav-item mb-2"><a href="programs.html" class="nav-link p-0">Programs</a></li>
-            <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0">Gallery</a></li>
-            <li class="nav-item mb-2"><a href="team.html" class="nav-link p-0">Team</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link p-0">Contact</a></li>
+        
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="team.html">Our Team</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="mb-3">Contact Us</h5>
-          <ul class="nav flex-column footer-links">
-            <li class="nav-item mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kasubi, Kampala, Uganda</li>
-            <li class="nav-item mb-2"><i class="fas fa-phone me-2"></i> 0200900288</li>
-            <li class="nav-item mb-2"><i class="fab fa-whatsapp me-2"></i> +256 748095503</li>
-            <li class="nav-item"><i class="fas fa-envelope me-2"></i> asfafoundationltd@gmail.com</li>
+        
+        <div class="col-lg-3 col-md-4 mb-5 mb-md-0">
+          <h4 class="footer-title">Programs</h4>
+          <ul class="footer-links">
+            <li><a href="programs.html#education">Education</a></li>
+            <li><a href="programs.html#healthcare">Healthcare</a></li>
+            <li><a href="programs.html#shelter">Shelter</a></li>
+            <li><a href="programs.html#empowerment">Empowerment</a></li>
+            <li><a href="programs.html">All Programs</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="mb-3">Newsletter</h5>
-          <p>Subscribe to our newsletter for updates on our work.</p>
-          <form class="newsletter-form">
-            <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Your Email" required>
-              <button class="btn btn-sky-blue" type="submit">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </div>
-            <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
-          </form>
+        
+        <div class="col-lg-3 col-md-4">
+          <h4 class="footer-title">Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kasubi, Kampala, Uganda</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:0200900288">0200900288</a>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+256748095503">+256 748095503</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:asfafoundationltd@gmail.com">asfafoundationltd@gmail.com</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <hr class="my-4">
-      <div class="text-center">
-        <p class="mb-0">&copy; <span id="currentYear"></span> ASFA Foundation. All rights reserved.</p>
+      
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="copyright">&copy; 2025 Arm Stretch Foundation Africa. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <ul class="footer-bottom-links">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Gallery Page Specific Script -->
   <script>
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 100
+      });
+    }
 
     // Gallery filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      let visibleItems = 9; // Initial number of visible items
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        // Update active button
-        filterBtns.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Update active button
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
 
-        // Filter items
-        const filter = this.dataset.filter;
-        galleryItems.forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
+          // Filter items
+          const filter = this.dataset.filter;
+          let count = 0;
+          
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              if (count < visibleItems) {
+                item.style.display = 'block';
+                count++;
+              } else {
+                item.style.display = 'none';
+              }
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          // Show/hide load more button based on filtered results
+          const totalFilteredItems = Array.from(galleryItems).filter(item => 
+            filter === 'all' || item.dataset.category === filter
+          ).length;
+          
+          document.getElementById('loadMore').style.display = 
+            totalFilteredItems > visibleItems ? 'inline-flex' : 'none';
         });
       });
-    });
 
-    // Load more functionality
-    document.getElementById('loadMore').addEventListener('click', function() {
-      // In a real implementation, this would load more items via AJAX
-      alert('More gallery items would be loaded here in a production environment');
-    });
+      // Load more functionality
+      document.getElementById('loadMore').addEventListener('click', function() {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        const filteredItems = Array.from(galleryItems).filter(item => 
+          activeFilter === 'all' || item.dataset.category === activeFilter
+        );
+        
+        // Show more items
+        visibleItems += 6;
+        
+        filteredItems.forEach((item, index) => {
+          if (index < visibleItems) {
+            item.style.display = 'block';
+          }
+        });
 
-    // Initialize lightbox
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'albumLabel': 'Image %1 of %2',
-      'fadeDuration': 300
+        // Hide load more button if all items are visible
+        if (visibleItems >= filteredItems.length) {
+          this.style.display = 'none';
+        }
+      });
+
+      // Initialize lightbox
+      if (typeof lightbox !== 'undefined') {
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'albumLabel': 'Image %1 of %2',
+          'fadeDuration': 300,
+          'imageFadeDuration': 300
+        });
+      }
     });
   </script>
 </body>
